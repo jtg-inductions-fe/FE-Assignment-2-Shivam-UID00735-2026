@@ -1,0 +1,11 @@
+@use '../abstract/functions' as f;
+
+// Spacing tokens
+$spacing-1: f.px-to-rem(4);
+$spacing-2: f.px-to-rem(8);
+$spacing-3: f.px-to-rem(12);
+$spacing-4: f.px-to-rem(16);
+$spacing-5: f.px-to-rem(20);
+$spacing-6: f.px-to-rem(24);
+$spacing-8: f.px-to-rem(32);
+$spacing-10: f.px-to-rem(40);

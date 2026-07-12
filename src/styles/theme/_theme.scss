@@ -1,0 +1,67 @@
+@use '@angular/material' as mat;
+@use './colors' as c;
+@use '../base/typography' as t;
+
+@include mat.core();
+
+// Custom primary color palette
+$my-primary-color-palette: (
+  50: c.$primary-50,
+  100: c.$primary-100,
+  200: c.$primary-200,
+  300: c.$primary-300,
+  400: c.$primary-400,
+  500: c.$primary-500,
+  600: c.$primary-600,
+  700: c.$primary-700,
+  800: c.$primary-800,
+  900: c.$primary-900,
+  contrast: (
+    700: c.$primary-contrast,
+    900: c.$primary-contrast,
+  ),
+);
+
+// Custom secondary color palette
+$my-secondary-color-palette: (
+  50: c.$secondary-50,
+  100: c.$secondary-100,
+  200: c.$secondary-200,
+  300: c.$secondary-300,
+  400: c.$secondary-400,
+  500: c.$secondary-500,
+  600: c.$secondary-600,
+  700: c.$secondary-700,
+  800: c.$secondary-800,
+  900: c.$secondary-900,
+  contrast: (
+    700: c.$secondary-contrast,
+    900: c.$secondary-contrast,
+  ),
+);
+
+// Defining custom material palette
+$my-primary: mat.define-palette($my-primary-color-palette, c.$primary-lighter-hue);
+$my-secondary: mat.define-palette($my-secondary-color-palette, c.$primary-lighter-hue);
+
+// Defining custom material palette for light theme
+$my-custom-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $my-primary,
+      accent: $my-secondary,
+    ),
+  )
+);
+
+// Initializing all component with custom theme
+@include mat.all-component-themes($my-custom-theme);
+
+// Typography
+$custom-typography: mat.define-typography-config(
+  $font-family: '"Inter", sans-serif',
+  $headline-1: mat.define-typography-level(t.$fs-4xl, t.$fs-4xl, t.$fw-bold),
+  $headline-4: mat.define-typography-level(t.$fs-xl, t.$fs-xl, t.$fw-bold),
+);
+
+@include mat.all-component-typographies($custom-typography);
