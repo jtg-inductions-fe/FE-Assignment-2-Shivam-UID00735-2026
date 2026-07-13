@@ -1,40 +1,56 @@
-@use './variables';
+@use './variables' as variable;
 
-// Responsive breakpoints
-@mixin mobile {
-  @media (min-width: v.$mobile) and (max-width : #{v.$tablet - 1px}) {
-    @content;
+/* Responsive mixins - Handle different breakpoints for different screen size
+    Accept inputs -
+    mobile - @content will apply under mobile breakpoint
+    tablet - @content will apply under tablet breakpoint
+    small-desktop - @content wil apply under small-desktop breakpoint
+    desktop -   @content wil apply under desktop breakpoint
+
+    @example scss
+    html{
+    respond(mobile){
+    font-size : 20px;
+    }
+*/
+@mixin respond($device) {
+  @if ($device == mobile) {
+    @media (min-width: variable.$mobile) and (max-width : #{variable.$tablet - 1px}) {
+      @content;
+    }
+  }
+
+  @if ($device == tablet) {
+    @media (min-width: variable.$tablet) and (max-width : #{variable.$small-desktop - 1px}) {
+      @content;
+    }
+  }
+
+  @if ($device == small-desktop) {
+    @media (min-width: variable.$small-desktop) and (max-width : #{variable.$desktop - 1px}) {
+      @content;
+    }
+  }
+
+  @if ($device == desktop) {
+    @media (min-width: variable.$desktop) {
+      @content;
+    }
   }
 }
 
-@mixin tablet {
-  @media (min-width: v.$tablet) and (max-width : #{v.$small-desktop - 1px}) {
-    @content;
-  }
-}
+/* Mixin for flexBox layout adjustment
+    @param {String} : $alignment - Handle Vertical alignment
+    @param {String} : $direction  - Handle axis direction
 
-@mixin small-desktop {
-  @media (min-width: v.$small-desktop) and (max-width : #{v.$desktop - 1px}) {
-    @content;
-  }
-}
-
-@mixin desktop {
-  @media (min-width: v.$desktop) {
-    @content;
-  }
-}
-
-// Flex center mixin
-@mixin flex-center {
+    @example scss
+    .box{
+       @include flex-center(center,column)
+    }
+*/
+@mixin flex-center($justify: center, $direction: row) {
   display: flex;
   align-items: center;
-  justify-content: center;
-}
-
-// Flex between
-@mixin flex-between {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  justify-content: $alignment;
+  flex-direction: $direction;
 }

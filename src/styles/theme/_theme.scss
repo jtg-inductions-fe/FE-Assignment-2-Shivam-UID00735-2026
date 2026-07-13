@@ -2,7 +2,7 @@
 @use './colors' as c;
 @use '../base/typography' as t;
 
-@include mat.core();
+@include mat.core;
 
 // Custom primary color palette
 $my-primary-color-palette: (
@@ -22,34 +22,16 @@ $my-primary-color-palette: (
   ),
 );
 
-// Custom secondary color palette
-$my-secondary-color-palette: (
-  50: c.$secondary-50,
-  100: c.$secondary-100,
-  200: c.$secondary-200,
-  300: c.$secondary-300,
-  400: c.$secondary-400,
-  500: c.$secondary-500,
-  600: c.$secondary-600,
-  700: c.$secondary-700,
-  800: c.$secondary-800,
-  900: c.$secondary-900,
-  contrast: (
-    700: c.$secondary-contrast,
-    900: c.$secondary-contrast,
-  ),
-);
-
 // Defining custom material palette
 $my-primary: mat.define-palette($my-primary-color-palette, c.$primary-lighter-hue);
-$my-secondary: mat.define-palette($my-secondary-color-palette, c.$primary-lighter-hue);
 
 // Defining custom material palette for light theme
+$accent: mat.define-palette(mat.$teal-palette);
 $my-custom-theme: mat.define-light-theme(
   (
     color: (
       primary: $my-primary,
-      accent: $my-secondary,
+      accent: $accent,
     ),
   )
 );

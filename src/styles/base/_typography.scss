@@ -1,4 +1,4 @@
-@use '../abstract/functions' as f;
+@use '../abstract/functions' as function;
 
 @font-face {
   font-family: 'Inter';
@@ -11,14 +11,14 @@
 $font-family: 'Inter', sans-serif;
 
 // Font size declaration
-$fx-xs: f.px-to-rem(12);
-$fs-sm: f.px-to-rem(14);
-$fs-md: f.px-to-rem(16);
-$fs-lg: f.px-to-rem(18);
-$fs-xl: f.px-to-rem(20);
-$fs-3xl: f.px-to-rem(24);
-$fs-2xl: f.px-to-rem(28);
-$fs-4xl: f.px-to-rem(48);
+$fs-xs: function.px-to-rem(12);
+$fs-sm: function.px-to-rem(14);
+$fs-md: function.px-to-rem(16);
+$fs-lg: function.px-to-rem(18);
+$fs-xl: function.px-to-rem(20);
+$fs-3xl: function.px-to-rem(24);
+$fs-2xl: function.px-to-rem(28);
+$fs-4xl: function.px-to-rem(48);
 
 // Font weight declaration
 $fw-regular: 400;
