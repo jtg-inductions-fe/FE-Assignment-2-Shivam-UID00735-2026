@@ -1,5 +1,7 @@
 // Breakpoints for different screen sizes
-$mobile: 320px;
-$tablet: 768px;
-$small-desktop: 1024px;
-$desktop: 1440px;
+$breakpoints: (
+  'sm': 320px,
+  'md': 768px,
+  'lg': 1024px,
+  'xl': 1440px,
+);

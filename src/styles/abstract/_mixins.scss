@@ -1,56 +1,25 @@
 @use './variables' as variable;
+@use './functions' as function;
 
-/* Responsive mixins - Handle different breakpoints for different screen size
-    Accept inputs -
-    mobile - @content will apply under mobile breakpoint
-    tablet - @content will apply under tablet breakpoint
-    small-desktop - @content wil apply under small-desktop breakpoint
-    desktop -   @content wil apply under desktop breakpoint
-
-    @example scss
-    html{
-    respond(mobile){
-    font-size : 20px;
-    }
-*/
+// Mixin for media queries for different screen sizes
+// Parameter accepted (sm,md,lg,xl)
 @mixin respond($device) {
-  @if ($device == mobile) {
-    @media (min-width: variable.$mobile) and (max-width : #{variable.$tablet - 1px}) {
-      @content;
-    }
-  }
-
-  @if ($device == tablet) {
-    @media (min-width: variable.$tablet) and (max-width : #{variable.$small-desktop - 1px}) {
-      @content;
-    }
-  }
-
-  @if ($device == small-desktop) {
-    @media (min-width: variable.$small-desktop) and (max-width : #{variable.$desktop - 1px}) {
-      @content;
-    }
-  }
-
-  @if ($device == desktop) {
-    @media (min-width: variable.$desktop) {
-      @content;
-    }
+  @media (min-width: function.breakpoint($device)) {
+    @content;
   }
 }
-
 /* Mixin for flexBox layout adjustment
-    @param {String} : $alignment - Handle Vertical alignment
+    @param {String} : $justify - Handle Vertical alignment
     @param {String} : $direction  - Handle axis direction
 
     @example scss
     .box{
-       @include flex-center(center,column)
+       @include flex(center,column)
     }
 */
-@mixin flex-center($justify: center, $direction: row) {
+@mixin flex($justify: center, $direction: row) {
   display: flex;
   align-items: center;
-  justify-content: $alignment;
+  justify-content: $justify;
   flex-direction: $direction;
 }
