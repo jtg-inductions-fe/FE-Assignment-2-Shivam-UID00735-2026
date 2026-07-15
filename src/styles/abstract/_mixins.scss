@@ -8,15 +8,8 @@
     @content;
   }
 }
-/* Mixin for flexBox layout adjustment
-    @param {String} : $justify - Handle Vertical alignment
-    @param {String} : $direction  - Handle axis direction
 
-    @example scss
-    .box{
-       @include flex(center,column)
-    }
-*/
+// Mixin for flexbox
 @mixin flex($justify: center, $direction: row) {
   display: flex;
   align-items: center;

@@ -1,8 +1,8 @@
-@use '../abstract/functions' as function;
+@use 'abstract/functions' as function;
 
 @font-face {
   font-family: 'Inter';
-  src: url('/assets/fonts/inter/Inter.ttf');
+  src: url('../../assets/fonts/inter/Inter.ttf');
   font-weight: 100 900;
   font-style: normal;
   font-display: swap;
