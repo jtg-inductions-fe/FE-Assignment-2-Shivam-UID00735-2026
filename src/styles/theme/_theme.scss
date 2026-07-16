@@ -43,7 +43,8 @@ $my-custom-theme: mat.define-light-theme(
 $custom-typography: mat.define-typography-config(
   $font-family: '"Inter", sans-serif',
   $headline-1: mat.define-typography-level(typo.$fs-4xl, typo.$fs-4xl, typo.$fw-bold),
-  $headline-4: mat.define-typography-level(typo.$fs-xl, typo.$fs-xl, typo.$fw-bold),
+  $headline-2: mat.define-typography-level(typo.$fs-xl, typo.$fs-xl, typo.$fw-semibold),
+  $headline-4: mat.define-typography-level(typo.$fs-md, typo.$fs-md, typo.$fw-bold),
 );
 
 @include mat.all-component-typographies($custom-typography);
