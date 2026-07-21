@@ -8,6 +8,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { ROUTES } from '@/core/constants';
 import { ListCardItem } from '@/models';
+import { TopCustomer } from '@/models/dashboard.model';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',

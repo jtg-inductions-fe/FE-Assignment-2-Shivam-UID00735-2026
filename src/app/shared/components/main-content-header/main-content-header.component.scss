@@ -25,4 +25,12 @@
       width: auto;
     }
   }
+
+  @include respond-up('lg') {
+    flex-direction: row;
+    text-align: start;
+    ng-content {
+      width: auto;
+    }
+  }
 }
