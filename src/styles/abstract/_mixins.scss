@@ -1,0 +1,18 @@
+@use './variables' as variable;
+@use './functions' as function;
+
+// Mixin for media queries for different screen sizes
+// Parameter accepted (sm,md,lg,xl)
+@mixin respond($device) {
+  @media (min-width: function.breakpoint($device)) {
+    @content;
+  }
+}
+
+// Mixin for flexbox
+@mixin flex($justify: center, $direction: row) {
+  display: flex;
+  align-items: center;
+  justify-content: $justify;
+  flex-direction: $direction;
+}

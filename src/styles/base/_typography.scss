@@ -1,0 +1,31 @@
+@use 'abstract/functions' as function;
+
+@font-face {
+  font-family: 'Inter';
+  src: url('../../assets/fonts/inter/Inter.ttf');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+$font-family: 'Inter', sans-serif;
+
+// Font size declaration
+$fs-xs: function.px-to-rem(12);
+$fs-sm: function.px-to-rem(14);
+$fs-md: function.px-to-rem(16);
+$fs-lg: function.px-to-rem(18);
+$fs-xl: function.px-to-rem(20);
+$fs-2xl: function.px-to-rem(24);
+$fs-3xl: function.px-to-rem(28);
+$fs-4xl: function.px-to-rem(48);
+
+// Font weight declaration
+$fw-regular: 400;
+$fw-medium: 500;
+$fw-semibold: 600;
+$fw-bold: 700;
+
+body {
+  font-family: $font-family;
+}

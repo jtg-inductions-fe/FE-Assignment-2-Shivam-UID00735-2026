@@ -1,0 +1,52 @@
+@use '@angular/material' as mat;
+@use './colors' as color;
+@use 'base/typography' as typo;
+
+@include mat.core;
+
+// Custom primary color palette
+$my-primary-color-palette: (
+  50: color.$primary-50,
+  100: color.$primary-100,
+  200: color.$primary-200,
+  300: color.$primary-300,
+  400: color.$primary-400,
+  500: color.$primary-500,
+  600: color.$primary-600,
+  700: color.$primary-700,
+  800: color.$primary-800,
+  900: color.$primary-900,
+  contrast: (
+    700: color.$primary-contrast,
+    900: color.$primary-contrast,
+  ),
+);
+
+// Defining custom material palette
+$my-primary: mat.define-palette($my-primary-color-palette, color.$primary-lighter-hue);
+
+// Defining custom material palette for light theme
+$accent: mat.define-palette(mat.$orange-palette);
+$my-custom-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $my-primary,
+      accent: $accent,
+    ),
+  )
+);
+
+// Initializing all component with custom theme
+@include mat.all-component-themes($my-custom-theme);
+
+// Typography
+$custom-typography: mat.define-typography-config(
+  $font-family: '"Inter", sans-serif',
+  $headline-1: mat.define-typography-level(typo.$fs-4xl, typo.$fs-4xl, typo.$fw-bold),
+  $headline-2: mat.define-typography-level(typo.$fs-xl, typo.$fs-xl, typo.$fw-semibold),
+  $headline-4: mat.define-typography-level(typo.$fs-md, typo.$fs-md, typo.$fw-bold),
+);
+
+@include mat.all-component-typographies($custom-typography);
+
+@include mat.typography-hierarchy($custom-typography);

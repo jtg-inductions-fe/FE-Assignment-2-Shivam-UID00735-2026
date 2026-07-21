@@ -1,0 +1,15 @@
+@use 'sass:math';
+@use './variables' as variable;
+
+/* Function to convert to px to rem
+    1rem  = 16px
+    @param {Number} $px : pixel value
+*/
+@function px-to-rem($px) {
+  @return math.div($px, 16) * 1rem;
+}
+
+// Function to get breakpoint from the devices map
+@function breakpoint($name) {
+  @return map-get($map: variable.$breakpoints, $key: $name);
+}
