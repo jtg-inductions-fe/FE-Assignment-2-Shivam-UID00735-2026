@@ -69,7 +69,7 @@ export class AuthService {
   // this function redirect to logged in User and deleting the cookie and make user subject null
   logout() {
     this.userSubject.next(null);
-    console.log(this.userSubject.getValue());
+
     this.cookieService.delete('loggedInUser', '/');
     this.route.navigateByUrl(loginPageRoute);
   }
