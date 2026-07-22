@@ -1,0 +1,72 @@
+[
+  {
+    "restaurantId": 0,
+    "topCustomers": [
+      {
+        "image": "assets/images/avatars/avatar-2.webp",
+        "name": "Albert Wright",
+        "email": "albertwright@demo.com",
+        "amount": "$60"
+      },
+      {
+        "image": "assets/images/avatars/avatar-3.webp",
+        "name": "Dave Miller",
+        "email": "davemiller@demo.com",
+        "amount": "$48"
+      },
+      {
+        "image": "assets/images/avatars/admin-profile.jpg",
+        "name": "Neil Sims",
+        "email": "neilsims@demo.com",
+        "amount": "$36"
+      },
+      {
+        "image": "assets/images/avatars/default-avatar.png",
+        "name": "Bonnie Green",
+        "email": "bonniegreen@demo.com",
+        "amount": "$36"
+      },
+      {
+        "image": "assets/images/avatars/avatar-2.webp",
+        "name": "Alice Johnson",
+        "email": "alicejohnson@demo.com",
+        "amount": "$23"
+      }
+    ]
+  },
+  {
+    "restaurantId": 1,
+    "topCustomers": [
+      {
+        "image": "assets/images/avatars/avatar-2.webp",
+        "name": "Shivam Kushwah",
+        "email": "albertwright@demo.com",
+        "amount": "$60"
+      },
+      {
+        "image": "assets/images/avatars/avatar-3.webp",
+        "name": "Dave Miller",
+        "email": "davemiller@demo.com",
+        "amount": "$48"
+      },
+      {
+        "image": "assets/images/avatars/admin-profile.jpg",
+        "name": "Neil Sims",
+        "email": "neilsims@demo.com",
+        "amount": "$36"
+      },
+      {
+        "image": "assets/images/avatars/default-avatar.png",
+        "name": "Bonnie Green",
+        "email": "bonniegreen@demo.com",
+        "amount": "$36"
+      },
+      {
+        "image": "assets/images/avatars/avatar-2.webp",
+        "name": "Alice Johnson",
+        "email": "alicejohnson@demo.com",
+        "amount": "$23"
+      }
+    ]
+  }
+]

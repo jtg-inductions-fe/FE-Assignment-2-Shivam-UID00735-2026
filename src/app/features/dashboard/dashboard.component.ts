@@ -7,7 +7,7 @@ import { Stats, StatsCard } from '@/models/dashboard-stats.model';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { ROUTES } from '@/core/constants';
-
+import { ListCardItem } from '@/models';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -19,6 +19,9 @@ export class DashboardComponent implements OnInit {
     'System administrator overview panel. Impersonate owners or view aggregate metrics.';
   statsCards: StatsCard[] = [];
   private dashboardStatService = inject(DashboardService);
+  topCustomer: ListCardItem[] = [];
+  topDishes: ListCardItem[] = [];
+
   private authService = inject(AuthService);
   private router = inject(Router);
   private activeRoute = inject(ActivatedRoute);
@@ -60,5 +63,38 @@ export class DashboardComponent implements OnInit {
 
   isAdmin(): boolean {
     return this.authService.getCurrentUserRole() === 'admin';
+  }
+
+  prepareTopCustomers(restaurantId: number): void {
+    this.dashboardStatService
+      .getTopCustomers(restaurantId)
+      .subscribe((data) => {
+        if (!data) {
+          this.topCustomer = [];
+          return;
+        }
+        this.topCustomer = data.map((customer) => ({
+          image: customer.image,
+          title: customer.name,
+          subtitle: customer.email,
+          value: customer.amount,
+        }));
+      });
+  }
+
+  prepareTopDishes(restaurantId: number): void {
+    this.dashboardStatService.getTopDishes(restaurantId).subscribe((data) => {
+      if (!data) {
+        this.topCustomer = [];
+        this.router.navigate([ROUTES.notFoundPageRoute]);
+        return;
+      }
+
+      
+      this.topDishes = data.map((dishes) => ({
+        title: dishes.title,
+        value: dishes.value,
+      }));
+    });
   }
 }

@@ -17,4 +17,12 @@
     flex-direction: row;
     text-align: start;
   }
+
+  @include respond-up('lg') {
+    flex-direction: row;
+    text-align: start;
+    ng-content {
+      width: auto;
+    }
+  }
 }

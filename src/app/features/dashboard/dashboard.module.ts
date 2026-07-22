@@ -9,6 +9,7 @@ import { ReportGeneratorComponent } from './report-generator/report-generator.co
 import { MatIconModule } from '@angular/material/icon';
 import { TopCustomersComponent } from './top-customers/top-customers.component';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { TopDishesComponent } from './top-dishes/top-dishes.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
     StatsComponent,
     ReportGeneratorComponent,
     TopCustomersComponent,
+    TopDishesComponent,
   ],
   imports: [
     CommonModule,

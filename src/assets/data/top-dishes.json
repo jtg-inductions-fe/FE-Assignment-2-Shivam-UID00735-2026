@@ -1,0 +1,65 @@
+[
+  {
+    "restaurantId": 0,
+    "topDishes": [
+      {
+        "title": "Margherita Pizza",
+        "value": "142 orders"
+      },
+      {
+        "title": "Soda",
+        "value": "98 orders"
+      },
+      {
+        "title": "Garlic Bread",
+        "value": "75 orders"
+      },
+      {
+        "title": "Tiramisu",
+        "value": "43 orders"
+      }
+    ]
+  },
+  {
+    "restaurantId": 1,
+    "topDishes": [
+      {
+        "title": "Cheeseburger",
+        "value": "210 orders"
+      },
+      {
+        "title": "French Fries",
+        "value": "185 orders"
+      },
+      {
+        "title": "Chocolate Milkshake",
+        "value": "92 orders"
+      },
+      {
+        "title": "Onion Rings",
+        "value": "64 orders"
+      }
+    ]
+  },
+  {
+    "restaurantId": 2,
+    "topDishes": [
+      {
+        "title": "Spicy Tuna Roll",
+        "value": "320 orders"
+      },
+      {
+        "title": "Miso Soup",
+        "value": "150 orders"
+      },
+      {
+        "title": "California Roll",
+        "value": "135 orders"
+      },
+      {
+        "title": "Gyoza",
+        "value": "110 orders"
+      }
+    ]
+  }
+]

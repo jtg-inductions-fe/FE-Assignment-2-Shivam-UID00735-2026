@@ -2,9 +2,14 @@ import { inject, Injectable } from '@angular/core';
 import { map, Observable, shareReplay } from 'rxjs';
 import { Stats } from '@/models/dashboard-stats.model';
 import { HttpClient } from '@angular/common/http';
-import { StatsData } from '@/models';
-import { Restaurant } from '@/models/restaurant.model';
+import { StatsData,Restaurant } from '@/models';
 import { API_URL } from '@/core/constants';
+import {
+  TopCustomersList,
+  TopCustomer,
+  TopDishes,
+  TopDishesList,
+} from '@/models/dashboard.model';
 
 @Injectable({
   providedIn: 'root',
@@ -42,5 +47,27 @@ export class DashboardService {
 
   getAllRestaurants(): Observable<Restaurant[]> {
     return this.allRestaurants$;
+  }
+  getTopCustomers(restaurantId: number): Observable<TopCustomer[] | undefined> {
+    return this.http
+      .get<TopCustomersList[]>(this.topCustomers)
+      .pipe(
+        map(
+          (data) =>
+            data.find((item) => item.restaurantId === restaurantId)
+              ?.topCustomers,
+        ),
+      );
+  }
+
+  getTopDishes(restaurantId: number): Observable<TopDishes[] | undefined> {
+    return this.http
+      .get<TopDishesList[]>(this.topDishes)
+      .pipe(
+        map(
+          (data) =>
+            data.find((item) => item.restaurantId === restaurantId)?.topDishes,
+        ),
+      );
   }
 }

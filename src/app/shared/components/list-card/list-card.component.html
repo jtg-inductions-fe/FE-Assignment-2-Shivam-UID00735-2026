@@ -1,12 +1,12 @@
 <div class="list-card">
-  <div class="list-card__heading">
+  <h2 class="list-card__heading">
     {{ title }}
-  </div>
+  </h2>
   <div class="list-card__item" *ngFor="let item of items; let last = last">
     <div class="list-card__left">
       <img *ngIf="item.image" [src]="item.image" [alt]="item.title + 'image'" />
 
-      <div class="list-card-content">
+      <div class="list-card__content">
         <h3>
           {{ item.title }}
         </h3>

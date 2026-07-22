@@ -4,4 +4,24 @@
   display: flex;
   flex-direction: column;
   gap: $spacing-4;
+
+  &__top-items {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-4;
+  }
+
+  @include respond-up('md') {
+    &__top-items {
+      flex-direction: row;
+    }
+
+    &__top-customers {
+      width: calc(40% - $spacing-4);
+    }
+    &__top-dishes {
+      width: calc(60%);
+    }
+  }
 }
