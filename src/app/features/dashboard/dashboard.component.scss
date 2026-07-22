@@ -1,0 +1,6 @@
+@use 'abstract' as *;
+.main-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-4;
+}

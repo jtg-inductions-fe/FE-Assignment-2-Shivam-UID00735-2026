@@ -1,0 +1,11 @@
+.stats-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 16px;
+  &__card {
+    width: calc(25% - 12px);
+  }
+}

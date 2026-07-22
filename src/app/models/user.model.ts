@@ -5,4 +5,5 @@ export interface User {
   password: string;
   avatar: string;
   role: 'admin' | 'owner';
+  restaurantIds?: number[];
 }

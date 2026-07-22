@@ -1,0 +1,13 @@
+<div class="stats-container">
+  <app-stat-card
+    *ngFor="let card of StatsCards"
+    [title]="card.title"
+    [stat]="card.value"
+    [icon]="card.icon"
+    [iconBg]="card.iconBg"
+    [iconColor]="card.iconColor"
+    [isCurrency]="card.isCurrency ?? false"
+    class="stats-container__card"
+  >
+  </app-stat-card>
+</div>

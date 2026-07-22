@@ -7,6 +7,9 @@ import { ROUTES } from '@/core/constants/routes.constants';
 import { DashboardComponent } from '@/features/dashboard/dashboard.component';
 import { ErrorPageComponent } from '@/shared/components/error-page/error-page.component';
 import { LoginComponent } from './features/auth/login/login.component';
+import { invalidatorGuard } from './core/guards/invalidator.guard';
+import { ownerAccessGuard } from './core/guards/owner-access.guard';
+import { ownerDashboardRedirectGuard } from './core/guards/owner-dashboard-redirect.guard';
 
 const routes: Routes = [
   {
@@ -20,9 +23,14 @@ const routes: Routes = [
     canActivate: [guestGuard],
   },
   {
+    path: ROUTES.dashboardPageRoute + '/:id',
+    component: DashboardComponent,
+    canActivate: [authGuard, invalidatorGuard, ownerAccessGuard],
+  },
+  {
     path: ROUTES.dashboardPageRoute,
     component: DashboardComponent,
-    canActivate: [authGuard],
+    canActivate: [authGuard, ownerDashboardRedirectGuard],
   },
   {
     path: 'server-error',

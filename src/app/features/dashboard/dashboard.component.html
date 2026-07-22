@@ -1,1 +1,22 @@
-<p>dashboard works!</p>
+<div class="main-wrapper">
+  <!-- dashboard main content header -->
+  <app-main-content-header
+    [headingFontSize]="48"
+    [title]="title"
+    [description]="description"
+  >
+    <app-auto-select
+      label="View dashboard as"
+      [selectedValue]="selectedValue"
+      (selectedValuesOnChange)="onRestaurantChange($event)"
+    ></app-auto-select>
+  </app-main-content-header>
+
+  <!-- stats card display -->
+
+  <app-stats [StatsCards]="statsCards"></app-stats>
+
+  <!-- Report generating section -->
+
+  <app-report-generator> </app-report-generator>
+</div>

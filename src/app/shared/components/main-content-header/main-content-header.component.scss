@@ -1,0 +1,17 @@
+@use 'abstract' as *;
+
+.main-header {
+  @include flex(space-between, row);
+
+  &__heading {
+    font-weight: 700;
+    margin: 0 0 8px 0;
+    // ! Unit less line height
+    line-height: 1.2;
+  }
+
+  &__description {
+    color: #00000099;
+    font-size: 14px;
+  }
+}

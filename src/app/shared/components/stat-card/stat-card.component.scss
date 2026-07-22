@@ -1,0 +1,31 @@
+@use 'abstract' as *;
+@use 'theme/colors' as *;
+
+.stat-card {
+  @include flex(space-between, row);
+
+  padding: 10px;
+  border: 1px solid $border-color;
+  border-radius: 12px;
+
+  &__data {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  &__title {
+    font-size: 12px;
+    color: #00000099;
+  }
+
+  &__stats {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0;
+  }
+  &__icon {
+    padding: 6px;
+    border-radius: 8px;
+    color: $sea-green;
+  }
+}

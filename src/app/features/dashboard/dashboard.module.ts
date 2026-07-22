@@ -1,10 +1,28 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DashboardComponent } from './dashboard.component';
+import { SharedModule } from '@/shared/shared.module';
+import { AppRoutingModule } from '@/app-routing.module';
+import { MatButtonModule } from '@angular/material/button';
+import { StatsComponent } from './stats/stats.component';
+import { ReportGeneratorComponent } from './report-generator/report-generator.component';
+import { MatIconModule } from '@angular/material/icon';
+import { TopCustomersComponent } from './top-customers/top-customers.component';
 
 @NgModule({
-  declarations: [DashboardComponent],
-  imports: [CommonModule],
+  declarations: [
+    DashboardComponent,
+    StatsComponent,
+    ReportGeneratorComponent,
+    TopCustomersComponent,
+  ],
+  imports: [
+    CommonModule,
+    SharedModule,
+    AppRoutingModule,
+    MatButtonModule,
+    MatIconModule,
+  ],
   exports: [DashboardComponent],
 })
 export class DashboardModule {}

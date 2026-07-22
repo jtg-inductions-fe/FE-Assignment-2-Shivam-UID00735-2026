@@ -3,4 +3,5 @@ export const ROUTES = {
   loginPageRoute: 'login',
   dashboardPageRoute: 'dashboard',
   serverErrorRoute: 'server-error',
+  notFoundPageRoute: 'not-found',
 };

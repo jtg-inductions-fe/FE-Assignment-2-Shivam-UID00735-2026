@@ -12,7 +12,26 @@
     "name": "owner",
     "email": "owner@gmail.com",
     "password": "owner123",
-    "avatar": "assets/images/avatars/owner.jpeg",
-    "role": "owner"
+    "avatar": "assets/images/avatars/admin-profile.jpg",
+    "role": "owner",
+    "restaurantIds": [2, 1]
+  },
+
+  {
+    "id": 4,
+    "name": "New Owner",
+    "email": "newowner@gmail.com",
+    "password": "owner123",
+    "avatar": "assets/images/avatars/admin-profile",
+    "role": "owner",
+    "restaurantIds": [1, 2]
+  },
+  {
+    "id": 3,
+    "name": "Shivam Kushwha",
+    "email": "shivam@gmail.com",
+    "password": "shivam123",
+    "avatar": "assets/images/avatars/admin-profile.jpg",
+    "role": "admin"
   }
 ]

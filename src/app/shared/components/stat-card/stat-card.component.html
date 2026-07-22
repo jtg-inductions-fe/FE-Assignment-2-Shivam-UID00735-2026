@@ -1,0 +1,12 @@
+<div class="stat-card">
+  <div class="stat-card__data">
+    <div class="stat-card__title">{{ title }}</div>
+    <h3 class="stat-card__stats">
+      <!-- !Made Update -->
+      {{ isCurrency ? (stat | currency) : stat }}
+    </h3>
+  </div>
+  <div class="stat-card__icon" [style.background-color]="iconBg">
+    <mat-icon [style.color]="iconColor">{{ icon }}</mat-icon>
+  </div>
+</div>

@@ -1,0 +1,48 @@
+[
+  {
+    "restaurantId": 0,
+    "stats": {
+      "totalRevenue": 200.5,
+      "totalOrders": 10,
+      "completedOrders": 5,
+      "activeRestaurants": 3
+    }
+  },
+
+  {
+    "restaurantId": 1,
+    "stats": {
+      "totalRevenue": 123.5,
+      "totalOrders": 2,
+      "completedOrders": 5,
+      "restaurantOwners": 2
+    }
+  },
+  {
+    "restaurantId": 2,
+    "stats": {
+      "totalRevenue": 230.5,
+      "totalOrders": 2,
+      "completedOrders": 4,
+      "restaurantOwners": 4
+    }
+  },
+  {
+    "restaurantId": 3,
+    "stats": {
+      "totalRevenue": 55.5,
+      "totalOrders": 12,
+      "completedOrders": 1,
+      "restaurantOwners": 2
+    }
+  },
+  {
+    "restaurantId": 4,
+    "stats": {
+      "totalRevenue": 12.5,
+      "totalOrders": 9,
+      "completedOrders": 3,
+      "restaurantOwners": 3
+    }
+  }
+]
