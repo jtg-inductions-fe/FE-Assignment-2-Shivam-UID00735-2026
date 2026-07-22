@@ -1,0 +1,33 @@
+@use 'abstract' as *;
+
+.error {
+  @include flex(center, column);
+  gap: px-to-rem(60);
+  width: 100%;
+  padding: $spacing-4;
+  text-align: center;
+  height: 100%;
+
+  &__image-container {
+    overflow: hidden;
+    width: 100%;
+    height: auto;
+  }
+
+  &__image {
+    width: 100%;
+    height: auto;
+  }
+  &__heading {
+    size: px-to-rem(30);
+  }
+
+  &__description {
+    font-size: px-to-rem(16);
+    color: #6b7280;
+  }
+
+  &__redirect-button {
+    margin-top: px-to-rem(22);
+  }
+}

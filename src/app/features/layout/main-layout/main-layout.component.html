@@ -1,0 +1,19 @@
+<div class="layout">
+  <app-header (toggleSideBar)="toggleSidebar()"></app-header>
+  <mat-sidenav-container class="layout__container">
+    <mat-sidenav
+      *ngIf="canShowSidebar()"
+      [mode]="sideNavMode"
+      [opened]="isSidebarOpen"
+      class="layout__sidebar"
+    >
+      <app-sidebar></app-sidebar>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+      <main class="layout__content">
+        <router-outlet></router-outlet>
+      </main>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

@@ -1,0 +1,65 @@
+@use 'abstract' as *;
+
+.nav-list {
+  border-bottom: 1px solid $border-color;
+}
+
+mat-expansion-panel-header {
+  padding: 0;
+  padding-right: px-to-rem(16);
+}
+
+.sidebar-item {
+  &__icon {
+    color: $icon-color;
+  }
+
+  &__toggle-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-inline: $spacing-3;
+  }
+
+  &__link-title {
+    display: flex;
+    align-items: center;
+    gap: $spacing-8;
+    width: 100%;
+  }
+
+  &__toggle-menu {
+    button {
+      width: 100%;
+      cursor: pointer;
+      background-color: transparent;
+      outline: none;
+      border: none;
+      height: px-to-rem(56);
+
+      &:hover {
+        &,
+        .mat-icon,
+        .mat-mdc-list-item {
+          color: $primary-color;
+        }
+      }
+    }
+  }
+}
+
+.active-class {
+  mat-icon,
+  span {
+    color: $primary-color;
+  }
+}
+
+.mat-mdc-list-item:hover {
+  span {
+    color: $primary-color;
+  }
+  .mat-icon {
+    color: $primary-color;
+  }
+}

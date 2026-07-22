@@ -2,11 +2,40 @@
   <a routerLink="/dashboard" class="header__logo" aria-label="brand image">
     <img src="assets/images/logo.svg" alt="logo image" />
   </a>
-  <ng-container *ngIf="currentUser$ | async as currentUser">
-    {{ currentUser.name }}
-
-    <button mat-raised-button (click)="logOut()" color="primary" type="submit">
-      Log Out
-    </button>
-  </ng-container>
+  <button
+    type="button"
+    mat-icon-button
+    (click)="onMenuClick()"
+    class="header__toggle-button"
+  >
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span class="header__spacer"></span>
+  <button type="button" mat-button [matMenuTriggerFor]="profileMenu">
+    <mat-icon>account_circle</mat-icon>
+  </button>
 </mat-toolbar>
+
+<mat-menu #profileMenu="matMenu" class="profile">
+  <div class="profile__header">
+    <mat-icon class="profile__avatar"> account_circle </mat-icon>
+
+    <div>
+      <div class="profile__name">Shivam Kushwah</div>
+      <div class="profile__email">shivam@gmail.com</div>
+    </div>
+  </div>
+  <mat-divider></mat-divider>
+
+  <button type="button" mat-menu-item>
+    <mat-icon>settings</mat-icon>
+    <span>setting</span>
+  </button>
+
+  <button type="button" mat-menu-item (click)="logOut()">
+    <mat-icon>logout</mat-icon>
+    <span>Logout</span>
+  </button>
+</mat-menu>
+
+<!-- dropdown menu -->

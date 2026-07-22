@@ -7,6 +7,7 @@ import { CookieService } from 'ngx-cookie-service';
 
 import { ROUTES } from '@/core/constants/routes.constants';
 import { User } from '@/models/user.model';
+import { UserRole } from '@/models/navigation.model';
 
 @Injectable({
   providedIn: 'root',
@@ -82,6 +83,27 @@ export class AuthService {
       return JSON.parse(cookieValue);
     } catch {
       this.cookieService.delete('loggedInUser', '/');
+      return null;
+    }
+  }
+
+  getCurrentUserRole(): UserRole {
+    const userCookie = this.cookieService.get('loggedInUser');
+    if (!userCookie) return null;
+    try {
+      return JSON.parse(userCookie).role;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  getCurrentUser(): Observable<Omit<User[], 'password'>> | null {
+    const userCookie = this.cookieService.get('loggedInUser');
+
+    if (!userCookie) return null;
+    try {
+      return JSON.parse(userCookie);
+    } catch (e) {
       return null;
     }
   }

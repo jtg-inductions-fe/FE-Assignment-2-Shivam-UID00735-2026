@@ -16,6 +16,8 @@ import {
 } from '@angular/common/http';
 import { ErrorInterceptor } from '@/core/interceptor/error.interceptor';
 
+import { LayoutModule } from '@/features/layout/layout.module';
+import { DashboardModule } from './features/dashboard/dashboard.module';
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -24,6 +26,8 @@ import { ErrorInterceptor } from '@/core/interceptor/error.interceptor';
     BrowserAnimationsModule,
     AuthModule,
     SharedModule,
+    LayoutModule,
+    DashboardModule,
   ],
   providers: [
     CookieService,

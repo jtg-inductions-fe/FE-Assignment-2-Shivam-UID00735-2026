@@ -3,7 +3,7 @@
 
 // Mixin for media queries for different screen sizes
 // Parameter accepted (sm,md,lg,xl)
-@mixin respond($device) {
+@mixin respond-up($device) {
   @media (min-width: function.breakpoint($device)) {
     @content;
   }
@@ -15,4 +15,12 @@
   align-items: center;
   justify-content: $justify;
   flex-direction: $direction;
+}
+
+// Mixin for line clamping
+@mixin text-ellipsis($max-width: 100%) {
+  max-width: $max-width;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
