@@ -5,7 +5,6 @@ import { LoginComponent } from '@/features/auth/login/login.component';
 import { DashboardComponent } from '@/features/dashboard/dashboard.component';
 import { authGuard } from '@/core/guards/auth.guard';
 import { guestGuard } from '@/core/guards/guest.guard';
-import { PageNotFoundComponent } from '@/shared/components/page-not-found/page-not-found.component';
 import {
   loginPageRoute,
   dashboardPageRoute,
@@ -24,7 +23,7 @@ const routes: Routes = [
   },
   {
     path: '**',
-    component: PageNotFoundComponent,
+    redirectTo: loginPageRoute,
   },
 ];
 

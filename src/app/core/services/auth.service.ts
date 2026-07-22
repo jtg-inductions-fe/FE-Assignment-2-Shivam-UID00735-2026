@@ -15,7 +15,7 @@ import { User } from '@/models/user.model';
 export class AuthService {
   private http = inject(HttpClient);
   private cookieService = inject(CookieService);
-  private route = inject(Router);
+  private router = inject(Router);
 
   private usersDataURL = 'assets/data/users.json';
   private userSubject = new BehaviorSubject<Omit<User, 'password'> | null>(
@@ -66,12 +66,11 @@ export class AuthService {
     return this.userSubject.value !== null;
   }
 
-  // this function redirect to logged in User and deleting the cookie and make user subject null
   logout() {
     this.userSubject.next(null);
 
-    this.cookieService.delete('loggedInUser', '/');
-    this.route.navigateByUrl(loginPageRoute);
+    this.cookieService.delete('loggedInUser');
+    this.router.navigateByUrl(loginPageRoute);
   }
 
   private getInitialUser(): Omit<User, 'password'> | null {
