@@ -15,6 +15,22 @@
     flex: 1 1 auto;
   }
 
+  &__profile-image {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  &__profile-button {
+    height: 100%;
+    display: flex;
+    position: relative;
+  }
+
   @include respond-up('md') {
     &__logo {
       display: block;
@@ -34,11 +50,16 @@
     min-width: 250px;
   }
 
+  &__icon {
+    @include flex;
+  }
+
   &__avatar {
     width: 48px;
     height: 48px;
     font-size: 48px;
     margin-right: 12px;
+    border-radius: 50%;
   }
 
   &__name,

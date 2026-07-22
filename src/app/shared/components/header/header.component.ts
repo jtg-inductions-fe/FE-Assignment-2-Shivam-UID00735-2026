@@ -10,6 +10,7 @@ import { AuthService } from '@/core/services';
 export class HeaderComponent {
   private authService = inject(AuthService);
   currentUser$ = this.authService.currentUser$;
+  defaultImage = 'assets/images/default-avatar.png';
   @Output() toggleSideBar = new EventEmitter<void>();
 
   logOut() {
@@ -18,5 +19,9 @@ export class HeaderComponent {
 
   onMenuClick() {
     this.toggleSideBar.emit();
+  }
+
+  isLoggedIn() {
+    this.authService.isLoggedIn();
   }
 }
