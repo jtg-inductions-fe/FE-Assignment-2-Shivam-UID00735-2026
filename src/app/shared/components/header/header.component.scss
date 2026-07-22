@@ -1,0 +1,9 @@
+@use 'theme/colors' as color;
+@use 'abstract/spacing' as spacing;
+@use 'abstract/functions' as function;
+.header {
+  width: 100%;
+  height: function.px-to-rem(64);
+  background-color: transparent;
+  border-bottom: 1px solid color.$light-border-color;
+}

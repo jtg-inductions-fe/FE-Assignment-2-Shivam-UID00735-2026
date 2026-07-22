@@ -1,0 +1,38 @@
+@use 'abstract/spacing' as spacing;
+@use 'abstract/mixins' as mixin;
+@use 'abstract/functions' as function;
+@use 'abstract/variables' as variable;
+
+.login {
+  min-height: calc(100vh - spacing.$spacing-16);
+
+  @include mixin.flex;
+
+  &__card {
+    min-width: min(100%, function.px-to-rem(400));
+    text-align: center;
+    box-shadow: variable.$card-box-shadow;
+
+    &__header {
+      width: 100%;
+      margin-bottom: spacing.$spacing-4;
+    }
+
+    &__heading {
+      font-size: function.px-to-rem(20);
+      font-weight: bold;
+    }
+  }
+
+  mat-form-field {
+    width: 100%;
+  }
+
+  button {
+    width: 100%;
+    &:disabled {
+      cursor: not-allowed;
+      pointer-events: auto;
+    }
+  }
+}

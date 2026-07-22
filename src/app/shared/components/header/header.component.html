@@ -1,0 +1,12 @@
+<mat-toolbar class="header">
+  <a href="#" class="header__logo" aria-label="brand image">
+    <img src="assets/images/logo.svg" alt="logo image" />
+  </a>
+  <ng-container *ngIf="currentUser$ | async as currentUser">
+    {{ currentUser.name }}
+
+    <button mat-raised-button (click)="logOut()" color="primary" type="submit">
+      Log Out
+    </button>
+  </ng-container>
+</mat-toolbar>

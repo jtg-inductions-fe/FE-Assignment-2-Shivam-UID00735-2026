@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { MatActionList } from '@angular/material/list';
 
 @Component({
   selector: 'app-root',
