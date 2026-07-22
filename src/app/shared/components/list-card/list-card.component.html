@@ -6,19 +6,22 @@
     <div class="list-card__left">
       <img *ngIf="item.image" [src]="item.image" [alt]="item.title + 'image'" />
 
-      <div class="list-card__content">
-        <h3>
-          {{ item.title }}
-        </h3>
+        <div class="list-card__content">
+          <h3>
+            {{ item.title }}
+          </h3>
 
-        <p *ngIf="item.subtitle">
-          {{ item.subtitle }}
-        </p>
+          <p *ngIf="item.subtitle">
+            {{ item.subtitle }}
+          </p>
+        </div>
       </div>
-    </div>
 
-    <span class="list-card__value">
-      {{ item.value }}
-    </span>
+      <span class="list-card__value">
+        {{ item.value }}
+      </span>
+    </div>
   </div>
+
+  <ng-template #noItems> No Item Found </ng-template>
 </div>
