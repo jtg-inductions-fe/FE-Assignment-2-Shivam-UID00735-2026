@@ -18,7 +18,7 @@ export class ErrorInterceptor implements HttpInterceptor {
     next: HttpHandler,
   ): Observable<HttpEvent<unknown>> {
     return next.handle(request).pipe(
-      catchError((err: HttpErrorResponse | Error) => {
+      catchError((err: HttpErrorResponse) => {
         if (err instanceof HttpErrorResponse && err.status >= 500) {
           this.router.navigateByUrl(ROUTES.serverErrorRoute);
         } else {
