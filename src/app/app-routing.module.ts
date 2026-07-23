@@ -5,25 +5,23 @@ import { LoginComponent } from '@/features/auth/login/login.component';
 import { DashboardComponent } from '@/features/dashboard/dashboard.component';
 import { authGuard } from '@/core/guards/auth.guard';
 import { guestGuard } from '@/core/guards/guest.guard';
-import {
-  loginPageRoute,
-  dashboardPageRoute,
-} from '@/core/constants/routes.constants';
+import { ROUTES } from '@/core/constants/routes.constants';
+import { MainInterceptor } from './core/interceptor/main.interceptor';
 
 const routes: Routes = [
   {
-    path: loginPageRoute,
+    path: ROUTES.loginPageRoute,
     component: LoginComponent,
     canActivate: [guestGuard],
   },
   {
-    path: dashboardPageRoute,
+    path: ROUTES.dashboardPageRoute,
     component: DashboardComponent,
     canActivate: [authGuard],
   },
   {
     path: '**',
-    redirectTo: loginPageRoute,
+    redirectTo: ROUTES.loginPageRoute,
   },
 ];
 

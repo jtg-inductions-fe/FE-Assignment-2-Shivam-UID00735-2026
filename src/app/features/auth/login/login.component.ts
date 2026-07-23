@@ -5,7 +5,7 @@ import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 
 import { AuthService } from '@/core/services/auth.service';
 import { NotificationService } from '@/core/services/notification.service';
-import { dashboardPageRoute } from '@/core/constants/routes.constants';
+import { ROUTES } from '@/core/constants/routes.constants';
 
 @Component({
   selector: 'app-login',
@@ -44,7 +44,7 @@ export class LoginComponent implements OnInit {
         return;
       }
 
-      this.router.navigate([dashboardPageRoute]);
+      this.router.navigate([ROUTES.dashboardPageRoute]);
     });
   }
 }

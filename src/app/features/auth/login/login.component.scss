@@ -1,25 +1,22 @@
-@use 'abstract/spacing' as spacing;
-@use 'abstract/mixins' as mixin;
-@use 'abstract/functions' as function;
-@use 'abstract/variables' as variable;
+@use 'abstract' as *;
 
 .login {
-  min-height: calc(100vh - spacing.$spacing-16);
+  min-height: calc(100vh - $spacing-16);
 
-  @include mixin.flex;
+  @include flex;
 
   &__card {
-    min-width: min(100%, function.px-to-rem(400));
+    min-width: min(100%, px-to-rem(400));
     text-align: center;
-    box-shadow: variable.$card-box-shadow;
+    box-shadow: $card-box-shadow;
 
     &__header {
       width: 100%;
-      margin-bottom: spacing.$spacing-4;
+      margin-bottom: $spacing-4;
     }
 
     &__heading {
-      font-size: function.px-to-rem(20);
+      font-size: px-to-rem(20);
       font-weight: bold;
     }
   }

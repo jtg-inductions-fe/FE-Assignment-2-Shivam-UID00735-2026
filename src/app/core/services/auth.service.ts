@@ -2,11 +2,10 @@ import { Injectable, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 
-import { BehaviorSubject, Observable, catchError, map, of } from 'rxjs';
+import { BehaviorSubject, Observable, map } from 'rxjs';
 import { CookieService } from 'ngx-cookie-service';
 
-import { handleHttpError } from '@/shared/utils/http-error.util';
-import { loginPageRoute } from '@/core/constants/routes.constants';
+import { ROUTES } from '@/core/constants/routes.constants';
 import { User } from '@/models/user.model';
 
 @Injectable({
@@ -25,9 +24,7 @@ export class AuthService {
 
   // fetching users data
   getUsers(): Observable<User[]> {
-    return this.http
-      .get<User[]>(this.usersDataURL)
-      .pipe(catchError((err) => handleHttpError(err)));
+    return this.http.get<User[]>(this.usersDataURL);
   }
 
   // this function is validating the email and password which are coming from the form, and after validating store the data in cookie
@@ -53,11 +50,14 @@ export class AuthService {
             avatar: user.avatar,
             role: user.role,
           }),
+          {
+            path: '/',
+            expires: 7,
+          },
         );
 
         return true;
       }),
-      catchError(() => of(false)),
     );
   }
 
@@ -69,8 +69,8 @@ export class AuthService {
   logout() {
     this.userSubject.next(null);
 
-    this.cookieService.delete('loggedInUser');
-    this.router.navigateByUrl(loginPageRoute);
+    this.cookieService.delete('loggedInUser', '/');
+    this.router.navigateByUrl(ROUTES.loginPageRoute);
   }
 
   private getInitialUser(): Omit<User, 'password'> | null {
@@ -81,7 +81,7 @@ export class AuthService {
     try {
       return JSON.parse(cookieValue);
     } catch {
-      this.cookieService.delete('loggedInUser');
+      this.cookieService.delete('loggedInUser', '/');
       return null;
     }
   }
