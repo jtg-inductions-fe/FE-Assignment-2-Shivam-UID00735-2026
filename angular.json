@@ -21,13 +21,16 @@
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": ["zone.js"],
-            "stylePreprocessorOptions": {
-              "includePaths": ["src/styles"]
-            },
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": ["src/favicon.ico", "src/assets"],
-            "styles": ["src/styles.scss"],
+            "styles": [
+              "src/styles.scss",
+              "node_modules/@material-design-icons/font/index.css"
+            ],
+            "stylePreprocessorOptions": {
+              "includePaths": ["src/styles"]
+            },
             "scripts": []
           },
           "configurations": {
@@ -82,7 +85,10 @@
             "tsConfig": "tsconfig.spec.json",
             "inlineStyleLanguage": "scss",
             "assets": ["src/favicon.ico", "src/assets"],
-            "styles": ["src/styles.scss"],
+            "styles": [
+              "@angular/material/prebuilt-themes/purple-green.css",
+              "src/styles.scss"
+            ],
             "scripts": []
           }
         },

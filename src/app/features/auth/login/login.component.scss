@@ -1,0 +1,35 @@
+@use 'abstract' as *;
+
+.login {
+  min-height: calc(100vh - $spacing-16);
+
+  @include flex;
+
+  &__card {
+    min-width: min(100%, px-to-rem(400));
+    text-align: center;
+    box-shadow: $card-box-shadow;
+
+    &__header {
+      width: 100%;
+      margin-bottom: $spacing-4;
+    }
+
+    &__heading {
+      font-size: px-to-rem(20);
+      font-weight: bold;
+    }
+  }
+
+  mat-form-field {
+    width: 100%;
+  }
+
+  button {
+    width: 100%;
+    &:disabled {
+      cursor: not-allowed;
+      pointer-events: auto;
+    }
+  }
+}

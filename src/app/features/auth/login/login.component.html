@@ -1,0 +1,65 @@
+<div class="login">
+  <mat-card class="login__card">
+    <div class="login__card__header">
+      <h1 class="login__card__heading">Restaurant Portal</h1>
+      <p>Log in to manage orders, menus, and stats.</p>
+    </div>
+    <mat-card-content>
+      <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+        <div class="form-field">
+          <mat-form-field appearance="outline">
+            <mat-label>Email Address</mat-label>
+            <input
+              matInput
+              formControlName="email"
+              placeholder="xyz@gmail.com"
+            />
+            <mat-error *ngIf="myForm.get('email')?.hasError('required')"
+              >Email is <strong>Required</strong></mat-error
+            >
+            <mat-error *ngIf="myForm.get('email')?.hasError('email')"
+              >Please Enter Valid Email</mat-error
+            >
+          </mat-form-field>
+        </div>
+
+        <div class="form-field">
+          <mat-form-field appearance="outline">
+            <mat-label>Enter your password</mat-label>
+            <input
+              formControlName="password"
+              matInput
+              [type]="hide ? 'password' : 'text'"
+            />
+            <mat-error *ngIf="myForm.get('password')?.hasError('required')"
+              >Password is <strong>Required</strong></mat-error
+            >
+            <mat-error *ngIf="myForm.get('password')?.hasError('minlength')"
+              >Password should have at least 6 character</mat-error
+            >
+
+            <button
+              mat-icon-button
+              matSuffix
+              type="button"
+              (click)="hide = !hide"
+              [attr.aria-label]="hide ? 'Show password' : 'Hide password'"
+              [attr.aria-pressed]="hide"
+            >
+              <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
+            </button>
+          </mat-form-field>
+        </div>
+
+        <button
+          mat-raised-button
+          [disabled]="!myForm.valid"
+          color="primary"
+          type="submit"
+        >
+          LOGIN
+        </button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

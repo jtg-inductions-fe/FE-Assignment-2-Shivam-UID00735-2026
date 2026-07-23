@@ -1,16 +1,20 @@
 import { NgModule } from '@angular/core';
+import { AppRoutingModule } from '@/app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
-
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
-import { MatDividerModule } from '@angular/material/divider';
-import { MatCardModule } from '@angular/material/card';
-import { MatListModule } from '@angular/material/list';
-import { MatInputModule } from '@angular/material/input';
-import { MatFormFieldModule } from '@angular/material/form-field';
+import { AuthModule } from '@/features/auth/auth.module';
+import { SharedModule } from '@/shared/shared.module';
+
+import { AppComponent } from '@/app.component';
+
+import { CookieService } from 'ngx-cookie-service';
+
+import {
+  HTTP_INTERCEPTORS,
+  provideHttpClient,
+  withInterceptorsFromDi,
+} from '@angular/common/http';
+import { ErrorInterceptor } from '@/core/interceptor/error.interceptor';
 
 @NgModule({
   declarations: [AppComponent],
@@ -18,15 +22,18 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatButtonModule,
-    MatIconModule,
-    MatDividerModule,
-    MatCardModule,
-    MatListModule,
-    MatInputModule,
-    MatFormFieldModule,
+    AuthModule,
+    SharedModule,
   ],
-  providers: [],
+  providers: [
+    CookieService,
+    provideHttpClient(withInterceptorsFromDi()),
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

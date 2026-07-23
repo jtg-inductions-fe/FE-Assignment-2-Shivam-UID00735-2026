@@ -1,6 +1,6 @@
 @use '@angular/material' as mat;
 @use './colors' as color;
-@use 'base/typography' as typo;
+@use '../base/typography' as typography;
 
 @include mat.core;
 
@@ -23,7 +23,10 @@ $my-primary-color-palette: (
 );
 
 // Defining custom material palette
-$my-primary: mat.define-palette($my-primary-color-palette, color.$primary-lighter-hue);
+$my-primary: mat.define-palette(
+  $my-primary-color-palette,
+  color.$primary-lighter-hue
+);
 
 // Defining custom material palette for light theme
 $accent: mat.define-palette(mat.$orange-palette);
@@ -42,9 +45,16 @@ $my-custom-theme: mat.define-light-theme(
 // Typography
 $custom-typography: mat.define-typography-config(
   $font-family: '"Inter", sans-serif',
-  $headline-1: mat.define-typography-level(typo.$fs-4xl, typo.$fs-4xl, typo.$fw-bold),
-  $headline-2: mat.define-typography-level(typo.$fs-xl, typo.$fs-xl, typo.$fw-semibold),
-  $headline-4: mat.define-typography-level(typo.$fs-md, typo.$fs-md, typo.$fw-bold),
+  $headline-1: mat.define-typography-level(
+      typography.$fs-4xl,
+      typography.$fs-4xl,
+      typography.$fw-bold
+    ),
+  $headline-4: mat.define-typography-level(
+      typography.$fs-xl,
+      typography.$fs-xl,
+      typography.$fw-bold
+    ),
 );
 
 @include mat.all-component-typographies($custom-typography);
