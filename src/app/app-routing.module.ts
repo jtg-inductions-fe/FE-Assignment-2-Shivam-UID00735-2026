@@ -1,15 +1,18 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { authGuard, guestGuard } from '@/core/guards';
+import {
+  authGuard,
+  guestGuard,
+  invalidatorGuard,
+  ownerAccessGuard,
+  ownerDashboardRedirectGuard,
+} from '@/core/guards';
 
 import { ROUTES } from '@/core/constants/routes.constants';
 import { DashboardComponent } from '@/features/dashboard/dashboard.component';
 import { ErrorPageComponent } from '@/shared/components/error-page/error-page.component';
-import { LoginComponent } from './features/auth/login/login.component';
-import { invalidatorGuard } from './core/guards/invalidator.guard';
-import { ownerAccessGuard } from './core/guards/owner-access.guard';
-import { ownerDashboardRedirectGuard } from './core/guards/owner-dashboard-redirect.guard';
+import { LoginComponent } from '@/features/auth/login/login.component';
 
 const routes: Routes = [
   {

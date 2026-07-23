@@ -26,7 +26,6 @@ export class SidebarComponent implements OnInit {
         this.sidebarService.getSidebarItem(),
       );
     } catch (error) {
-      console.error('Unable to fetch sidebar data', error);
       this.sidebarSection = [];
     }
   }

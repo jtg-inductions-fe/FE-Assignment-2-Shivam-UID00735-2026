@@ -1,12 +1,12 @@
 import { Component, inject, Input, OnInit } from '@angular/core';
-import { SidebarItem, UserRole } from '@/models';
+import { Router } from '@angular/router';
 
 import { NestedTreeControl } from '@angular/cdk/tree';
 import { MatTreeNestedDataSource } from '@angular/material/tree';
-import { AuthService } from '@/core/services/auth.service';
-import { Router } from '@angular/router';
 
+import { AuthService } from '@/core/services';
 import { ROUTES } from '@/core/constants';
+import { SidebarItem, UserRole } from '@/models';
 
 @Component({
   selector: 'app-side-bar-item',

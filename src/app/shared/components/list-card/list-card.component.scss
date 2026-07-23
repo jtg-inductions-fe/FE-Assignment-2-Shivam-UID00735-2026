@@ -1,20 +1,20 @@
 @use 'abstract' as *;
 .list-card {
-  background: #fff;
   border-radius: 12px;
   border: 1px solid $border-color;
 
   &__heading {
-    padding: 16px;
+    padding: $spacing-4;
     margin: 0;
   }
 
   &__item {
     @include flex(space-between, row);
 
-    padding: 16px;
+    padding: $spacing-4;
 
     border-bottom: 1px solid $border-color;
+
     &:last-child {
       border-bottom: none;
     }
@@ -23,7 +23,7 @@
   &__left {
     display: flex;
     align-items: center;
-    gap: 16px;
+    gap: $spacing-4;
 
     img {
       width: 40px;

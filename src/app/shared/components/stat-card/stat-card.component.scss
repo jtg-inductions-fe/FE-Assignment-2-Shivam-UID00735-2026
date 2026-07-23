@@ -1,12 +1,9 @@
 @use 'abstract' as *;
 @use 'theme/colors' as *;
+@use 'base' as *;
 
 .stat-card {
   @include flex(space-between, row);
-
-  padding: 10px;
-  border: 1px solid $border-color;
-  border-radius: 12px;
 
   &__data {
     display: flex;
@@ -14,15 +11,16 @@
     justify-content: center;
   }
   &__title {
-    font-size: 12px;
-    color: #00000099;
+    font-size: $fs-xs;
+    color: $heading-color;
   }
 
   &__stats {
-    font-size: 20px;
-    font-weight: bold;
+    font-size: $fs-xl;
+    font-weight: $fw-bold;
     margin: 0;
   }
+
   &__icon {
     padding: 6px;
     border-radius: 8px;

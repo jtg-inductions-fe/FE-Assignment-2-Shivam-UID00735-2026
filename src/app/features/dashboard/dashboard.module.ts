@@ -8,6 +8,7 @@ import { StatsComponent } from './stats/stats.component';
 import { ReportGeneratorComponent } from './report-generator/report-generator.component';
 import { MatIconModule } from '@angular/material/icon';
 import { TopCustomersComponent } from './top-customers/top-customers.component';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { TopCustomersComponent } from './top-customers/top-customers.component';
     AppRoutingModule,
     MatButtonModule,
     MatIconModule,
+    MatExpansionModule,
   ],
   exports: [DashboardComponent],
 })

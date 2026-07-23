@@ -5,18 +5,24 @@
     [title]="title"
     [description]="description"
   >
-    <app-auto-select
-      label="View dashboard as"
-      [selectedValue]="selectedValue"
-      (selectedValuesOnChange)="onRestaurantChange($event)"
-    ></app-auto-select>
+    <div *ngIf="isAdmin()">
+      <app-auto-select
+        label="View dashboard as"
+        (selectedValuesOnChange)="onRestaurantChange($event)"
+      ></app-auto-select>
+    </div>
   </app-main-content-header>
 
-  <!-- stats card display -->
+  <!-- Stats card display -->
+  <app-stats
+    *ngIf="statsCards.length > 0; else showEmptyState"
+    [StatsCards]="statsCards"
+  ></app-stats>
 
-  <app-stats [StatsCards]="statsCards"></app-stats>
+  <ng-template #showEmptyState>
+    <app-card [hasBorder]="true"> No Stats For This Restaurant </app-card>
+  </ng-template>
 
-  <!-- Report generating section -->
-
+  <!-- Report Generating Section -->
   <app-report-generator> </app-report-generator>
 </div>

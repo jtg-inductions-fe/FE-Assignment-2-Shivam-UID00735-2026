@@ -1,11 +1,9 @@
 import { CanActivateFn } from '@angular/router';
-import { AuthService } from '../services/auth.service';
+import { AuthService } from '@/core/services/auth.service';
 import { Router } from '@angular/router';
 import { inject } from '@angular/core';
-import {
-  dashboardPageRoute,
-  notFoundPageRoute,
-} from '../constants/routes.constants';
+import { ROUTES } from '@/core/constants';
+
 export const ownerAccessGuard: CanActivateFn = (route, state) => {
   const authService = inject(AuthService);
   const router = inject(Router);
@@ -13,7 +11,7 @@ export const ownerAccessGuard: CanActivateFn = (route, state) => {
   const restaurantId = Number(route.paramMap.get('id'));
 
   if (isNaN(restaurantId)) {
-    router.navigate([notFoundPageRoute]);
+    router.navigate([ROUTES.notFoundPageRoute]);
     return false;
   }
 
@@ -24,7 +22,7 @@ export const ownerAccessGuard: CanActivateFn = (route, state) => {
       return true;
     }
 
-    router.navigate([dashboardPageRoute, restaurantIds[0]]);
+    router.navigate([ROUTES.dashboardPageRoute, restaurantIds[0]]);
     return false;
   }
 

@@ -1,8 +1,13 @@
 <mat-toolbar class="header">
-  <a routerLink="/dashboard" class="header__logo" aria-label="brand image">
+  <a
+    routerLink="/dashboard"
+    [ngClass]="{ header__logo: isLoggedIn() }"
+    aria-label="brand image"
+  >
     <img src="assets/images/logo.svg" alt="logo image" />
   </a>
   <button
+    *ngIf="isLoggedIn()"
     type="button"
     mat-icon-button
     (click)="onMenuClick()"

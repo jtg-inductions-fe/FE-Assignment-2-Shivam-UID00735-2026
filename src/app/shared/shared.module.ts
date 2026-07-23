@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 import { HeaderComponent } from './components/header/header.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -24,6 +25,7 @@ import { ErrorPageComponent } from './components/error-page/error-page.component
 import { MainContentHeaderComponent } from './components/main-content-header/main-content-header.component';
 import { StatCardComponent } from './components/stat-card/stat-card.component';
 import { ListCardComponent } from './components/list-card/list-card.component';
+import { CardComponent } from './components/card/card.component';
 @NgModule({
   declarations: [
     HeaderComponent,
@@ -34,6 +36,8 @@ import { ListCardComponent } from './components/list-card/list-card.component';
     MainContentHeaderComponent,
     StatCardComponent,
     ListCardComponent,
+    CardComponent,
+    CardComponent,
   ],
   imports: [
     CommonModule,
@@ -51,6 +55,7 @@ import { ListCardComponent } from './components/list-card/list-card.component';
     MatSelectModule,
     ReactiveFormsModule,
     MatInputModule,
+    RouterModule,
   ],
   exports: [
     HeaderComponent,
@@ -60,6 +65,7 @@ import { ListCardComponent } from './components/list-card/list-card.component';
     MainContentHeaderComponent,
     StatCardComponent,
     ListCardComponent,
+    CardComponent,
   ],
 })
 export class SharedModule {}

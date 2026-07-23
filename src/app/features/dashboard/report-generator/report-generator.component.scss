@@ -1,4 +1,11 @@
+@use 'abstract' as *;
+
 .buttons-group {
   display: flex;
   gap: 8px;
+  flex-direction: column;
+
+  @include respond-up('md') {
+    flex-direction: row;
+  }
 }

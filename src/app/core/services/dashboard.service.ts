@@ -8,7 +8,7 @@ import { restaurant } from '@/models/restaurant.model';
 @Injectable({
   providedIn: 'root',
 })
-export class DashboardStatsService {
+export class DashboardService {
   private sidebarJsonURL = 'assets/data/restaurant-stats.json';
   private restaurantsJSON = 'assets/data/restaurants.json';
   private http = inject(HttpClient);

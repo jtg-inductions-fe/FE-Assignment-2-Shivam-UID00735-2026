@@ -9,16 +9,13 @@ import {
 import { restaurant } from '@/models/restaurant.model';
 import {
   Observable,
-  startWith,
-  map,
-  tap,
   debounceTime,
   distinctUntilChanged,
   switchMap,
 } from 'rxjs';
+
 import { FormControl } from '@angular/forms';
-import { AuthService } from '@/core/services/auth.service';
-import { DashboardStatsService } from '@/core/services/dashboard-stats.service';
+import { DashboardService, AuthService } from '@/core/services';
 
 @Component({
   selector: 'app-auto-select',
@@ -28,25 +25,21 @@ import { DashboardStatsService } from '@/core/services/dashboard-stats.service';
 export class AutoSelectComponent implements OnInit {
   form = new FormControl('');
   @Input() label = '';
-  @Input() selectedValue = '';
 
   @Output() selectedValuesOnChange = new EventEmitter<number>();
 
   private authService = inject(AuthService);
-  private dashboardService = inject(DashboardStatsService);
+  private dashboardService = inject(DashboardService);
 
   filteredOptions!: Observable<restaurant[]>;
-
   isSearching = false;
 
   ngOnInit(): void {
-    // !Not setting  up default URL
     if (this.authService.getCurrentUserRole() !== 'admin') {
       return;
     }
-    this.form.setValue('');
+    this.form.setValue('All Restaurant');
     this.filteredOptions = this.form.valueChanges.pipe(
-      // ! Understand debounceTime and witchMap deeply
       debounceTime(300),
       distinctUntilChanged(),
       switchMap((value) => this.dashboardService.getRestaurant(value ?? '')),

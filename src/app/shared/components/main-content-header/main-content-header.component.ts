@@ -1,5 +1,4 @@
-import { Component, inject, Input } from '@angular/core';
-import { AuthService } from '@/core/services/auth.service';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-main-content-header',
@@ -10,12 +9,6 @@ export class MainContentHeaderComponent {
   @Input() title!: string;
   @Input() description!: string;
   @Input() headingFontSize!: number;
-
-  private authService = inject(AuthService);
-
-  showRestaurantFilter() {
-    return this.authService.getCurrentUserRole() === 'admin';
-  }
 
   getHeadingSize(): string {
     return `${this.headingFontSize / 16}rem`;

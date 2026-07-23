@@ -6,9 +6,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./report-generator.component.scss'],
 })
 export class ReportGeneratorComponent implements OnInit {
-  // title!: 'Report Generator';
-  // description!: 'Generate performance reports for the selected restaurant context.';
-
   title = '';
   description = '';
 

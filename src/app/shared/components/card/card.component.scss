@@ -1,0 +1,14 @@
+@use 'abstract' as *;
+
+.card {
+  padding: 10px;
+  border-radius: 12px;
+
+  &__with-shadow {
+    box-shadow: $card-box-shadow;
+  }
+
+  &__with-border {
+    border: 1px solid $border-color;
+  }
+}

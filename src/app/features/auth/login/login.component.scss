@@ -1,4 +1,5 @@
 @use 'abstract' as *;
+@use 'base' as *;
 
 .login {
   min-height: calc(100vh - $spacing-16);
@@ -16,8 +17,8 @@
     }
 
     &__heading {
-      font-size: px-to-rem(20);
-      font-weight: bold;
+      font-size: $fs-xl;
+      font-weight: $fw-bold;
     }
   }
 
