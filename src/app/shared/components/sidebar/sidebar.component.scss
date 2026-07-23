@@ -23,25 +23,15 @@
     gap: $spacing-6;
   }
 }
-mat-sidenav {
-  display: block;
-  width: 250px;
-
-  padding-top: 12px;
-  padding-bottom: 4px;
-
-  border-right: 1px solid $border-color;
-
-  mat-icon {
-    color: $icon-color;
-  }
-}
 
 .nav-list {
   border-bottom: 1px solid $border-color;
+  &:last-child {
+    border-bottom: none;
+  }
 }
 
 mat-expansion-panel-header {
   padding: 0;
-  padding-right: 16px;
+  padding-right: $spacing-4;
 }

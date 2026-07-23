@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { SidebarItem } from '@/models/navigation.model';
-import { UserRole } from '@/models/navigation.model';
+import { SidebarItem, UserRole } from '@/models';
 import { NestedTreeControl } from '@angular/cdk/tree';
 import { MatTreeNestedDataSource } from '@angular/material/tree';
 @Component({

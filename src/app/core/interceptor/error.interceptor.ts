@@ -9,6 +9,8 @@ import {
 import { Router } from '@angular/router';
 import { catchError, Observable, throwError } from 'rxjs';
 
+import { ROUTES } from '@/core/constants';
+
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
   private router = inject(Router);
@@ -19,7 +21,7 @@ export class ErrorInterceptor implements HttpInterceptor {
     return next.handle(request).pipe(
       catchError((err: HttpErrorResponse | Error) => {
         if (err instanceof HttpErrorResponse && err.status >= 500) {
-          this.router.navigateByUrl('/server-error');
+          this.router.navigateByUrl(ROUTES.serverErrorRoute);
         } else {
           console.log('Not a httpErrorResponse', err);
         }

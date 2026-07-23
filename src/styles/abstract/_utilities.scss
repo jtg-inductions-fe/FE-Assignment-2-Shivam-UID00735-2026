@@ -1,0 +1,10 @@
+@use './mixins' as *;
+.badge {
+  min-width: 20px;
+  height: 20px;
+  padding: 0 6px;
+  border-radius: 50%;
+  background-color: #fde8e8;
+  color: #e02424 !important;
+  @include flex;
+}

@@ -1,10 +1,12 @@
+@use 'abstract' as *;
+
 .layout {
   height: 100vh;
   display: flex;
   flex-direction: column;
 
   app-header {
-    height: 68px;
+    height: px-to-rem(68);
     flex-shrink: 0;
   }
 
@@ -13,11 +15,12 @@
   }
 
   &__sidebar {
-    width: 250px;
+    width: auto;
+    min-width: px-to-rem(250);
   }
   &__content {
     flex: 1;
-    padding: 24px;
+    padding: $spacing-6;
     height: 100%;
   }
 }

@@ -11,8 +11,8 @@ import { LoginComponent } from './features/auth/login/login.component';
 const routes: Routes = [
   {
     path: '',
-    pathMatch: 'full',
     redirectTo: ROUTES.dashboardPageRoute,
+    pathMatch: 'full',
   },
   {
     path: ROUTES.loginPageRoute,
@@ -31,9 +31,7 @@ const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: ROUTES.loginPageRoute,
     component: ErrorPageComponent,
-    canActivate: [authGuard],
   },
 ];
 

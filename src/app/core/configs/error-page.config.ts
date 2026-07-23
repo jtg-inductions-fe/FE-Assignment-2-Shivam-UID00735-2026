@@ -1,4 +1,4 @@
-import { ErrorPage } from '@/models/error-page.model';
+import { ErrorPage } from '@/models';
 
 export const errorPageData: ErrorPage = {
   notFound: {

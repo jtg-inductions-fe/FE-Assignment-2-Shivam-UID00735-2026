@@ -1,32 +1,55 @@
-<ng-container *ngIf="item.role.includes(userRole)" class="sidebar-item">
-  <mat-tree [dataSource]="dataSource" [treeControl]="treeControl" class="">
-    <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding>
-      <a [routerLink]="node.href" routerLinkActive="active-class" mat-list-item>
+<ng-container *ngIf="item.role.includes(userRole)">
+  <mat-tree
+    [dataSource]="dataSource"
+    [treeControl]="treeControl"
+    class="sidebar-tree"
+  >
+    <mat-tree-node
+      *matTreeNodeDef="let node"
+      matTreeNodePadding
+      class="sidebar-tree-node"
+    >
+      <a
+        [routerLink]="node.href"
+        routerLinkActive="active-class"
+        mat-list-item
+        class="sidebar-item__link"
+      >
         <mat-icon
           class="sidebar-item__icon"
-          *ngIf="node.icon"
+          *ngIf="node.icon; else emptyIcon"
           matListItemIcon
-          >{{ node.icon ? node.icon : 'help' }}</mat-icon
         >
+          {{ node.icon || 'help' }}
+        </mat-icon>
+
+        <ng-template #emptyIcon>
+          <mat-icon class="sidebar-item__icon" matListItemIcon> </mat-icon>
+        </ng-template>
+
         <span matListItemTitle>{{ node.title }}</span>
+        <span matListItemMeta class="badge" *ngIf="node.haveUpdate">{{
+          node.haveUpdate
+        }}</span>
       </a>
     </mat-tree-node>
 
     <mat-nested-tree-node
       *matTreeNodeDef="let node; when: hasChild"
       class="sidebar-item__toggle-menu"
-      matTreeNodePadding
     >
-      <div class="sidebar-item__toggle-link">
-        <!-- sidebar item link -->
+      <div class="sidebar-item__toggle-link" matTreeNodePadding>
         <a
           class="sidebar-item__link-title"
           [routerLink]="node.href"
           routerLinkActive="active-class"
         >
-          <mat-icon class="sidebar-item__icon" matListItemIcon>{{
-            node.icon
-          }}</mat-icon>
+          <mat-icon
+            class="sidebar-item__icon"
+            *ngIf="node.icon"
+            matListItemIcon
+            >{{ node.icon }}</mat-icon
+          >
           <span class="sidebar-item__menu-name" matListItemTitle>{{
             node.title
           }}</span>
@@ -41,9 +64,11 @@
           </mat-icon>
         </button>
       </div>
+
       <div
         class="sidebar-item__children"
-        [hidden]="!treeControl.isExpanded(node)"
+        [class.sidebar-tree-invisible]="!treeControl.isExpanded(node)"
+        role="group"
       >
         <ng-container matTreeNodeOutlet></ng-container>
       </div>

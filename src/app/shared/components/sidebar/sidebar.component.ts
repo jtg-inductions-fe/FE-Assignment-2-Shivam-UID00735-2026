@@ -3,7 +3,7 @@ import { Component, inject, Input, OnInit } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
 import { AuthService, SidebarService } from '@/core/services';
 
-import { SidebarSection, UserRole } from '@/models/navigation.model';
+import { SidebarSection, UserRole } from '@/models';
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',

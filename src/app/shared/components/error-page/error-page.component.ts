@@ -1,6 +1,6 @@
 import { errorPageData } from '@/core/configs/error-page.config';
 import { ActivatedRoute } from '@angular/router';
-import { ErrorPageContent } from '@/models/error-page.model';
+import { ErrorPageContent } from '@/models';
 import { Component, inject } from '@angular/core';
 
 @Component({

@@ -35,7 +35,7 @@
       },
       {
         "title": "Inventory",
-        "href": "",
+        "href": null,
         "icon": "shopping_bag",
         "role": ["owner"],
         "children": [
@@ -62,42 +62,7 @@
           {
             "title": "Access Link 1",
             "href": "#",
-            "role": ["admin"],
-            "children": [
-              {
-                "title": "Access Link 1",
-                "href": "#",
-                "role": ["admin"],
-                "children": [
-                  {
-                    "title": "Access Link 1",
-                    "href": "#",
-                    "role": ["admin"],
-                    "children": [
-                      {
-                        "title": "Access Link 1",
-                        "href": "#",
-                        "role": ["admin"],
-                        "children": [
-                          {
-                            "title": "Access Link 1",
-                            "href": "#",
-                            "role": ["admin"],
-                            "children": [
-                              {
-                                "title": "Access Link 1",
-                                "href": "#",
-                                "role": ["admin"]
-                              }
-                            ]
-                          }
-                        ]
-                      }
-                    ]
-                  }
-                ]
-              }
-            ]
+            "role": ["admin"]
           }
         ]
       }
@@ -108,19 +73,19 @@
     "item": [
       {
         "title": "My Profile",
-        "href": "#",
+        "href": null,
         "icon": "account_circle",
         "role": ["admin", "owner"]
       },
       {
         "title": "Gallery",
-        "href": "#",
+        "href": null,
         "icon": "photo_library",
         "role": ["admin", "owner"]
       },
       {
         "title": "Help",
-        "href": "#",
+        "href": null,
         "icon": "help",
         "role": ["admin", "owner"]
       }

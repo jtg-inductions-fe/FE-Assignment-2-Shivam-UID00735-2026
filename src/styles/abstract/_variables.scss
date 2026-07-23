@@ -7,11 +7,10 @@ $breakpoints: (
   'xl': 1440px,
 );
 
-// Card shadow
 $card-box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-
-$border-color: $light-border-color;
-//icon color
+$border-color: $light-black-color;
 $icon-color: $dark-black;
-
 $primary-color: $primary-700;
+
+$paragraph-color: $light-gray-color;
+$heading-color: $light-black-color;

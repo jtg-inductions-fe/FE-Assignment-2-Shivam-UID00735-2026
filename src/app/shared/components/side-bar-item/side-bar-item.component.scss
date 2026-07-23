@@ -42,6 +42,12 @@ mat-expansion-panel-header {
       color: $primary-color;
     }
   }
+  &__menu-name {
+    max-width: px-to-rem(120);
+  }
+}
+.sidebar-tree-invisible {
+  display: none;
 }
 
 .active-class {
