@@ -26,6 +26,10 @@ import { MainContentHeaderComponent } from './components/main-content-header/mai
 import { StatCardComponent } from './components/stat-card/stat-card.component';
 import { ListCardComponent } from './components/list-card/list-card.component';
 import { CardComponent } from './components/card/card.component';
+import { MatChipsModule } from '@angular/material/chips';
+
+import { RestaurantFormComponent } from '@/shared/components/restaurant-form/restaurant-form.component';
+
 @NgModule({
   declarations: [
     HeaderComponent,
@@ -37,6 +41,7 @@ import { CardComponent } from './components/card/card.component';
     StatCardComponent,
     ListCardComponent,
     CardComponent,
+    RestaurantFormComponent,
   ],
   imports: [
     CommonModule,
@@ -55,6 +60,7 @@ import { CardComponent } from './components/card/card.component';
     ReactiveFormsModule,
     MatInputModule,
     RouterModule,
+    MatChipsModule,
   ],
   exports: [
     HeaderComponent,
@@ -65,6 +71,7 @@ import { CardComponent } from './components/card/card.component';
     StatCardComponent,
     ListCardComponent,
     CardComponent,
+    RestaurantFormComponent,
   ],
 })
 export class SharedModule {}
