@@ -8,7 +8,6 @@ import {
 } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { catchError, Observable, throwError } from 'rxjs';
-
 import { ROUTES } from '@/core/constants';
 
 @Injectable()

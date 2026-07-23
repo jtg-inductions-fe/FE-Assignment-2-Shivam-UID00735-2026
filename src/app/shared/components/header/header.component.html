@@ -18,7 +18,11 @@
       class="header__profile-button"
       [disableRipple]="true"
     >
-      <img [src]="currentUser.avatar" class="header__profile-image" alt="" />
+      <img
+        [src]="currentUser.avatar ? currentUser.avatar : defaultImage"
+        class="header__profile-image"
+        alt=""
+      />
     </button>
   </ng-container>
 </mat-toolbar>
@@ -26,7 +30,11 @@
 <mat-menu #profileMenu="matMenu" class="profile">
   <div class="profile__header" *ngIf="currentUser$ | async as currentUser">
     <div class="profile__icon">
-      <img [src]="currentUser.avatar" class="profile__avatar" alt="" />
+      <img
+        [src]="currentUser.avatar ? currentUser.avatar : defaultImage"
+        class="profile__avatar"
+        alt=""
+      />
     </div>
 
     <div>

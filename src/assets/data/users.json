@@ -12,7 +12,7 @@
     "name": "owner",
     "email": "owner@gmail.com",
     "password": "owner123",
-    "avatar": "image URL",
+    "avatar": "assets/images/avatars/owner.jpeg",
     "role": "owner"
   }
 ]
