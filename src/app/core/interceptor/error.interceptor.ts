@@ -9,7 +9,7 @@ import {
 import { catchError, Observable, throwError } from 'rxjs';
 
 @Injectable()
-export class MainInterceptor implements HttpInterceptor {
+export class ErrorInterceptor implements HttpInterceptor {
   intercept(
     request: HttpRequest<unknown>,
     next: HttpHandler,

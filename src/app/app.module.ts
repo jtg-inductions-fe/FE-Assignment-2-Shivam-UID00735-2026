@@ -14,7 +14,7 @@ import {
   provideHttpClient,
   withInterceptorsFromDi,
 } from '@angular/common/http';
-import { MainInterceptor } from '@/core/interceptor/main.interceptor';
+import { ErrorInterceptor } from '@/core/interceptor/error.interceptor';
 
 @NgModule({
   declarations: [AppComponent],
@@ -30,7 +30,7 @@ import { MainInterceptor } from '@/core/interceptor/main.interceptor';
     provideHttpClient(withInterceptorsFromDi()),
     {
       provide: HTTP_INTERCEPTORS,
-      useClass: MainInterceptor,
+      useClass: ErrorInterceptor,
       multi: true,
     },
   ],

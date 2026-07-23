@@ -6,7 +6,6 @@ import { DashboardComponent } from '@/features/dashboard/dashboard.component';
 import { authGuard } from '@/core/guards/auth.guard';
 import { guestGuard } from '@/core/guards/guest.guard';
 import { ROUTES } from '@/core/constants/routes.constants';
-import { MainInterceptor } from './core/interceptor/main.interceptor';
 
 const routes: Routes = [
   {
