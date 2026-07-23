@@ -17,26 +17,34 @@
       class="sidebar-item__toggle-menu"
       matTreeNodePadding
     >
-      <button class="sidebar-item__toggle-link" matTreeNodeToggle>
+      <div class="sidebar-item__toggle-link">
         <!-- sidebar item link -->
-        <div class="sidebar-item__link-title" mat-list-item>
+        <a
+          class="sidebar-item__link-title"
+          [routerLink]="node.href"
+          routerLinkActive="active-class"
+        >
           <mat-icon class="sidebar-item__icon" matListItemIcon>{{
             node.icon
           }}</mat-icon>
           <span class="sidebar-item__menu-name" matListItemTitle>{{
             node.title
           }}</span>
-        </div>
-
-        <mat-icon class="mat-icon-rtl-mirror">
-          {{
-            treeControl.isExpanded(node)
-              ? 'keyboard_arrow_up'
-              : 'keyboard_arrow_down'
-          }}
-        </mat-icon>
-      </button>
-      <div [hidden]="!treeControl.isExpanded(node)">
+        </a>
+        <button type="button" mat-icon-button matTreeNodeToggle>
+          <mat-icon class="mat-icon-rtl-mirror">
+            {{
+              treeControl.isExpanded(node)
+                ? 'keyboard_arrow_up'
+                : 'keyboard_arrow_down'
+            }}
+          </mat-icon>
+        </button>
+      </div>
+      <div
+        class="sidebar-item__children"
+        [hidden]="!treeControl.isExpanded(node)"
+      >
         <ng-container matTreeNodeOutlet></ng-container>
       </div>
     </mat-nested-tree-node>

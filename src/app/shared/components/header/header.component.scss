@@ -15,7 +15,7 @@
     flex: 1 1 auto;
   }
 
-  @include respond-up('sm') {
+  @include respond-up('md') {
     &__logo {
       display: block;
     }
@@ -41,8 +41,18 @@
     margin-right: 12px;
   }
 
+  &__name,
+  &__email {
+    @include truncate;
+  }
+
   &__name {
     font-weight: 600;
+  }
+
+  &__details {
+    min-width: 0;
+    flex: 1;
   }
 
   &__email {

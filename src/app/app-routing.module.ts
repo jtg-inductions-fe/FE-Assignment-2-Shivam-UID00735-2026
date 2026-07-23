@@ -1,15 +1,19 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { LoginComponent } from '@/features/auth/login/login.component';
+import { authGuard, guestGuard } from '@/core/guards';
 
-import { authGuard } from '@/core/guards/auth.guard';
-import { guestGuard } from '@/core/guards/guest.guard';
 import { ROUTES } from '@/core/constants/routes.constants';
 import { DashboardComponent } from '@/features/dashboard/dashboard.component';
-import { ErrorPageComponent } from './shared/components/error-page/error-page.component';
+import { ErrorPageComponent } from '@/shared/components/error-page/error-page.component';
+import { LoginComponent } from './features/auth/login/login.component';
 
 const routes: Routes = [
+  {
+    path: '',
+    pathMatch: 'full',
+    redirectTo: ROUTES.dashboardPageRoute,
+  },
   {
     path: ROUTES.loginPageRoute,
     component: LoginComponent,
@@ -19,6 +23,11 @@ const routes: Routes = [
     path: ROUTES.dashboardPageRoute,
     component: DashboardComponent,
     canActivate: [authGuard],
+  },
+  {
+    path: 'server-error',
+    component: ErrorPageComponent,
+    data: { errorType: 'errorPage' },
   },
   {
     path: '**',

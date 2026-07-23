@@ -35,7 +35,7 @@
       },
       {
         "title": "Inventory",
-        "href": "/inventory",
+        "href": "",
         "icon": "shopping_bag",
         "role": ["owner"],
         "children": [
@@ -55,14 +55,49 @@
       },
       {
         "title": "Access",
-        "href": "#",
+        "href": null,
         "icon": "lock",
         "role": ["admin", "owner"],
         "children": [
           {
             "title": "Access Link 1",
             "href": "#",
-            "role": ["admin"]
+            "role": ["admin"],
+            "children": [
+              {
+                "title": "Access Link 1",
+                "href": "#",
+                "role": ["admin"],
+                "children": [
+                  {
+                    "title": "Access Link 1",
+                    "href": "#",
+                    "role": ["admin"],
+                    "children": [
+                      {
+                        "title": "Access Link 1",
+                        "href": "#",
+                        "role": ["admin"],
+                        "children": [
+                          {
+                            "title": "Access Link 1",
+                            "href": "#",
+                            "role": ["admin"],
+                            "children": [
+                              {
+                                "title": "Access Link 1",
+                                "href": "#",
+                                "role": ["admin"]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
           }
         ]
       }

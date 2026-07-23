@@ -18,9 +18,6 @@ export class SideBarItemComponent implements OnInit {
   ngOnInit(): void {
     this.dataSource.data = [this.item];
   }
-  trackByItem(index: number, item: SidebarItem) {
-    return index ?? item.title;
-  }
 
   hasChild = (_: number, node: SidebarItem): boolean =>
     !!node.children?.length && node.children.length > 0;

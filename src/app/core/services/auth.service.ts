@@ -1,11 +1,11 @@
 import { Injectable, inject } from '@angular/core';
-import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 import { BehaviorSubject, Observable, map } from 'rxjs';
 import { CookieService } from 'ngx-cookie-service';
 
-import { ROUTES } from '@/core/constants/routes.constants';
+import { ROUTES } from '@/core/constants';
 import { User } from '@/models/user.model';
 import { UserRole } from '@/models/navigation.model';
 
@@ -69,7 +69,6 @@ export class AuthService {
 
   logout() {
     this.userSubject.next(null);
-
     this.cookieService.delete('loggedInUser', '/');
     this.router.navigateByUrl(ROUTES.loginPageRoute);
   }
@@ -88,23 +87,10 @@ export class AuthService {
   }
 
   getCurrentUserRole(): UserRole {
-    const userCookie = this.cookieService.get('loggedInUser');
-    if (!userCookie) return null;
-    try {
-      return JSON.parse(userCookie).role;
-    } catch (e) {
-      return null;
-    }
+    return this.userSubject.value?.role ?? null;
   }
 
-  getCurrentUser(): Observable<Omit<User[], 'password'>> | null {
-    const userCookie = this.cookieService.get('loggedInUser');
-
-    if (!userCookie) return null;
-    try {
-      return JSON.parse(userCookie);
-    } catch (e) {
-      return null;
-    }
+  getCurrentUser(): Omit<User, 'password'> | null {
+    return this.userSubject.value;
   }
 }

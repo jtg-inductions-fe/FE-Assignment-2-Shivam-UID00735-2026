@@ -19,10 +19,11 @@
     height: auto;
   }
   &__heading {
-    size: px-to-rem(30);
+    font-size: px-to-rem(30);
   }
 
   &__description {
+    @include line-clamp(3);
     font-size: px-to-rem(16);
     color: #6b7280;
   }

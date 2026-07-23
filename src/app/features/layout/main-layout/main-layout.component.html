@@ -5,6 +5,7 @@
       *ngIf="canShowSidebar()"
       [mode]="sideNavMode"
       [opened]="isSidebarOpen"
+      (openedChange)="isSidebarOpen = $event"
       class="layout__sidebar"
     >
       <app-sidebar></app-sidebar>

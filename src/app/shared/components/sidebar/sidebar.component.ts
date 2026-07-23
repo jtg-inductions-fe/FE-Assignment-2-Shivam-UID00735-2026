@@ -1,9 +1,9 @@
 import { Component, inject, Input, OnInit } from '@angular/core';
-import { SidebarService } from '@/core/services/sidebar.service';
-import { AuthService } from '@/core/services/auth.service';
-import { SidebarSection } from '@/models/navigation.model';
+
 import { firstValueFrom } from 'rxjs';
-import { UserRole } from '@/models/navigation.model';
+import { AuthService, SidebarService } from '@/core/services';
+
+import { SidebarSection, UserRole } from '@/models/navigation.model';
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',

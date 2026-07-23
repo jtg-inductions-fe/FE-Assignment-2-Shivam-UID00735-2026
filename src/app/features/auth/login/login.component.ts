@@ -3,9 +3,8 @@ import { Router } from '@angular/router';
 
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 
-import { AuthService } from '@/core/services/auth.service';
-import { NotificationService } from '@/core/services/notification.service';
-import { ROUTES } from '@/core/constants/routes.constants';
+import { AuthService, NotificationService } from '@/core/services';
+import { ROUTES } from '@/core/constants';
 
 @Component({
   selector: 'app-login',

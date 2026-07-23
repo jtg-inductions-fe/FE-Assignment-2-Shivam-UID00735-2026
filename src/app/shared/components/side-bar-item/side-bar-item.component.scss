@@ -19,6 +19,10 @@ mat-expansion-panel-header {
     align-items: center;
     justify-content: space-between;
     padding-inline: $spacing-3;
+
+    button {
+      flex-shrink: 0;
+    }
   }
 
   &__link-title {
@@ -26,24 +30,16 @@ mat-expansion-panel-header {
     align-items: center;
     gap: $spacing-8;
     width: 100%;
-  }
+    flex: 1;
+    text-decoration: none;
 
-  &__toggle-menu {
-    button {
-      width: 100%;
-      cursor: pointer;
-      background-color: transparent;
-      outline: none;
-      border: none;
-      height: px-to-rem(56);
+    &:hover {
+      color: $primary-color;
+    }
 
-      &:hover {
-        &,
-        .mat-icon,
-        .mat-mdc-list-item {
-          color: $primary-color;
-        }
-      }
+    &:hover .sidebar-item__icon,
+    &:hover .sidebar-item__menu-name {
+      color: $primary-color;
     }
   }
 }

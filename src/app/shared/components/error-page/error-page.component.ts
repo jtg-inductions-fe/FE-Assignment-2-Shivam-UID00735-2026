@@ -1,6 +1,7 @@
 import { errorPageData } from '@/core/configs/error-page.config';
+import { ActivatedRoute } from '@angular/router';
 import { ErrorPageContent } from '@/models/error-page.model';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 
 @Component({
   selector: 'app-error-page',
@@ -8,5 +9,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./error-page.component.scss'],
 })
 export class ErrorPageComponent {
-  state: ErrorPageContent = errorPageData['notFound'];
+  private route = inject(ActivatedRoute);
+
+  state: ErrorPageContent =
+    errorPageData[this.route.snapshot.data['errorType'] ?? 'notFound'];
 }
