@@ -1,22 +1,26 @@
 import { inject, Injectable } from '@angular/core';
-import { map, Observable, shareReplay } from 'rxjs';
-import { Stats } from '@/models/dashboard-stats.model';
+import { map, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { StatsData,Restaurant } from '@/models';
-import { API_URL } from '@/core/constants';
+
 import {
+  Stats,
+  StatsData,
+  Restaurant,
   TopCustomersList,
   TopCustomer,
   TopDishes,
   TopDishesList,
-} from '@/models/dashboard.model';
+} from '@/models';
 
+import { API_URL } from '../constants';
 @Injectable({
   providedIn: 'root',
 })
 export class DashboardService {
-  private dashboardStatsJSON = API_URL.dashboardStatsJSON;
-  private restaurantsJSON = API_URL.restaurantsJSON;
+  private readonly restaurantsJSON = API_URL.restaurantsJSON;
+  private readonly restaurantStatsURL = API_URL.restaurantStatsURL;
+  private readonly topCustomers = API_URL.topCustomers;
+  private readonly topDishes = API_URL.topDishes;
   private http = inject(HttpClient);
 
   private allStats$: Observable<StatsData[]> = this.http
@@ -36,10 +40,13 @@ export class DashboardService {
   }
 
   getFilteredRestaurants(search: string): Observable<Restaurant[]> {
-    return this.allRestaurants$.pipe(
-      map((restaurants) =>
-        restaurants.filter((restaurant) =>
-          restaurant.name.toLowerCase().includes(search.toLowerCase()),
+    return this.http
+      .get<Restaurant[]>(this.restaurantsJSON)
+      .pipe(
+        map((restaurants) =>
+          restaurants.filter((restaurant) =>
+            restaurant.name.toLowerCase().includes(search.toLowerCase()),
+          ),
         ),
       ),
     );

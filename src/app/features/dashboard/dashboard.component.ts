@@ -8,7 +8,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { ROUTES } from '@/core/constants';
 import { ListCardItem } from '@/models';
-import { TopCustomer } from '@/models/dashboard.model';
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -17,12 +17,9 @@ import { TopCustomer } from '@/models/dashboard.model';
 export class DashboardComponent implements OnInit {
   title = 'Overview Dashboard';
   description =
-    'System administrator overview panel. Impersonate owners or view aggregate metrics.';
-  statsCards: StatsCard[] = [];
-  private dashboardStatService = inject(DashboardService);
-  topCustomer: ListCardItem[] = [];
-  topDishes: ListCardItem[] = [];
+    'System administrator  overview panel. Impersonate owners or view aggregate metrics.';
 
+  private dashboardStatService = inject(DashboardService);
   private authService = inject(AuthService);
   private router = inject(Router);
   private activeRoute = inject(ActivatedRoute);
@@ -66,7 +63,7 @@ export class DashboardComponent implements OnInit {
     return this.authService.getCurrentUserRole() === 'admin';
   }
 
-  prepareTopCustomers(restaurantId: number): void {
+  private prepareTopCustomers(restaurantId: number): void {
     this.dashboardStatService
       .getTopCustomers(restaurantId)
       .subscribe((data) => {
@@ -83,18 +80,18 @@ export class DashboardComponent implements OnInit {
       });
   }
 
-  prepareTopDishes(restaurantId: number): void {
+  private prepareTopDishes(restaurantId: number): void {
     this.dashboardStatService.getTopDishes(restaurantId).subscribe((data) => {
       if (!data) {
-        this.topCustomer = [];
+        this.topDishes = [];
         this.router.navigate([ROUTES.notFoundPageRoute]);
         return;
       }
 
-      
-      this.topDishes = data.map((dishes) => ({
-        title: dishes.title,
-        value: dishes.value,
+      this.topDishes = data.map((dish) => ({
+        title: dish.title,
+        subtitle: dish.category,
+        value: dish.value,
       }));
     });
   }

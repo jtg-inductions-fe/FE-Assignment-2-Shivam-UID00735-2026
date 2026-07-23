@@ -6,7 +6,7 @@ import {
   OnInit,
   Output,
 } from '@angular/core';
-import { Restaurant } from '@/models/restaurant.model';
+import { Restaurant } from '@/models';
 import {
   Observable,
   debounceTime,

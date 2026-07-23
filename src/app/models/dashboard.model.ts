@@ -3,7 +3,7 @@ export interface TopCustomer {
   image: string;
   name: string;
   email: string;
-  amount: string;
+  amount: number;
 }
 
 export interface TopCustomersList {
@@ -14,7 +14,8 @@ export interface TopCustomersList {
 // Top selling dishes
 export interface TopDishes {
   title: string;
-  value: string;
+  category: string;
+  value: number;
 }
 
 export interface TopDishesList {

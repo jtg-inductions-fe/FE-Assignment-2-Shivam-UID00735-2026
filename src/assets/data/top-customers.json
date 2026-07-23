@@ -6,31 +6,31 @@
         "image": "assets/images/avatars/avatar-2.webp",
         "name": "Albert Wright",
         "email": "albertwright@demo.com",
-        "amount": "$60"
+        "amount": 60
       },
       {
         "image": "assets/images/avatars/avatar-3.webp",
         "name": "Dave Miller",
         "email": "davemiller@demo.com",
-        "amount": "$48"
+        "amount": 48
       },
       {
         "image": "assets/images/avatars/admin-profile.jpg",
         "name": "Neil Sims",
         "email": "neilsims@demo.com",
-        "amount": "$36"
+        "amount": 36
       },
       {
         "image": "assets/images/avatars/default-avatar.png",
         "name": "Bonnie Green",
         "email": "bonniegreen@demo.com",
-        "amount": "$36"
+        "amount": 36
       },
       {
         "image": "assets/images/avatars/avatar-2.webp",
         "name": "Alice Johnson",
         "email": "alicejohnson@demo.com",
-        "amount": "$23"
+        "amount": 23
       }
     ]
   },
@@ -41,31 +41,171 @@
         "image": "assets/images/avatars/avatar-2.webp",
         "name": "Shivam Kushwah",
         "email": "albertwright@demo.com",
-        "amount": "$60"
+        "amount": 60
       },
       {
         "image": "assets/images/avatars/avatar-3.webp",
         "name": "Dave Miller",
         "email": "davemiller@demo.com",
-        "amount": "$48"
+        "amount": 48
       },
       {
         "image": "assets/images/avatars/admin-profile.jpg",
         "name": "Neil Sims",
         "email": "neilsims@demo.com",
-        "amount": "$36"
+        "amount": 36
       },
       {
         "image": "assets/images/avatars/default-avatar.png",
         "name": "Bonnie Green",
         "email": "bonniegreen@demo.com",
-        "amount": "$36"
+        "amount": 36
       },
       {
         "image": "assets/images/avatars/avatar-2.webp",
         "name": "Alice Johnson",
         "email": "alicejohnson@demo.com",
-        "amount": "$23"
+        "amount": 23
+      }
+    ]
+  },
+  {
+    "restaurantId": 2,
+    "topCustomers": [
+      {
+        "image": "assets/images/avatars/avatar-2.webp",
+        "name": "Carlos Mendez",
+        "email": "carlosmendez@demo.com",
+        "amount": 95
+      },
+      {
+        "image": "assets/images/avatars/avatar-3.webp",
+        "name": "Sarah Jenkins",
+        "email": "sarahjenkins@demo.com",
+        "amount": 78
+      },
+      {
+        "image": "assets/images/avatars/admin-profile.jpg",
+        "name": "David Cho",
+        "email": "davidcho@demo.com",
+        "amount": 62
+      },
+      {
+        "image": "assets/images/avatars/default-avatar.png",
+        "name": "Emma Watson",
+        "email": "emmawatson@demo.com",
+        "amount": 45
+      },
+      {
+        "image": "assets/images/avatars/avatar-2.webp",
+        "name": "Liam O'Connor",
+        "email": "liamoconnor@demo.com",
+        "amount": 30
+      }
+    ]
+  },
+  {
+    "restaurantId": 3,
+    "topCustomers": [
+      {
+        "image": "assets/images/avatars/admin-profile.jpg",
+        "name": "Aisha Rahman",
+        "email": "aisharahman@demo.com",
+        "amount": 110
+      },
+      {
+        "image": "assets/images/avatars/avatar-2.webp",
+        "name": "Yuki Tanaka",
+        "email": "yukitanaka@demo.com",
+        "amount": 85
+      },
+      {
+        "image": "assets/images/avatars/avatar-3.webp",
+        "name": "Marcus Vance",
+        "email": "marcusvance@demo.com",
+        "amount": 75
+      },
+      {
+        "image": "assets/images/avatars/default-avatar.png",
+        "name": "Elena Rostova",
+        "email": "elenarostova@demo.com",
+        "amount": 50
+      },
+      {
+        "image": "assets/images/avatars/avatar-2.webp",
+        "name": "Oliver Bennett",
+        "email": "oliverbennett@demo.com",
+        "amount": 25
+      }
+    ]
+  },
+  {
+    "restaurantId": 4,
+    "topCustomers": [
+      {
+        "image": "assets/images/avatars/avatar-3.webp",
+        "name": "Sofia Rossi",
+        "email": "sofiarossi@demo.com",
+        "amount": 125
+      },
+      {
+        "image": "assets/images/avatars/default-avatar.png",
+        "name": "Lucas Silva",
+        "email": "lucassilva@demo.com",
+        "amount": 90
+      },
+      {
+        "image": "assets/images/avatars/avatar-2.webp",
+        "name": "Chloe Dupont",
+        "email": "chloedupont@demo.com",
+        "amount": 65
+      },
+      {
+        "image": "assets/images/avatars/admin-profile.jpg",
+        "name": "Amir Patel",
+        " Amirpatel@demo.com": "amirpatel@demo.com",
+        "amount": 40
+      },
+      {
+        "image": "assets/images/avatars/avatar-3.webp",
+        "name": "Zoe Brooks",
+        "email": "zoebrooks@demo.com",
+        "amount": 20
+      }
+    ]
+  },
+  {
+    "restaurantId": 5,
+    "topCustomers": [
+      {
+        "image": "assets/images/avatars/default-avatar.png",
+        "name": "Ryan Gallagher",
+        "email": "ryangallagher@demo.com",
+        "amount": 140
+      },
+      {
+        "image": "assets/images/avatars/avatar-2.webp",
+        "name": "Nina Gomez",
+        "email": "ninagomez@demo.com",
+        "amount": 115
+      },
+      {
+        "image": "assets/images/avatars/admin-profile.jpg",
+        "name": "Ethan Hunt",
+        "email": "ethanhunt@demo.com",
+        "amount": 80
+      },
+      {
+        "image": "assets/images/avatars/avatar-3.webp",
+        "name": "Maya Lin",
+        "email": "mayalin@demo.com",
+        "amount": 55
+      },
+      {
+        "image": "assets/images/avatars/avatar-2.webp",
+        "name": "James Byrd",
+        "email": "jamesbyrd@demo.com",
+        "amount": 35
       }
     ]
   }

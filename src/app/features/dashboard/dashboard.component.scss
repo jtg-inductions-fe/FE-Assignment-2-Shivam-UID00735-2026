@@ -12,7 +12,7 @@
     gap: $spacing-4;
   }
 
-  @include respond-up('md') {
+  @include respond-up('xl') {
     &__top-items {
       flex-direction: row;
     }

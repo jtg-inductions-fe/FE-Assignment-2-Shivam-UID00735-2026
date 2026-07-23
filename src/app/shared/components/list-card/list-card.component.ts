@@ -8,4 +8,5 @@ import { ListCardItem } from '@/models';
 export class ListCardComponent {
   @Input() title = '';
   @Input() items: ListCardItem[] = [];
+  @Input() valueSuffix = '';
 }
