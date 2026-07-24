@@ -1,7 +1,7 @@
 import { Component, EventEmitter, inject, Output } from '@angular/core';
 
 import { AuthService } from '@/core/services';
-import { APP_CONSTANT_CONFIG } from '@/core/constants';
+import { ASSET_CONSTANTS } from '@/core/constants';
 
 @Component({
   selector: 'app-header',
@@ -11,7 +11,7 @@ import { APP_CONSTANT_CONFIG } from '@/core/constants';
 export class HeaderComponent {
   private authService = inject(AuthService);
   currentUser$ = this.authService.currentUser$;
-  defaultImage = APP_CONSTANT_CONFIG.defaultImageURL;
+  defaultImage = ASSET_CONSTANTS.DEFAULT_AVATAR_URL;
   @Output() toggleSideBar = new EventEmitter<void>();
 
   logOut() {

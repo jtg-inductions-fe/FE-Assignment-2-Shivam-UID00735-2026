@@ -46,8 +46,7 @@
 
 .profile {
   &__header {
-    display: flex;
-    align-items: center;
+    @include flex(start, row);
     padding: $spacing-4;
     min-width: px-to-rem(250);
   }

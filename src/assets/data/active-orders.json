@@ -1,0 +1,62 @@
+[
+  {
+    "restaurantId": 1,
+    "items": [
+      {
+        "orderId": "#ORD-1002",
+        "restaurant": "Pizza Palace",
+        "customer": "Bonnie Green",
+        "items": ["Truffle Paste", "Soda"],
+        "amount": 68,
+        "status": "pending"
+      }
+    ]
+  },
+  {
+    "restaurantId": 2,
+    "items": [
+      {
+        "orderId": "#ORD-1003",
+        "restaurant": "Burger Bistro",
+        "customer": "Alex Rivers",
+        "items": ["Bacon Cheeseburger", "Fries", "Vanilla Shake"],
+        "amount": 42,
+        "status": "completed"
+      },
+      {
+        "orderId": "#ORD-1004",
+        "restaurant": "Burger Bistro",
+        "customer": "Diana Prince",
+        "items": ["Veggie Burger", "Onion Rings"],
+        "amount": 28,
+        "status": "pending"
+      }
+    ]
+  },
+  {
+    "restaurantId": 3,
+    "items": [
+      {
+        "orderId": "#ORD-1005",
+        "restaurant": "Sushi Zen",
+        "customer": "Chris Evans",
+        "items": ["Salmon Sashimi", "Miso Soup", "Green Tea"],
+        "amount": 55,
+        "status": "delivered"
+      }
+    ]
+  },
+  {
+    "restaurantId": 4,
+    "items": [
+      {
+        "orderId": "#ORD-1006",
+        "restaurant": "Taco Fiesta",
+        "customer": "Emma Watson",
+        "items": ["Chicken Tacos", "Guacamole", "Churros"],
+        "amount": 34,
+        "status": "cancelled"
+      }
+    ]
+  }
+]

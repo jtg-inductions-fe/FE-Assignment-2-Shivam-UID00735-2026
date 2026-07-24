@@ -9,7 +9,7 @@ import { ROUTES } from '@/core/constants';
 
 import { User, UserRole } from '@/models';
 
-import { API_URL, APP_CONSTANT_CONFIG } from '@/core/constants';
+import { API_URL, AUTH_CONSTANTS } from '@/core/constants';
 
 @Injectable({
   providedIn: 'root',
@@ -44,7 +44,7 @@ export class AuthService {
         }
         this.userSubject.next(user);
         this.cookieService.set(
-          APP_CONSTANT_CONFIG.cookieLoginUserSessionKey,
+          AUTH_CONSTANTS.COOKIE_USER_SESSION_KEY,
           JSON.stringify({
             id: user.id,
             name: user.name,
@@ -69,16 +69,13 @@ export class AuthService {
 
   logout(): void {
     this.userSubject.next(null);
-    this.cookieService.delete(
-      APP_CONSTANT_CONFIG.cookieLoginUserSessionKey,
-      '/',
-    );
+    this.cookieService.delete(AUTH_CONSTANTS.COOKIE_USER_SESSION_KEY, '/');
     this.router.navigateByUrl(ROUTES.loginPageRoute);
   }
 
   private getInitialUser(): Omit<User, 'password'> | null {
     const cookieValue = this.cookieService.get(
-      APP_CONSTANT_CONFIG.cookieLoginUserSessionKey,
+      AUTH_CONSTANTS.COOKIE_USER_SESSION_KEY,
     );
 
     if (!cookieValue) return null;
@@ -86,10 +83,7 @@ export class AuthService {
     try {
       return JSON.parse(cookieValue);
     } catch {
-      this.cookieService.delete(
-        APP_CONSTANT_CONFIG.cookieLoginUserSessionKey,
-        '/',
-      );
+      this.cookieService.delete(AUTH_CONSTANTS.COOKIE_USER_SESSION_KEY, '/');
       return null;
     }
   }
