@@ -17,4 +17,8 @@
     justify-content: end;
     gap: $spacing-4;
   }
+
+  ::ng-deep .mat-mdc-chip {
+    background-color: $primary-color;
+  }
 }

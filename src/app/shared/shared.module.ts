@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
-import { HeaderComponent } from './components/header/header.component';
+import { HeaderComponent } from '@/shared/components/header/header.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
@@ -13,19 +13,19 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatTreeModule } from '@angular/material/tree';
 
-import { AutoSelectComponent } from './components/auto-select/auto-select.component';
+import { AutoSelectComponent } from '@/shared/components/auto-select/auto-select.component';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 
 import { SidebarComponent } from '@/shared/components/sidebar/sidebar.component';
-import { SideBarItemComponent } from './components/side-bar-item/side-bar-item.component';
-import { ErrorPageComponent } from './components/error-page/error-page.component';
-import { MainContentHeaderComponent } from './components/main-content-header/main-content-header.component';
-import { StatCardComponent } from './components/stat-card/stat-card.component';
-import { ListCardComponent } from './components/list-card/list-card.component';
-import { CardComponent } from './components/card/card.component';
+import { SideBarItemComponent } from '@/shared/components/side-bar-item/side-bar-item.component';
+import { ErrorPageComponent } from '@/shared/components/error-page/error-page.component';
+import { MainContentHeaderComponent } from '@/shared/components/main-content-header/main-content-header.component';
+import { StatCardComponent } from '@/shared/components/stat-card/stat-card.component';
+import { ListCardComponent } from '@/shared/components/list-card/list-card.component';
+import { CardComponent } from '@/shared/components/card/card.component';
 import { MatChipsModule } from '@angular/material/chips';
 
 import { RestaurantFormComponent } from '@/shared/components/restaurant-form/restaurant-form.component';

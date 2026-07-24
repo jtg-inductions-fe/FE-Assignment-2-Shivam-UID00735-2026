@@ -1,11 +1,13 @@
 import { Component, inject, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { MatChipInputEvent, MatChipEditedEvent } from '@angular/material/chips';
 
-import { NotificationService } from '@/core/services/notification.service';
+import { NotificationService } from '@/core/services';
 
-import { Restaurant } from '@/models/restaurant.model';
+import { Restaurant } from '@/models';
+import { ROUTES } from '@/core/constants';
 
 @Component({
   selector: 'app-restaurant-form',
@@ -15,6 +17,8 @@ import { Restaurant } from '@/models/restaurant.model';
 export class RestaurantFormComponent implements OnInit {
   private formBuilder = inject(FormBuilder);
   private notificationService = inject(NotificationService);
+
+  private router = inject(Router);
 
   @Input() restaurantDetails!: Restaurant;
   @Input() isEditMode!: boolean;
@@ -47,8 +51,12 @@ export class RestaurantFormComponent implements OnInit {
 
   onSubmit() {
     if (this.myForm.invalid) {
+      this.myForm.markAllAsTouched();
       return;
     }
+    this.router.navigate([
+      ROUTES.adminRestaurantRoutes.adminRestaurantListRoute,
+    ]);
   }
 
   add(event: MatChipInputEvent): void {
@@ -56,18 +64,21 @@ export class RestaurantFormComponent implements OnInit {
 
     if (value) {
       if (!this.validateEmail(value)) {
-        this.notificationService.showErrorMessage(
-          'Please enter valid email',
-          'close',
-        );
-        event.chipInput!.clear();
+        this.showErrorMessage('invalidEmail');
+        event.chipInput?.clear();
+        return;
+      }
 
+      if (this.emails.includes(value)) {
+        this.showErrorMessage('duplicateEmail');
+        event.chipInput?.clear();
         return;
       }
       this.emails.push(value);
+      this.myForm.get('ownerEmails')?.setValue(this.emails);
     }
 
-    event.chipInput!.clear();
+    event.chipInput?.clear();
   }
 
   remove(email: string): void {
@@ -75,6 +86,7 @@ export class RestaurantFormComponent implements OnInit {
 
     if (index >= 0) {
       this.emails.splice(index, 1);
+      this.myForm.get('ownerEmails')?.setValue(this.emails);
     }
   }
 
@@ -87,6 +99,7 @@ export class RestaurantFormComponent implements OnInit {
     }
 
     const index = this.emails.indexOf(email);
+
     if (index >= 0) {
       this.emails[index] = value;
     }
@@ -95,5 +108,19 @@ export class RestaurantFormComponent implements OnInit {
   private validateEmail(email: string) {
     const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     return regex.test(email);
+  }
+
+  private showErrorMessage(type: string) {
+    if (type === 'invalidEmail') {
+      this.notificationService.showErrorMessage(
+        'Please enter valid email',
+        'close',
+      );
+    } else if (type === 'duplicateEmail') {
+      this.notificationService.showErrorMessage(
+        'Email has already exists',
+        'close',
+      );
+    }
   }
 }

@@ -3,11 +3,13 @@ import { HttpClient } from '@angular/common/http';
 import { Restaurant } from '@/models/restaurant.model';
 import { map, Observable } from 'rxjs';
 
+import { API_URL } from '../constants';
+
 @Injectable({
   providedIn: 'root',
 })
 export class RestaurantService {
-  private restaurantsJSON = 'assets/data/restaurants.json';
+  private restaurantsJSON = API_URL.restaurantsJSON;
   private http = inject(HttpClient);
 
   getRestaurantDetails(restaurantId: number): Observable<Restaurant | null> {

@@ -1,6 +1,11 @@
 <div class="restaurant-insert-wrapper">
   <!-- Back to button -->
-  <button type="button" mat-stroked-button color="primary">
+  <button
+    routerLink="/admin/restaurant"
+    type="button"
+    mat-stroked-button
+    color="primary"
+  >
     <mat-icon>west</mat-icon> Back
   </button>
   <app-main-content-header
@@ -10,11 +15,8 @@
   ></app-main-content-header>
 </div>
 
-<!-- Restaurant form -->
-<app-restaurant-form *ngIf="isInsertMode"></app-restaurant-form>
-
 <app-restaurant-form
-  *ngIf="isEditMode && initialData"
+  *ngIf="isInsertMode || initialData"
   [restaurantDetails]="initialData"
   [isEditMode]="isEditMode"
 ></app-restaurant-form>

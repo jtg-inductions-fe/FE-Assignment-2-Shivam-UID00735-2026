@@ -5,8 +5,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthModule } from '@/features/auth/auth.module';
 import { SharedModule } from '@/shared/shared.module';
 import { LayoutModule } from '@/features/layout/layout.module';
-import { DashboardModule } from './features/dashboard/dashboard.module';
-import { RestaurantModule } from './features/admin/restaurant/restaurant.module';
+import { DashboardModule } from '@/features/dashboard/dashboard.module';
+import { RestaurantModule } from '@/features/admin/restaurant/restaurant.module';
 
 import { AppComponent } from '@/app.component';
 

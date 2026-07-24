@@ -1,16 +1,15 @@
-import { Restaurant } from '@/models/restaurant.model';
-import { Router } from '@angular/router';
 import { Component, inject, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { ActivatedRoute } from '@angular/router';
-import { of } from 'rxjs';
 import { RestaurantService } from '@/core/services/restaurant.service';
-import { adminInsertRestaurantRoute } from '@/core/constants/routes.constants';
+import { ROUTES } from '@/core/constants';
+import { Restaurant } from '@/models';
 
 @Component({
-  selector: 'app-restaurant-insert',
-  templateUrl: './restaurant-insert.component.html',
-  styleUrls: ['./restaurant-insert.component.scss'],
+  selector: 'app-restaurant-action',
+  templateUrl: './restaurant-actions.component.html',
+  styleUrls: ['./restaurant-actions.component.scss'],
 })
 export class RestaurantInsertComponent implements OnInit {
   title = '';
@@ -26,9 +25,10 @@ export class RestaurantInsertComponent implements OnInit {
   isEditMode = false;
 
   ngOnInit(): void {
-    this.title = 'Add Restaurant';
-    this.description = 'Add a new partner restaurant to the portal.';
+    this.title = '';
+    this.description = '';
     const currentUrl = this.router.url;
+
     this.isEditMode = currentUrl.includes('restaurant/edit');
     this.isInsertMode = currentUrl.includes('restaurant/insert');
 
@@ -36,8 +36,9 @@ export class RestaurantInsertComponent implements OnInit {
       this.activeRoute.paramMap.subscribe((param) => {
         const id = Number(param.get('id'));
         if (isNaN(id)) {
-          console.log('it is string');
-          this.router.navigate([adminInsertRestaurantRoute]);
+          this.router.navigate([
+            ROUTES.adminRestaurantRoutes.adminInsertRestaurantRoute,
+          ]);
           return;
         }
         this.loadRestaurantDetails(id);
@@ -55,10 +56,8 @@ export class RestaurantInsertComponent implements OnInit {
   loadRestaurantDetails(id: number) {
     this.restaurantService.getRestaurantDetails(id).subscribe((data) => {
       if (!data) {
-        console.log('restaurant data not found');
         return;
       }
-
       this.initialData = data;
     });
   }

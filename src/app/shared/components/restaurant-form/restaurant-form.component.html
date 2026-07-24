@@ -1,4 +1,4 @@
-<div class="card">
+<app-card [hasShadow]="true">
   <form [formGroup]="myForm" (submit)="onSubmit()" class="restaurant-form">
     <mat-form-field appearance="outline" class="restaurant-form__input-field">
       <mat-label>Restaurant Name</mat-label>
@@ -19,7 +19,7 @@
         matInput
         placeholder="e.g., 123 Pepperoni Rd, Naples"
       />
-      <mat-error *ngIf="myForm.get('restaurantName')?.hasError('required')"
+      <mat-error *ngIf="myForm.get('restaurantAddress')?.hasError('required')"
         >Restaurant Address is <strong>Required</strong></mat-error
       >
     </mat-form-field>
@@ -29,9 +29,10 @@
       <mat-chip-grid
         #chipGrid
         formControlName="ownerEmails"
-        aria-label="Enter fruits"
+        aria-label="Enter Owners Emails"
       >
         <mat-chip-row
+          color="primary"
           *ngFor="let email of emails"
           (removed)="remove(email)"
           [editable]="true"
@@ -66,4 +67,4 @@
       </button>
     </div>
   </form>
-</div>
+</app-card>
