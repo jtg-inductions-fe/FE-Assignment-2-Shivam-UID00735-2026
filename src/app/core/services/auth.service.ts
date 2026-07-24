@@ -52,6 +52,7 @@ export class AuthService {
             email: user.email,
             avatar: user.avatar,
             role: user.role,
+            restaurantIds: user.restaurantIds,
           }),
           {
             path: '/',
