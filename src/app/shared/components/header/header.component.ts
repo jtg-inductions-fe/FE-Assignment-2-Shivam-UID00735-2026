@@ -1,6 +1,6 @@
-import { Component, inject } from '@angular/core';
+import { Component, EventEmitter, inject, Output } from '@angular/core';
 
-import { AuthService } from '@/core/services/auth.service';
+import { AuthService } from '@/core/services';
 
 @Component({
   selector: 'app-header',
@@ -10,8 +10,13 @@ import { AuthService } from '@/core/services/auth.service';
 export class HeaderComponent {
   private authService = inject(AuthService);
   currentUser$ = this.authService.currentUser$;
+  @Output() toggleSideBar = new EventEmitter<void>();
 
   logOut() {
     this.authService.logout();
+  }
+
+  onMenuClick() {
+    this.toggleSideBar.emit();
   }
 }

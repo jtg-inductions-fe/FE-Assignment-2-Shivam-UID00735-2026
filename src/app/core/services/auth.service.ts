@@ -1,12 +1,15 @@
 import { Injectable, inject } from '@angular/core';
-import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 import { BehaviorSubject, Observable, map } from 'rxjs';
 import { CookieService } from 'ngx-cookie-service';
 
-import { ROUTES } from '@/core/constants/routes.constants';
-import { User } from '@/models/user.model';
+import { ROUTES } from '@/core/constants';
+
+import { User, UserRole } from '@/models';
+
+import { API_URL, APP_CONSTANT_CONFIG } from '@/core/constants';
 
 @Injectable({
   providedIn: 'root',
@@ -16,13 +19,12 @@ export class AuthService {
   private cookieService = inject(CookieService);
   private router = inject(Router);
 
-  private usersDataURL = 'assets/data/users.json';
+  private usersDataURL = API_URL.usersDataURL;
   private userSubject = new BehaviorSubject<Omit<User, 'password'> | null>(
     this.getInitialUser(),
   );
   currentUser$ = this.userSubject.asObservable();
 
-  // fetching users data
   getUsers(): Observable<User[]> {
     return this.http.get<User[]>(this.usersDataURL);
   }
@@ -42,7 +44,7 @@ export class AuthService {
         }
         this.userSubject.next(user);
         this.cookieService.set(
-          'loggedInUser',
+          APP_CONSTANT_CONFIG.cookieLoginUserSessionKey,
           JSON.stringify({
             id: user.id,
             name: user.name,
@@ -61,28 +63,42 @@ export class AuthService {
     );
   }
 
-  // check the user is logged in or not
   isLoggedIn(): boolean {
     return this.userSubject.value !== null;
   }
 
-  logout() {
+  logout(): void {
     this.userSubject.next(null);
-
-    this.cookieService.delete('loggedInUser', '/');
+    this.cookieService.delete(
+      APP_CONSTANT_CONFIG.cookieLoginUserSessionKey,
+      '/',
+    );
     this.router.navigateByUrl(ROUTES.loginPageRoute);
   }
 
   private getInitialUser(): Omit<User, 'password'> | null {
-    const cookieValue = this.cookieService.get('loggedInUser');
+    const cookieValue = this.cookieService.get(
+      APP_CONSTANT_CONFIG.cookieLoginUserSessionKey,
+    );
 
     if (!cookieValue) return null;
 
     try {
       return JSON.parse(cookieValue);
     } catch {
-      this.cookieService.delete('loggedInUser', '/');
+      this.cookieService.delete(
+        APP_CONSTANT_CONFIG.cookieLoginUserSessionKey,
+        '/',
+      );
       return null;
     }
+  }
+
+  getCurrentUserRole(): UserRole {
+    return this.userSubject.value?.role ?? null;
+  }
+
+  getCurrentUser(): Omit<User, 'password'> | null {
+    return this.userSubject.value;
   }
 }

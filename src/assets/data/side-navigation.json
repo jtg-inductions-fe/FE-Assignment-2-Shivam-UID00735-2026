@@ -1,0 +1,94 @@
+[
+  {
+    "sectionName": "",
+    "item": [
+      {
+        "title": "Overview",
+        "href": "/dashboard",
+        "icon": "pie_chart",
+        "role": ["admin", "owner"]
+      },
+      {
+        "title": "Restaurants",
+        "href": "/restaurants",
+        "icon": "restaurant",
+        "role": ["admin"]
+      },
+      {
+        "title": "Menu",
+        "href": "/menu",
+        "icon": "apps",
+        "role": ["owner"]
+      },
+      {
+        "title": "Billing History",
+        "href": null,
+        "icon": "description",
+        "role": ["owner"],
+        "children": [
+          {
+            "title": "History 1",
+            "href": "#",
+            "role": ["owner"]
+          }
+        ]
+      },
+      {
+        "title": "Inventory",
+        "href": null,
+        "icon": "shopping_bag",
+        "role": ["owner"],
+        "children": [
+          {
+            "title": "Inventory level 1 ",
+            "href": "#",
+            "role": ["owner"]
+          }
+        ]
+      },
+      {
+        "title": "Messages",
+        "href": "/message",
+        "icon": "3p",
+        "role": ["admin", "owner"],
+        "haveUpdate": 1
+      },
+      {
+        "title": "Access",
+        "href": null,
+        "icon": "lock",
+        "role": ["admin", "owner"],
+        "children": [
+          {
+            "title": "Access Link 1",
+            "href": "#",
+            "role": ["admin"]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "sectionName": "",
+    "item": [
+      {
+        "title": "My Profile",
+        "href": null,
+        "icon": "account_circle",
+        "role": ["admin", "owner"]
+      },
+      {
+        "title": "Gallery",
+        "href": null,
+        "icon": "photo_library",
+        "role": ["admin", "owner"]
+      },
+      {
+        "title": "Help",
+        "href": null,
+        "icon": "help",
+        "role": ["admin", "owner"]
+      }
+    ]
+  }
+]

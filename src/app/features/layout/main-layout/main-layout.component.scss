@@ -1,0 +1,30 @@
+@use 'abstract' as *;
+
+.layout {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  app-header {
+    height: px-to-rem(68);
+    flex-shrink: 0;
+  }
+
+  &__container {
+    flex: 1;
+  }
+
+  &__sidebar {
+    width: auto;
+    min-width: px-to-rem(250);
+  }
+  &__content {
+    flex: 1;
+    padding: $spacing-6;
+    height: 100%;
+  }
+}
+
+:host {
+  display: block;
+}

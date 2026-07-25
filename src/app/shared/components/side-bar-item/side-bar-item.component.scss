@@ -1,0 +1,74 @@
+@use 'abstract' as *;
+
+.nav-list {
+  border-bottom: 1px solid $border-color;
+}
+
+mat-expansion-panel-header {
+  padding: 0;
+  padding-right: px-to-rem(16);
+}
+
+.sidebar-item {
+  &__icon {
+    color: $icon-color;
+  }
+
+  &__toggle-link {
+    @include flex(space-between, row);
+    padding-inline: $spacing-3;
+
+    button {
+      flex-shrink: 0;
+    }
+  }
+
+  &__link-title {
+    display: flex;
+    align-items: center;
+    gap: $spacing-8;
+    width: 100%;
+    flex: 1;
+    text-decoration: none;
+
+    &:hover {
+      cursor: pointer;
+      color: $primary-color;
+    }
+
+    &:hover .sidebar-item__icon,
+    &:hover .sidebar-item__menu-name {
+      cursor: pointer;
+      color: $primary-color;
+    }
+  }
+  &__menu-name {
+    max-width: px-to-rem(120);
+  }
+}
+.sidebar-tree-invisible {
+  display: none;
+}
+
+.active-class {
+  mat-icon,
+  span {
+    color: $primary-color;
+  }
+}
+.active-class-submenu {
+  background-color: $mute-color;
+  mat-icon,
+  span {
+    color: $primary-color;
+  }
+}
+
+.mat-mdc-list-item:hover {
+  span {
+    color: $primary-color;
+  }
+  .mat-icon {
+    color: $primary-color;
+  }
+}

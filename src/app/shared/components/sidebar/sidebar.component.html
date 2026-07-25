@@ -1,0 +1,25 @@
+<div class="sidebar">
+  <div class="sidebar__menu">
+    <mat-nav-list *ngFor="let section of sidebarSection" class="nav-list">
+      <div *ngFor="let item of section.item">
+        <app-side-bar-item
+          [item]="item"
+          [userRole]="currentUserRole"
+        ></app-side-bar-item>
+      </div>
+    </mat-nav-list>
+  </div>
+
+  <div class="sidebar__footer">
+    <button mat-icon-button>
+      <mat-icon>tune</mat-icon>
+    </button>
+
+    <button mat-icon-button>
+      <mat-icon>public</mat-icon>
+    </button>
+    <button mat-icon-button>
+      <mat-icon>settings</mat-icon>
+    </button>
+  </div>
+</div>
