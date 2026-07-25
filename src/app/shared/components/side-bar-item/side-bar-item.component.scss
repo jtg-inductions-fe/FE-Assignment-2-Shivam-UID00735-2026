@@ -15,9 +15,7 @@ mat-expansion-panel-header {
   }
 
   &__toggle-link {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    @include flex(space-between, row);
     padding-inline: $spacing-3;
 
     button {
@@ -34,11 +32,13 @@ mat-expansion-panel-header {
     text-decoration: none;
 
     &:hover {
+      cursor: pointer;
       color: $primary-color;
     }
 
     &:hover .sidebar-item__icon,
     &:hover .sidebar-item__menu-name {
+      cursor: pointer;
       color: $primary-color;
     }
   }

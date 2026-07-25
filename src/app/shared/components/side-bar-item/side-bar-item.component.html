@@ -38,7 +38,11 @@
       *matTreeNodeDef="let node; when: hasChild"
       class="sidebar-item__toggle-menu"
     >
-      <div class="sidebar-item__toggle-link" matTreeNodePadding>
+      <div
+        class="sidebar-item__toggle-link"
+        matTreeNodeToggle
+        matTreeNodePadding
+      >
         <a
           class="sidebar-item__link-title"
           [routerLink]="node.href"
@@ -54,7 +58,7 @@
             node.title
           }}</span>
         </a>
-        <button type="button" mat-icon-button matTreeNodeToggle>
+        <button type="button" mat-icon-button>
           <mat-icon class="mat-icon-rtl-mirror">
             {{
               treeControl.isExpanded(node)
