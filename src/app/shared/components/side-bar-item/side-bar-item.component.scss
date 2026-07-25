@@ -45,16 +45,19 @@ mat-expansion-panel-header {
   &__menu-name {
     max-width: px-to-rem(120);
   }
-
-  &__children {
-    background-color: $mute-color;
-  }
 }
 .sidebar-tree-invisible {
   display: none;
 }
 
 .active-class {
+  mat-icon,
+  span {
+    color: $primary-color;
+  }
+}
+.active-class-submenu {
+  background-color: $mute-color;
   mat-icon,
   span {
     color: $primary-color;
