@@ -6,11 +6,7 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./main-content-header.component.scss'],
 })
 export class MainContentHeaderComponent {
-  @Input() title!: string;
-  @Input() description!: string;
-  @Input() headingFontSize!: number;
-
-  getHeadingSize(): string {
-    return `${this.headingFontSize / 16}rem`;
-  }
+  @Input() title: string;
+  @Input() description: string;
+  @Input() headingType: string;
 }

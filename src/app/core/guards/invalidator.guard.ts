@@ -6,11 +6,9 @@ import { ROUTES } from '@/core/constants';
 export const invalidatorGuard: CanActivateFn = (route, state) => {
   const router = inject(Router);
 
-  const id = route.paramMap.get('id');
+  const id = Number(route.paramMap.get('id'));
 
-  const isValidId = id ? /^\d+$/.test(id) : false;
-
-  if (!isValidId) {
+  if (isNaN(id)) {
     router.navigate([ROUTES.notFoundPageRoute]);
     return false;
   }

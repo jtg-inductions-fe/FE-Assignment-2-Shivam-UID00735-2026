@@ -17,8 +17,8 @@ import { MatTableDataSource } from '@angular/material/table';
   styleUrls: ['./table.component.scss'],
 })
 export class TableComponent implements OnInit, OnChanges, AfterViewInit {
-  @Input() dataSource!: unknown[];
-  @Input() columns: TableColumn[];
+  @Input({ required: true }) dataSource!: unknown[];
+  @Input({ required: true }) columns!: TableColumn[];
   @Input() templates: Record<string, TemplateRef<unknown>> = {};
   @Input() enablePagination = true;
 

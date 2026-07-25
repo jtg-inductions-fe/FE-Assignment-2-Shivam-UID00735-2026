@@ -15,8 +15,7 @@ export interface StatsCard {
   title: string;
   value: number | string;
   icon: string;
-  iconColor: string;
-  iconBg: string;
+  itemClassName: string;
   isCurrency?: boolean;
 }
 

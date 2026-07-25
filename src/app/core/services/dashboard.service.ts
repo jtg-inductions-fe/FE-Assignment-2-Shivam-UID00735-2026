@@ -13,7 +13,7 @@ export class DashboardService {
   private restaurantsJSON = 'assets/data/restaurants.json';
   private http = inject(HttpClient);
 
-  getStats(restaurantId: number): Observable<Stats | undefined> {
+  getDashboardStats(restaurantId: number): Observable<Stats | undefined> {
     return this.http
       .get<StatsData[]>(this.sidebarJsonURL)
       .pipe(
@@ -24,7 +24,7 @@ export class DashboardService {
       );
   }
 
-  getRestaurant(search: string): Observable<restaurant[]> {
+  getFilteredRestaurants(search: string): Observable<restaurant[]> {
     return this.http
       .get<restaurant[]>(this.restaurantsJSON)
       .pipe(

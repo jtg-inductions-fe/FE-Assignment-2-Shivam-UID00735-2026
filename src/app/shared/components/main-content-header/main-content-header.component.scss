@@ -6,13 +6,7 @@
 
   flex-direction: column;
   text-align: center;
-  gap: 26px;
-
-  &__heading {
-    font-weight: 700;
-    margin: 0 0 8px 0;
-    line-height: 1.2;
-  }
+  gap: px-to-rem(26);
 
   &__description {
     color: $paragraph-color;

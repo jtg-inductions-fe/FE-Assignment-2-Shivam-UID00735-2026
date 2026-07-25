@@ -6,10 +6,9 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./stat-card.component.scss'],
 })
 export class StatCardComponent {
-  @Input() title!: string;
-  @Input() stat!: string | number;
-  @Input() icon!: string;
-  @Input() iconBg!: string;
-  @Input() iconColor!: string;
+  @Input({ required: true }) title!: string;
+  @Input({ required: true }) stat!: string | number;
+  @Input() icon: string;
+  @Input() itemClassName: string;
   @Input() isCurrency = false;
 }

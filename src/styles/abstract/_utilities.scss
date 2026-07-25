@@ -1,10 +1,23 @@
 @use './mixins' as *;
+@use '../base/index' as *;
 .badge {
-  min-width: 20px;
-  height: 20px;
+  min-width: px-to-rem(20);
+  height: px-to-rem(20);
   padding: 0 6px;
   border-radius: 50%;
   background-color: #fde8e8;
   color: #e02424 !important;
   @include flex;
+}
+
+.heading-large {
+  @include heading-config($fs-4xl, $fw-bold, 1.2);
+}
+
+.heading-medium {
+  @include heading-config($fs-xl, $fw-semibold, 1.4);
+}
+
+.heading-small {
+  @include heading-config($fs-md, $fw-bold, 1.5);
 }

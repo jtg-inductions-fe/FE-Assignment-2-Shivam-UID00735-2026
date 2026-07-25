@@ -7,5 +7,5 @@ import { StatsCard } from '@/models/dashboard-stats.model';
   styleUrls: ['./stats.component.scss'],
 })
 export class StatsComponent {
-  @Input() StatsCards!: StatsCard[];
+  @Input({ required: true }) StatsCards!: StatsCard[];
 }

@@ -1,8 +1,9 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { DashboardService } from '@/core/services';
+import { map, tap, switchMap } from 'rxjs';
 import { AuthService } from '@/core/services/auth.service';
 import { StatsConfig } from '@/core/configs/stats.config';
-import { StatsCard } from '@/models/dashboard-stats.model';
+import { Stats, StatsCard } from '@/models/dashboard-stats.model';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { ROUTES } from '@/core/constants';
@@ -12,8 +13,9 @@ import { ROUTES } from '@/core/constants';
   styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent implements OnInit {
-  title = '';
-  description = '';
+  title = 'Overview Dashboard';
+  description =
+    'System administrator  overview panel. Impersonate owners or view aggregate metrics.';
 
   statsCards: StatsCard[] = [];
 
@@ -22,44 +24,37 @@ export class DashboardComponent implements OnInit {
   private router = inject(Router);
   private activeRoute = inject(ActivatedRoute);
 
-  ngOnInit(): void {
-    this.title = 'Overview Dashboard';
-    this.description =
-      'System administrator  overview panel. Impersonate owners or view aggregate metrics.';
-
-    this.activeRoute.paramMap.subscribe((params) => {
-      const id = Number(params.get('id'));
-
+  private selectedRestaurantId$ = this.activeRoute.paramMap.pipe(
+    map((params) => Number(params.get('id'))),
+    tap((id) => {
       if (isNaN(id)) {
         this.router.navigate([ROUTES.notFoundPageRoute]);
-        return;
       }
+    }),
+  );
 
-      this.prepareStatsCard(id);
-    });
+  ngOnInit(): void {
+    this.selectedRestaurantId$
+      .pipe(switchMap((id) => this.dashboardStatService.getDashboardStats(id)))
+      .subscribe((stats) => (this.statsCards = this.prepareStatsCard(stats)));
   }
 
   onRestaurantChange(restaurantID: number): void {
     this.router.navigate([ROUTES.dashboardPageRoute, restaurantID]);
   }
 
-  prepareStatsCard(id: number): void {
-    this.dashboardStatService.getStats(id).subscribe((data) => {
-      if (!data) {
-        this.statsCards = [];
-        return;
+  prepareStatsCard(data: Stats | undefined): StatsCard[] {
+    if (!data) return [];
+    const cards: StatsCard[] = [];
+    for (const key of Object.keys(
+      StatsConfig,
+    ) as (keyof typeof StatsConfig)[]) {
+      const stateValue = data[key];
+      if (stateValue !== undefined) {
+        cards.push({ ...StatsConfig[key], value: stateValue });
       }
-      const cards = [];
-      for (const key of Object.keys(
-        StatsConfig,
-      ) as (keyof typeof StatsConfig)[]) {
-        const statValue = data[key];
-        if (statValue !== undefined) {
-          cards.push({ ...StatsConfig[key], value: statValue });
-        }
-      }
-      this.statsCards = cards;
-    });
+    }
+    return cards;
   }
 
   isAdmin(): boolean {

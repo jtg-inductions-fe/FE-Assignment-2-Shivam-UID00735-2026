@@ -14,8 +14,8 @@ import { SidebarItem, UserRole } from '@/models';
   styleUrls: ['./side-bar-item.component.scss'],
 })
 export class SideBarItemComponent implements OnInit {
-  @Input() item: SidebarItem;
-  @Input() userRole: UserRole;
+  @Input({ required: true }) item!: SidebarItem;
+  @Input({ required: true }) userRole!: UserRole;
 
   private authService = inject(AuthService);
   private router = inject(Router);

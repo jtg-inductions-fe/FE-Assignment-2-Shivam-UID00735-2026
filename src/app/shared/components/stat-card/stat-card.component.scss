@@ -10,6 +10,7 @@
     flex-direction: column;
     justify-content: center;
   }
+
   &__title {
     font-size: $fs-xs;
     color: $heading-color;
@@ -22,8 +23,32 @@
   }
 
   &__icon {
-    padding: 6px;
+    padding: px-to-rem(6);
     border-radius: 8px;
-    color: $sea-green;
+
+    &--total-revenue {
+      color: $sea-green-color;
+      background-color: $light-sea-green-color;
+    }
+
+    &--total-orders {
+      color: $lochmara-blue-color;
+      background-color: $light-blue-color;
+    }
+
+    &--complete-orders {
+      color: $clementine-color;
+      background-color: $light-clementine-color;
+    }
+
+    &--active-restaurant {
+      color: $sea-green-color;
+      background-color: $light-sea-green-color;
+    }
+
+    &--restaurant-owners {
+      color: $violet-color;
+      background-color: $light-violet;
+    }
   }
 }

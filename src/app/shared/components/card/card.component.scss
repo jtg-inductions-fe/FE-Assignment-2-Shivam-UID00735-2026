@@ -1,7 +1,7 @@
 @use 'abstract' as *;
 
 .card {
-  padding: 10px;
+  padding: px-to-rem(10);
   border-radius: 12px;
 
   &__with-shadow {

@@ -6,8 +6,8 @@
         {{ isCurrency ? (stat | currency) : stat }}
       </h3>
     </div>
-    <div class="stat-card__icon" [style.background-color]="iconBg">
-      <mat-icon [style.color]="iconColor">{{ icon }}</mat-icon>
+    <div [class]="'stat-card__icon stat-card__icon--' + itemClassName">
+      <mat-icon>{{ icon }}</mat-icon>
     </div>
   </div>
 </app-card>

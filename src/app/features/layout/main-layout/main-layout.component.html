@@ -1,7 +1,6 @@
 <div class="layout">
   <app-header (toggleSideBar)="toggleSidebar()"></app-header>
   <mat-sidenav-container class="layout__container">
-    <!-- ! Changed to the $event ? what is the use of that -->
     <mat-sidenav
       *ngIf="canShowSidebar()"
       [mode]="sideNavMode"

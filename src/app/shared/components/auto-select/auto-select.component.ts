@@ -12,6 +12,8 @@ import {
   debounceTime,
   distinctUntilChanged,
   switchMap,
+  of,
+  filter,
 } from 'rxjs';
 
 import { FormControl } from '@angular/forms';
@@ -31,6 +33,8 @@ export class AutoSelectComponent implements OnInit {
   private authService = inject(AuthService);
   private dashboardService = inject(DashboardService);
 
+  private skipNextSearch = false;
+
   filteredOptions!: Observable<restaurant[]>;
   isSearching = false;
 
@@ -42,12 +46,27 @@ export class AutoSelectComponent implements OnInit {
     this.filteredOptions = this.form.valueChanges.pipe(
       debounceTime(300),
       distinctUntilChanged(),
-      switchMap((value) => this.dashboardService.getRestaurant(value ?? '')),
+      filter(() => {
+        if (this.skipNextSearch) {
+          this.skipNextSearch = false;
+          return false;
+        }
+
+        return true;
+      }),
+      switchMap((value) => {
+        const query = (value ?? '').trim();
+        if (query.length === 0) {
+          return of([]);
+        }
+        return this.dashboardService.getFilteredRestaurants(query);
+      }),
     );
     this.selectedValuesOnChange.emit(0);
   }
 
   onSelectValueChange(options: restaurant) {
+    this.skipNextSearch = true;
     this.selectedValuesOnChange.emit(options.id);
   }
 }
