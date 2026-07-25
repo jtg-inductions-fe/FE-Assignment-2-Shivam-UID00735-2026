@@ -18,9 +18,8 @@
         </div>
 
         <span class="list-card__value">
-          {{ item.value }}
-
-          <span class="list-card__value-suffix" *ngIf="valueSuffix">{{
+          {{ valuePrefix }}{{ item.value
+          }}<span class="list-card__value-suffix" *ngIf="valueSuffix">{{
             valueSuffix
           }}</span>
         </span>

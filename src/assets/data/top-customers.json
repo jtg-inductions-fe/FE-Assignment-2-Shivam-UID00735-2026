@@ -163,7 +163,7 @@
       {
         "image": "assets/images/avatars/admin-profile.jpg",
         "name": "Amir Patel",
-        " Amirpatel@demo.com": "amirpatel@demo.com",
+        "email": "amirpatel@demo.com",
         "amount": 40
       },
       {

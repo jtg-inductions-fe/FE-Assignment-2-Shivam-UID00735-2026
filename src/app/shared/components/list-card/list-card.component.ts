@@ -7,6 +7,7 @@ import { ListCardItem } from '@/models';
 })
 export class ListCardComponent {
   @Input() title = '';
-  @Input() items: ListCardItem[] = [];
+  @Input({ required: true }) items: ListCardItem[] = [];
   @Input() valueSuffix = '';
+  @Input() valuePrefix = '';
 }

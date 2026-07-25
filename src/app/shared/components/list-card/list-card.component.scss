@@ -1,28 +1,29 @@
 @use 'abstract' as *;
 @use 'base' as *;
+@use 'theme' as *;
+
 .list-card {
   padding: $spacing-6;
+
   &__heading {
     margin: 0;
   }
 
   &__item {
     @include flex(space-between, row);
-
     padding: $spacing-2;
     margin-top: $spacing-2;
-    border-bottom: 1px solid $border-color;
+    border-bottom: 1px solid $divider-color;
 
     &:last-child {
       border-bottom: none;
+      margin-bottom: 0;
     }
   }
 
   &__left {
-    display: flex;
-    align-items: center;
+    @include flex;
     gap: $spacing-4;
-
     img {
       width: px-to-rem(40);
       height: px-to-rem(40);
@@ -36,7 +37,6 @@
       font-weight: $fw-semibold;
       margin: 0;
     }
-
     p {
       color: $paragraph-black-weighted-color;
     }
@@ -48,15 +48,34 @@
 
   &__value-suffix {
     font-weight: normal;
+    padding-left: $spacing-1;
   }
 
   &__wrapper {
-    max-height: 420px;
+    max-height: px-to-rem(450);
     overflow-y: auto;
-    overflow-x: hidden;
+    padding-right: 8px;
 
     &::-webkit-scrollbar {
-      width: 0px;
+      width: 6px;
     }
+
+    &::-webkit-scrollbar-track {
+      background: transparent;
+      border-radius: 10px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: $scrollbar-thumb-color;
+      border-radius: 10px;
+      transition: background-color 0.2s ease;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+      background-color: $scrollbar-thumb-hover-color;
+    }
+
+    scrollbar-width: thin;
+    scrollbar-color: $scrollbar-thumb-color transparent;
   }
 }

@@ -1,5 +1,6 @@
 @use 'abstract' as *;
 @use 'base' as *;
+@use 'theme' as *;
 
 .main-header {
   @include flex(space-between, row);
@@ -16,21 +17,5 @@
   @include respond-up('lg') {
     flex-direction: row;
     text-align: start;
-  }
-
-  @include respond-up('lg') {
-    flex-direction: row;
-    text-align: start;
-    ng-content {
-      width: auto;
-    }
-  }
-
-  @include respond-up('lg') {
-    flex-direction: row;
-    text-align: start;
-    ng-content {
-      width: auto;
-    }
   }
 }
