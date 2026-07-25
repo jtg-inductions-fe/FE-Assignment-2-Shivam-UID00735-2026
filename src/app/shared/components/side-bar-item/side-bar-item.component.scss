@@ -45,6 +45,10 @@ mat-expansion-panel-header {
   &__menu-name {
     max-width: px-to-rem(120);
   }
+
+  &__children {
+    background-color: $mute-color;
+  }
 }
 .sidebar-tree-invisible {
   display: none;

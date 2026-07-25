@@ -22,7 +22,7 @@
       },
       {
         "title": "Billing History",
-        "href": "/billing-history",
+        "href": null,
         "icon": "description",
         "role": ["owner"],
         "children": [
