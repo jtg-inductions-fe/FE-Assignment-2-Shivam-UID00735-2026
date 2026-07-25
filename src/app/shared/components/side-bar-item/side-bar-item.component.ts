@@ -8,8 +8,8 @@ import { MatTreeNestedDataSource } from '@angular/material/tree';
   styleUrls: ['./side-bar-item.component.scss'],
 })
 export class SideBarItemComponent implements OnInit {
-  @Input() item!: SidebarItem;
-  @Input() userRole!: UserRole;
+  @Input() item: SidebarItem;
+  @Input() userRole: UserRole;
 
   treeControl = new NestedTreeControl<SidebarItem>((node) => node.children);
   dataSource = new MatTreeNestedDataSource<SidebarItem>();
