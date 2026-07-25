@@ -38,4 +38,10 @@
       class="main-wrapper__top-dishes"
     ></app-top-dishes>
   </div>
+
+  <!-- active orders -->
+  <app-active-orders
+    *ngIf="restaurantId !== 0"
+    [activeOrdersItem]="activeOrdersData"
+  ></app-active-orders>
 </div>

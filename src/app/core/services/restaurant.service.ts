@@ -38,4 +38,8 @@ export class RestaurantService {
   getAllRestaurants(): Restaurant[] {
     return this.restaurants;
   }
+
+  getAllRestaurant(): Observable<Restaurant[] | null> {
+    return this.http.get<Restaurant[]>(this.restaurantsJSON);
+  }
 }

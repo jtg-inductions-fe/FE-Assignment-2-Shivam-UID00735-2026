@@ -12,6 +12,7 @@ import {
 } from '@/models';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ROUTES } from '@/core/constants';
+import { ActiveOrders  } from '@/models';
 
 @Component({
   selector: 'app-dashboard',
@@ -26,6 +27,7 @@ export class DashboardComponent implements OnInit {
   statsCards: StatsCard[] = [];
   topCustomer: ListCardItem[] = [];
   topDishes: ListCardItem[] = [];
+  activeOrdersData: ActiveOrders[] = [];
 
   private dashboardStatService = inject(DashboardService);
   private authService = inject(AuthService);
@@ -112,5 +114,16 @@ export class DashboardComponent implements OnInit {
       subtitle: dish.category,
       value: dish.value,
     }));
+  }
+
+  private prepareActiveOrder(restaurantId: number): void {
+    this.dashboardStatService
+      .getActiveOrders(restaurantId)
+      .subscribe((data) => {
+        if (!data) {
+          return;
+        }
+        this.activeOrdersData = data;
+      });
   }
 }

@@ -22,3 +22,17 @@ export interface TopDishesList {
   restaurantId: number;
   topDishes: TopDishes[];
 }
+
+// Active list item
+export interface ActiveOrders {
+  orderId: string;
+  restaurant: string;
+  customer: string;
+  items: string[];
+  amount: number;
+}
+
+export interface ActiveOrdersItems {
+  restaurantId: number;
+  items: ActiveOrders[];
+}

@@ -7,3 +7,4 @@ export * from './navigation.model';
 export * from './restaurant.model';
 export * from './user.model';
 export * from './shared.model';
+export * from './table';

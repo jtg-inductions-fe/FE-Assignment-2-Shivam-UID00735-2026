@@ -1,1 +1,19 @@
-<p>restaurant works!</p>
+<app-main-content-header
+  [headingFontSize]="64"
+  [title]="pageTitle"
+  [description]="pageDescription"
+>
+  <a routerLink="/admin/restaurant/insert" mat-flat-button color="primary">
+    <mat-icon>add</mat-icon>
+    ADD RESTAURANT
+  </a>
+</app-main-content-header>
+
+<app-card [hasShadow]="true">
+  <app-table
+    [dataSource]="restaurantData"
+    [columns]="columns"
+    (tableAction)="handleTableAction($event)"
+  >
+  </app-table>
+</app-card>

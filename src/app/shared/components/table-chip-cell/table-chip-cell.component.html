@@ -1,0 +1,13 @@
+<mat-chip-listbox>
+  <ng-container *ngIf="config.multiple; else singleChip">
+    <mat-chip-row *ngFor="let chip of chips" [color]="config.color" highlighted>
+      {{ chip }}
+    </mat-chip-row>
+  </ng-container>
+</mat-chip-listbox>
+
+<ng-template #singleChip>
+  <mat-chip-row [color]="getChipColor(chip)" highlighted>
+    {{ value }}
+  </mat-chip-row>
+</ng-template>

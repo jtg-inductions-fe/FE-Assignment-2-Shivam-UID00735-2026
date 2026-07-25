@@ -1,0 +1,84 @@
+<ng-container *ngFor="let button of config">
+  <ng-container [ngSwitch]="button.type">
+    <!-- Basic -->
+    <button
+      *ngSwitchCase="'basic'"
+      mat-button
+      [color]="button.color"
+      [disabled]="button.disabled"
+      (click)="onClick(button)"
+    >
+      <mat-icon *ngIf="button.icon">{{ button.icon }}</mat-icon>
+      {{ button.label }}
+    </button>
+
+    <!-- Flat -->
+    <button
+      *ngSwitchCase="'flat'"
+      mat-flat-button
+      [color]="button.color"
+      [disabled]="button.disabled"
+      (click)="onClick(button)"
+    >
+      <mat-icon *ngIf="button.icon">{{ button.icon }}</mat-icon>
+      {{ button.label }}
+    </button>
+
+    <!-- Stroked -->
+    <button
+      *ngSwitchCase="'stroked'"
+      mat-stroked-button
+      [color]="button.color"
+      [disabled]="button.disabled"
+      (click)="onClick(button)"
+    >
+      <mat-icon *ngIf="button.icon">{{ button.icon }}</mat-icon>
+      {{ button.label }}
+    </button>
+
+    <!-- Raised -->
+    <button
+      *ngSwitchCase="'raised'"
+      mat-raised-button
+      [color]="button.color"
+      [disabled]="button.disabled"
+      (click)="onClick(button)"
+    >
+      <mat-icon *ngIf="button.icon">{{ button.icon }}</mat-icon>
+      {{ button.label }}
+    </button>
+
+    <!-- Icon -->
+    <button
+      *ngSwitchCase="'icon'"
+      mat-icon-button
+      [color]="button.color"
+      [disabled]="button.disabled"
+      (click)="onClick(button)"
+    >
+      <mat-icon>{{ button.icon }}</mat-icon>
+    </button>
+
+    <!-- Fab -->
+    <button
+      *ngSwitchCase="'fab'"
+      mat-fab
+      [color]="button.color"
+      [disabled]="button.disabled"
+      (click)="onClick(button)"
+    >
+      <mat-icon>{{ button.icon }}</mat-icon>
+    </button>
+
+    <!-- Mini Fab -->
+    <button
+      *ngSwitchCase="'mini-fab'"
+      mat-mini-fab
+      [color]="button.color"
+      [disabled]="button.disabled"
+      (click)="onClick(button)"
+    >
+      <mat-icon>{{ button.icon }}</mat-icon>
+    </button>
+  </ng-container>
+</ng-container>

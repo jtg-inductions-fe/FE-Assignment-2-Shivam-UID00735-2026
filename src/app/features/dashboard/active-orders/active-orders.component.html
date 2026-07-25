@@ -3,15 +3,13 @@
     [headingFontSize]="20"
     title="Active Orders"
     description="Manage pending and accepted orders directly from your dashboard."
-  ></app-main-content-header>
+  >
+  </app-main-content-header>
 
-  <!-- table Data -->
   <app-table
     [dataSource]="activeOrdersItem"
     [columns]="activeOrderColumn"
-    [templates]="templates"
+    (tableAction)="handleTableAction($event)"
   >
   </app-table>
-
-  <ng-template #itemsTemplate let-row> hell hello wrold </ng-template>
 </app-card>

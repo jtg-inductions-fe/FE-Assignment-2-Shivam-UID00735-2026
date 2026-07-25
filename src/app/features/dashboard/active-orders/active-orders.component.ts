@@ -1,66 +1,97 @@
-import { ActiveOrders } from '@/models';
-import {
-  Component,
-  Input,
-  OnInit,
-  TemplateRef,
-  ViewChild,
-} from '@angular/core';
-import { TableColumn } from '@/models';
+import { Component, Input } from '@angular/core';
+
+import { ActiveOrders, TableColumn } from '@/models';
 
 @Component({
   selector: 'app-active-orders',
   templateUrl: './active-orders.component.html',
   styleUrls: ['./active-orders.component.scss'],
 })
-export class ActiveOrdersComponent implements OnInit {
+export class ActiveOrdersComponent {
   @Input() activeOrdersItem: ActiveOrders[] = [];
 
   activeOrderColumn: TableColumn[] = [
     {
       key: 'orderId',
       header: 'ORDER ID',
+      type: 'text',
+      textConfig: {
+        bold: true,
+      },
     },
     {
       key: 'restaurant',
       header: 'RESTAURANT',
+      type: 'text',
     },
     {
       key: 'customer',
       header: 'CUSTOMER',
+      type: 'text',
     },
     {
       key: 'items',
       header: 'ITEMS',
-      type: 'template',
+      type: 'text',
     },
     {
       key: 'amount',
       header: 'AMOUNT',
+      type: 'text',
     },
     {
       key: 'status',
       header: 'STATUS',
-      type: 'template',
+      type: 'chip',
+      chipConfig: {
+        colorMap: {
+          pending: 'accent',
+          Accepted: 'primary',
+          Rejected: 'warn',
+          Completed: 'primary',
+        },
+      },
     },
     {
       key: 'actions',
       header: 'ACTIONS',
-      type: 'template',
+      type: 'button',
+      buttonConfig: [
+        {
+          type: 'flat',
+          label: 'Accept',
+          color: 'primary',
+          action: 'accept',
+        },
+        {
+          type: 'stroked',
+          label: 'Reject',
+          color: 'warn',
+          action: 'reject',
+        },
+      ],
     },
   ];
 
-  @ViewChild('statusTemplate') statusTemplate: TemplateRef<unknown>;
-  @ViewChild('itemsTemplate') itemsTemplate: TemplateRef<unknown>;
-  @ViewChild('actionsTemplate') actionsTemplate: TemplateRef<unknown>;
+  handleTableAction(event: { action: string; row: unknown }): void {
+    const order = event.row as ActiveOrders;
 
-  templates: Record<string, TemplateRef<unknown>> = {};
+    switch (event.action) {
+      case 'accept':
+        this.acceptOrder(order);
+        break;
 
-  ngOnInit(): void {
-    this.templates = {
-      items: this.itemsTemplate,
-      status: this.statusTemplate,
-      actions: this.actionsTemplate,
-    };
+      case 'reject':
+        this.rejectOrder(order);
+        break;
+    }
+  }
+
+  acceptOrder(order: ActiveOrders): void {
+    console.log('Accepted', order);
+  }
+
+  rejectOrder(order: ActiveOrders): void {
+    console.log('Rejected', order);
   }
 }

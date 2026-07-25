@@ -11,6 +11,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { TopCustomersComponent } from './top-customers/top-customers.component';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { TopDishesComponent } from './top-dishes/top-dishes.component';
+import { ActiveOrdersComponent } from './active-orders/active-orders.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { TopDishesComponent } from './top-dishes/top-dishes.component';
     ReportGeneratorComponent,
     TopCustomersComponent,
     TopDishesComponent,
+    ActiveOrdersComponent,
   ],
   imports: [
     CommonModule,

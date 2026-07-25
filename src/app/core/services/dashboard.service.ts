@@ -9,6 +9,8 @@ import {
   TopCustomer,
   TopDishes,
   TopDishesList,
+  ActiveOrders,
+  ActiveOrdersItems,
 } from '@/models';
 import { API_URL } from '@/core/constants';
 
@@ -18,8 +20,14 @@ import { API_URL } from '@/core/constants';
 export class DashboardService {
   private readonly restaurantsJSON = API_URL.restaurantsJSON;
   private readonly restaurantStatsURL = API_URL.restaurantStatsURL;
+<<<<<<< HEAD
   private readonly topCustomersURL = API_URL.topCustomers;
   private readonly topDishesURL = API_URL.topDishes;
+=======
+  private readonly topCustomers = API_URL.topCustomers;
+  private readonly topDishes = API_URL.topDishes;
+  private readonly activeOrders = API_URL.activeOrders;
+>>>>>>> bc835f2 ([SK_A2_08]: Create reusable table)
   private http = inject(HttpClient);
 
   private allStats$: Observable<StatsData[]> = this.http
@@ -81,5 +89,18 @@ export class DashboardService {
     return restaurants.filter((restaurant) =>
       restaurant.name.toLowerCase().includes(search.toLowerCase()),
     );
+  }
+
+  getActiveOrders(
+    restaurantId: number,
+  ): Observable<ActiveOrders[] | undefined> {
+    return this.http
+      .get<ActiveOrdersItems[]>(this.activeOrders)
+      .pipe(
+        map(
+          (data) =>
+            data.find((item) => item.restaurantId === restaurantId)?.items,
+        ),
+      );
   }
 }
