@@ -63,9 +63,4 @@ export class TableComponent implements OnInit, OnChanges, AfterViewInit {
   onButtonClick(event: { action: string; row: unknown }): void {
     this.tableAction.emit(event);
   }
-
-  trackByRow = (index: number, row: unknown): unknown => {
-    const record = row as Record<string, unknown>;
-    return record['orderId'] ?? record['id'] ?? index;
-  };
 }
