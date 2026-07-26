@@ -16,6 +16,10 @@
     display: inline-flex;
     justify-content: end;
     gap: $spacing-4;
+    flex-direction: column;
+    @include respond-up('lg') {
+      flex-direction: row;
+    }
   }
 
   ::ng-deep .mat-mdc-chip {
