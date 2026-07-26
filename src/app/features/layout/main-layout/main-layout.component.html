@@ -2,7 +2,7 @@
   <app-header (toggleSideBar)="toggleSidebar()"></app-header>
   <mat-sidenav-container class="layout__container">
     <mat-sidenav
-      *ngIf="canShowSidebar()"
+      *ngIf="isLoggedIn()"
       [mode]="sideNavMode"
       [opened]="isSidebarOpen"
       (openedChange)="isSidebarOpen = $event"
@@ -14,7 +14,8 @@
     <mat-sidenav-content>
       <main class="layout__content">
         <router-outlet></router-outlet>
-        <!-- footer -->
+
+        <app-footer *ngIf="isLoggedIn()"></app-footer>
       </main>
     </mat-sidenav-content>
   </mat-sidenav-container>

@@ -38,10 +38,7 @@ export class MainLayoutComponent implements OnInit {
     }
   }
 
-  canShowSidebar(): boolean {
-    if (this.authService.isLoggedIn()) {
-      return true;
-    }
-    return false;
+  isLoggedIn(): boolean {
+    return this.authService.isLoggedIn();
   }
 }
