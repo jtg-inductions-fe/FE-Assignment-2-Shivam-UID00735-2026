@@ -1,4 +1,4 @@
-import { Component, inject, DestroyRef, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { DashboardService } from '@/core/services';
 import { map, tap, filter, switchMap } from 'rxjs';
 import { AuthService } from '@/core/services/auth.service';
@@ -31,6 +31,7 @@ export class DashboardComponent implements OnInit {
   private authService = inject(AuthService);
   private router = inject(Router);
   private activeRoute = inject(ActivatedRoute);
+
   private selectedRestaurantId$ = this.activeRoute.paramMap.pipe(
     map((params) => Number(params.get('id'))),
     tap((id) => {
@@ -43,10 +44,9 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.dashboardStatService.getAllRestaurants().subscribe();
-
-    this.selectedRestaurantId$
-      .pipe(switchMap((id) => this.dashboardStatService.getDashboardStats(id)))
-      .subscribe((stats) => (this.statsCards = this.prepareStatsCard(stats)));
+    this.loadStats();
+    this.loadTopCustomers();
+    this.loadTopDishes();
   }
 
   onRestaurantChange(restaurantID: number): void {
@@ -59,10 +59,7 @@ export class DashboardComponent implements OnInit {
 
   private loadStats(): void {
     this.selectedRestaurantId$
-      .pipe(
-        switchMap((id) => this.dashboardStatService.getDashboardStats(id)),
-        takeUntilDestroyed(this.destroyRef),
-      )
+      .pipe(switchMap((id) => this.dashboardStatService.getDashboardStats(id)))
       .subscribe((stats) => {
         this.statsCards = this.prepareStatsCard(stats);
       });
@@ -70,10 +67,7 @@ export class DashboardComponent implements OnInit {
 
   private loadTopCustomers(): void {
     this.selectedRestaurantId$
-      .pipe(
-        switchMap((id) => this.dashboardStatService.getTopCustomers(id)),
-        takeUntilDestroyed(this.destroyRef),
-      )
+      .pipe(switchMap((id) => this.dashboardStatService.getTopCustomers(id)))
       .subscribe((data) => {
         this.topCustomer = this.prepareTopCustomers(data);
       });
@@ -81,10 +75,7 @@ export class DashboardComponent implements OnInit {
 
   private loadTopDishes(): void {
     this.selectedRestaurantId$
-      .pipe(
-        switchMap((id) => this.dashboardStatService.getTopDishes(id)),
-        takeUntilDestroyed(this.destroyRef),
-      )
+      .pipe(switchMap((id) => this.dashboardStatService.getTopDishes(id)))
       .subscribe((data) => {
         this.topDishes = this.prepareTopDishes(data);
       });

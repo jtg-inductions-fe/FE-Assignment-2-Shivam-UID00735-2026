@@ -1,10 +1,21 @@
-<div class="list-card">
-  <h2 class="list-card__heading">
-    {{ title }}
-  </h2>
-  <div class="list-card__item" *ngFor="let item of items; let last = last">
-    <div class="list-card__left">
-      <img *ngIf="item.image" [src]="item.image" [alt]="item.title + 'image'" />
+<app-card [hasShadow]="true">
+  <div class="list-card">
+    <h2 class="list-card__heading">
+      {{ title }}
+    </h2>
+    <div
+      class="list-card__wrapper"
+      *ngIf="items.length; else noItems"
+      tabindex="0"
+      [attr.aria-label]="title + ' list'"
+    >
+      <div class="list-card__item" *ngFor="let item of items">
+        <div class="list-card__left">
+          <img
+            *ngIf="item.image"
+            [src]="item.image"
+            [alt]="item.title + 'image'"
+          />
 
           <div class="list-card__content">
             <h3>

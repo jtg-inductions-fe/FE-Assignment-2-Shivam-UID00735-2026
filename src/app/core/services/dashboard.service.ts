@@ -1,7 +1,6 @@
 import { inject, Injectable } from '@angular/core';
-import { map, Observable } from 'rxjs';
+import { map, Observable, shareReplay } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-
 import {
   Stats,
   StatsData,
@@ -11,24 +10,32 @@ import {
   TopDishes,
   TopDishesList,
 } from '@/models';
+import { API_URL } from '@/core/constants';
 
-import { API_URL } from '../constants';
 @Injectable({
   providedIn: 'root',
 })
 export class DashboardService {
   private readonly restaurantsJSON = API_URL.restaurantsJSON;
   private readonly restaurantStatsURL = API_URL.restaurantStatsURL;
-  private readonly topCustomers = API_URL.topCustomers;
-  private readonly topDishes = API_URL.topDishes;
+  private readonly topCustomersURL = API_URL.topCustomers;
+  private readonly topDishesURL = API_URL.topDishes;
   private http = inject(HttpClient);
 
   private allStats$: Observable<StatsData[]> = this.http
-    .get<StatsData[]>(this.dashboardStatsJSON)
+    .get<StatsData[]>(this.restaurantStatsURL)
     .pipe(shareReplay(1));
 
   private allRestaurants$: Observable<Restaurant[]> = this.http
     .get<Restaurant[]>(this.restaurantsJSON)
+    .pipe(shareReplay(1));
+
+  private allTopCustomers$: Observable<TopCustomersList[]> = this.http
+    .get<TopCustomersList[]>(this.topCustomersURL)
+    .pipe(shareReplay(1));
+
+  private allTopDishes$: Observable<TopDishesList[]> = this.http
+    .get<TopDishesList[]>(this.topDishesURL)
     .pipe(shareReplay(1));
 
   getDashboardStats(restaurantId: number): Observable<Stats | undefined> {
@@ -40,41 +47,39 @@ export class DashboardService {
   }
 
   getFilteredRestaurants(search: string): Observable<Restaurant[]> {
-    return this.http
-      .get<Restaurant[]>(this.restaurantsJSON)
-      .pipe(
-        map((restaurants) =>
-          restaurants.filter((restaurant) =>
-            restaurant.name.toLowerCase().includes(search.toLowerCase()),
-          ),
-        ),
-      ),
+    return this.allRestaurants$.pipe(
+      map((restaurants) => this.filterRestaurants(restaurants, search)),
     );
   }
 
   getAllRestaurants(): Observable<Restaurant[]> {
     return this.allRestaurants$;
   }
+
   getTopCustomers(restaurantId: number): Observable<TopCustomer[] | undefined> {
-    return this.http
-      .get<TopCustomersList[]>(this.topCustomers)
-      .pipe(
-        map(
-          (data) =>
-            data.find((item) => item.restaurantId === restaurantId)
-              ?.topCustomers,
-        ),
-      );
+    return this.allTopCustomers$.pipe(
+      map(
+        (data) =>
+          data.find((item) => item.restaurantId === restaurantId)?.topCustomers,
+      ),
+    );
   }
 
   getTopDishes(restaurantId: number): Observable<TopDishes[] | undefined> {
-    return this.http
-      .get<TopDishesList[]>(this.topDishes)
-      .pipe(
-        map(
-          (data) =>
-            data.find((item) => item.restaurantId === restaurantId)?.topDishes,
-        ),
-      );
+    return this.allTopDishes$.pipe(
+      map(
+        (data) =>
+          data.find((item) => item.restaurantId === restaurantId)?.topDishes,
+      ),
+    );
+  }
+
+  private filterRestaurants(
+    restaurants: Restaurant[],
+    search: string,
+  ): Restaurant[] {
+    return restaurants.filter((restaurant) =>
+      restaurant.name.toLowerCase().includes(search.toLowerCase()),
+    );
   }
 }
