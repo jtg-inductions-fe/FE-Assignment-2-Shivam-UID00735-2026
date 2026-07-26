@@ -59,7 +59,14 @@
     <!-- button groups -->
 
     <div class="restaurant-form__buttons">
-      <button type="button" mat-stroked-button color="primary">CANCEL</button>
+      <button
+        type="button"
+        mat-stroked-button
+        color="primary"
+        (click)="onCancel()"
+      >
+        CANCEL
+      </button>
       <button type="submit" mat-raised-button color="primary">
         <mat-icon>save</mat-icon>
 

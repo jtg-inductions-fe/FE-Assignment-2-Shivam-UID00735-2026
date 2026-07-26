@@ -1,7 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
-import { ActivatedRoute } from '@angular/router';
 import { RestaurantService } from '@/core/services/restaurant.service';
 import { ROUTES } from '@/core/constants';
 import { Restaurant } from '@/models';
@@ -14,8 +13,10 @@ import { Restaurant } from '@/models';
 export class RestaurantInsertComponent implements OnInit {
   title = '';
   description = '';
+  restaurantListPageRoute =
+    ROUTES.adminRestaurantRoutes.adminRestaurantListRoute;
 
-  initialData!: Restaurant;
+  initialData?: Restaurant;
 
   private activeRoute = inject(ActivatedRoute);
   private router = inject(Router);
@@ -25,12 +26,14 @@ export class RestaurantInsertComponent implements OnInit {
   isEditMode = false;
 
   ngOnInit(): void {
-    this.title = '';
-    this.description = '';
     const currentUrl = this.router.url;
 
-    this.isEditMode = currentUrl.includes('restaurant/edit');
-    this.isInsertMode = currentUrl.includes('restaurant/insert');
+    this.isEditMode = currentUrl.includes(
+      ROUTES.adminRestaurantRoutes.adminEditRestaurantRoute,
+    );
+    this.isInsertMode = currentUrl.includes(
+      ROUTES.adminRestaurantRoutes.adminInsertRestaurantRoute,
+    );
 
     if (this.isEditMode) {
       this.activeRoute.paramMap.subscribe((param) => {
@@ -43,8 +46,7 @@ export class RestaurantInsertComponent implements OnInit {
         }
         this.loadRestaurantDetails(id);
       });
-    }
-    if (this.isEditMode) {
+
       this.title = 'Edit Restaurant';
       this.description = 'Update the restaurant name, address, and owners.';
     } else {
@@ -54,11 +56,17 @@ export class RestaurantInsertComponent implements OnInit {
   }
 
   loadRestaurantDetails(id: number) {
-    this.restaurantService.getRestaurantDetails(id).subscribe((data) => {
-      if (!data) {
-        return;
-      }
-      this.initialData = data;
+    this.restaurantService.getRestaurantDetails(id).subscribe({
+      next: (data) => {
+        if (!data) {
+          this.router.navigate([ROUTES.notFoundPageRoute]);
+          return;
+        }
+        this.initialData = data;
+      },
+      error: () => {
+        this.router.navigate([ROUTES.serverErrorRoute]);
+      },
     });
   }
 }

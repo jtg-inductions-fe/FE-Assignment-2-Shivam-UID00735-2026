@@ -38,7 +38,7 @@ const routes: Routes = [
     component: DashboardComponent,
     canActivate: [authGuard, ownerDashboardRedirectGuard],
   },
-  // Admin restaurant route
+
   {
     path: ROUTES.adminRestaurantRoutes.adminRestaurantListRoute,
     component: RestaurantComponent,

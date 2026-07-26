@@ -5,7 +5,7 @@ import { RestaurantInsertComponent } from './restaurant-actions/restaurant-actio
 import { SharedModule } from '@/shared/shared.module';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { AppRoutingModule } from '@/app-routing.module';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [RestaurantComponent, RestaurantInsertComponent],
@@ -14,7 +14,7 @@ import { AppRoutingModule } from '@/app-routing.module';
     SharedModule,
     MatButtonModule,
     MatIconModule,
-    AppRoutingModule,
+    RouterModule,
   ],
 })
 export class RestaurantModule {}

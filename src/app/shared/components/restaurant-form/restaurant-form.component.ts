@@ -4,7 +4,7 @@ import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { MatChipInputEvent, MatChipEditedEvent } from '@angular/material/chips';
 
-import { NotificationService } from '@/core/services';
+import { NotificationService, RestaurantService } from '@/core/services';
 
 import { Restaurant } from '@/models';
 import { ROUTES } from '@/core/constants';
@@ -17,36 +17,30 @@ import { ROUTES } from '@/core/constants';
 export class RestaurantFormComponent implements OnInit {
   private formBuilder = inject(FormBuilder);
   private notificationService = inject(NotificationService);
-
   private router = inject(Router);
+  private restaurantService = inject(RestaurantService);
 
-  @Input() restaurantDetails!: Restaurant;
+  @Input() restaurantDetails?: Restaurant;
   @Input() isEditMode!: boolean;
+
   addOnBlur = true;
   readonly separatorKeysCodes = [ENTER, COMMA] as const;
   emails: string[] = [];
   myForm!: FormGroup;
 
   ngOnInit(): void {
-    if (!this.restaurantDetails) {
-      this.myForm = this.formBuilder.group({
-        restaurantName: ['', Validators.required],
-        restaurantAddress: ['', Validators.required],
-        ownerEmails: [this.emails, [Validators.required]],
-      });
-    } else {
-      if (this.restaurantDetails.ownersEmail) {
-        this.emails = [...this.emails, ...this.restaurantDetails.ownersEmail];
-      }
-      this.myForm = this.formBuilder.group({
-        restaurantName: [this.restaurantDetails.name, Validators.required],
-        restaurantAddress: [
-          this.restaurantDetails.address,
-          Validators.required,
-        ],
-        ownerEmails: [this.emails, [Validators.required]],
-      });
+    if (this.restaurantDetails?.ownersEmail) {
+      this.emails = [...this.restaurantDetails.ownersEmail];
     }
+
+    this.myForm = this.formBuilder.group({
+      restaurantName: [this.restaurantDetails?.name ?? '', Validators.required],
+      restaurantAddress: [
+        this.restaurantDetails?.address ?? '',
+        Validators.required,
+      ],
+      ownerEmails: [this.emails, [Validators.required]],
+    });
   }
 
   onSubmit() {
@@ -54,6 +48,36 @@ export class RestaurantFormComponent implements OnInit {
       this.myForm.markAllAsTouched();
       return;
     }
+    const formValue = this.myForm.value;
+    const restaurant: Restaurant = {
+      id: this.restaurantDetails?.id ?? Date.now(),
+      name: formValue.restaurantName,
+      address: formValue.restaurantAddress,
+      ownersEmail: this.emails,
+    };
+
+    if (this.isEditMode) {
+      this.notificationService.showSuccessMessage(
+        'Restaurant edited successfully',
+        'close',
+      );
+      this.router.navigate([
+        ROUTES.adminRestaurantRoutes.adminRestaurantListRoute,
+      ]);
+      return;
+    }
+
+    this.restaurantService.addRestaurant(restaurant);
+    this.notificationService.showSuccessMessage(
+      'Restaurant added successfully',
+      'close',
+    );
+    this.router.navigate([
+      ROUTES.adminRestaurantRoutes.adminRestaurantListRoute,
+    ]);
+  }
+
+  onCancel(): void {
     this.router.navigate([
       ROUTES.adminRestaurantRoutes.adminRestaurantListRoute,
     ]);
@@ -98,10 +122,16 @@ export class RestaurantFormComponent implements OnInit {
       return;
     }
 
+    if (!this.validateEmail(value)) {
+      this.showErrorMessage('invalidEmail');
+      return;
+    }
+
     const index = this.emails.indexOf(email);
 
     if (index >= 0) {
       this.emails[index] = value;
+      this.myForm.get('ownerEmails')?.setValue(this.emails);
     }
   }
 

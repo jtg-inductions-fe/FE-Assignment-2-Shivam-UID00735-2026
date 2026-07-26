@@ -11,7 +11,7 @@ export const adminGuard: CanActivateFn = (route, state) => {
   const router = inject(Router);
 
   if (authService.getCurrentUserRole() !== 'admin') {
-    router.navigate([ROUTES.notFoundPageRoute]);
+    return router.parseUrl(`/${ROUTES.notFoundPageRoute}`);
   }
 
   return true;

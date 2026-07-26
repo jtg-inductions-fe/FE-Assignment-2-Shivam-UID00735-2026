@@ -1,7 +1,7 @@
 <div class="restaurant-insert-wrapper">
   <!-- Back to button -->
   <button
-    routerLink="/admin/restaurant"
+    [routerLink]="restaurantListPageRoute"
     type="button"
     mat-stroked-button
     color="primary"
@@ -9,7 +9,7 @@
     <mat-icon>west</mat-icon> Back
   </button>
   <app-main-content-header
-    [headingFontSize]="64"
+    headingType="heading-large"
     [title]="title"
     [description]="description"
   ></app-main-content-header>
