@@ -1,34 +1,30 @@
-import { Stats, StatsCard } from '@/models/dashboard-stats.model';
+import { StatsCard } from '@/models';
 
-export const StatsConfig: Record<keyof Stats, Omit<StatsCard, 'value'>> = {
+export const StatsConfig = {
   totalRevenue: {
     title: 'Total Revenue',
     icon: 'attach_money',
-    itemClassName: 'total-revenue',
+    variant: 'primary',
     isCurrency: true,
   },
-
   totalOrders: {
     title: 'Total Orders',
     icon: 'shopping_cart',
-    itemClassName: 'total-orders',
+    variant: 'secondary',
   },
-
   completedOrders: {
     title: 'Completed Orders',
     icon: 'check_circle',
-    itemClassName: 'complete-orders',
+    variant: 'tertiary',
   },
-
   activeRestaurants: {
     title: 'Active Restaurants',
     icon: 'local_dining',
-    itemClassName: 'active-restaurant',
+    variant: 'primary',
   },
-
   restaurantOwners: {
     title: 'Restaurant Owners',
     icon: 'local_pizza',
-    itemClassName: 'restaurant-owners',
+    variant: 'quaternary',
   },
-};
+} satisfies Record<string, Omit<StatsCard, 'value'>>;

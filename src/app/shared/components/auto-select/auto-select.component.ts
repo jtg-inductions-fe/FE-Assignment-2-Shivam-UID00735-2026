@@ -6,7 +6,7 @@ import {
   OnInit,
   Output,
 } from '@angular/core';
-import { restaurant } from '@/models/restaurant.model';
+import { Restaurant } from '@/models/restaurant.model';
 import {
   Observable,
   debounceTime,
@@ -14,10 +14,13 @@ import {
   switchMap,
   of,
   filter,
+  catchError,
+  finalize,
 } from 'rxjs';
 
 import { FormControl } from '@angular/forms';
 import { DashboardService, AuthService } from '@/core/services';
+import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 
 @Component({
   selector: 'app-auto-select',
@@ -35,14 +38,18 @@ export class AutoSelectComponent implements OnInit {
 
   private skipNextSearch = false;
 
-  filteredOptions!: Observable<restaurant[]>;
+  filteredOptions!: Observable<Restaurant[]>;
   isSearching = false;
 
   ngOnInit(): void {
     if (this.authService.getCurrentUserRole() !== 'admin') {
       return;
     }
+
+    this.dashboardService.getAllRestaurants().subscribe();
+
     this.form.setValue('All Restaurant');
+
     this.filteredOptions = this.form.valueChanges.pipe(
       debounceTime(300),
       distinctUntilChanged(),
@@ -51,22 +58,31 @@ export class AutoSelectComponent implements OnInit {
           this.skipNextSearch = false;
           return false;
         }
-
         return true;
       }),
       switchMap((value) => {
         const query = (value ?? '').trim();
         if (query.length === 0) {
+          this.isSearching = false;
           return of([]);
         }
-        return this.dashboardService.getFilteredRestaurants(query);
+
+        this.isSearching = true;
+        return this.dashboardService.getFilteredRestaurants(query).pipe(
+          finalize(() => {
+            this.isSearching = false;
+          }),
+        );
       }),
     );
+
     this.selectedValuesOnChange.emit(0);
   }
 
-  onSelectValueChange(options: restaurant) {
+  onOptionSelected(event: MatAutocompleteSelectedEvent) {
+    const selected: Restaurant = event.option.value;
     this.skipNextSearch = true;
-    this.selectedValuesOnChange.emit(options.id);
+    this.form.setValue(selected.name, { emitEvent: false });
+    this.selectedValuesOnChange.emit(selected.id);
   }
 }

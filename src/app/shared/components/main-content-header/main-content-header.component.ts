@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { HeadingType } from '@/models';
 
 @Component({
   selector: 'app-main-content-header',
@@ -6,7 +7,7 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./main-content-header.component.scss'],
 })
 export class MainContentHeaderComponent {
-  @Input() title: string;
-  @Input() description: string;
-  @Input() headingType: string;
+  @Input() title = '';
+  @Input() description = '';
+  @Input() headingType: HeadingType = 'medium';
 }

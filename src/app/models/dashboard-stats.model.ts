@@ -2,8 +2,8 @@ export interface Stats {
   totalRevenue: number;
   totalOrders: number;
   completedOrders: number;
-  activeRestaurants: number;
-  restaurantOwners: number;
+  activeRestaurants?: number;
+  restaurantOwners?: number;
 }
 
 export interface StatsData {
@@ -11,14 +11,16 @@ export interface StatsData {
   stats: Stats;
 }
 
+export type StatCardVariant =
+  'primary' | 'secondary' | 'tertiary' | 'quaternary' | 'quinary';
+
 export interface StatsCard {
   title: string;
   value: number | string;
   icon: string;
-  itemClassName: string;
+  variant: StatCardVariant;
   isCurrency?: boolean;
 }
-
 export interface StatsCardsElementConfig {
   totalRevenue: StatsCard;
   totalOrders: StatsCard;

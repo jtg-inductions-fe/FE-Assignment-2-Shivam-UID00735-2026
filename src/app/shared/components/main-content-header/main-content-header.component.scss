@@ -9,15 +9,12 @@
   gap: px-to-rem(26);
 
   &__description {
-    color: $paragraph-color;
+    color: $heading-color;
     font-size: $fs-sm;
   }
 
   @include respond-up('lg') {
     flex-direction: row;
     text-align: start;
-    ng-content {
-      width: auto;
-    }
   }
 }

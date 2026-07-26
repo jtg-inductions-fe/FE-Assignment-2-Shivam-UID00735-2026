@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DashboardComponent } from './dashboard.component';
 import { SharedModule } from '@/shared/shared.module';
-import { AppRoutingModule } from '@/app-routing.module';
+
 import { MatButtonModule } from '@angular/material/button';
 import { StatsComponent } from './stats/stats.component';
 import { ReportGeneratorComponent } from './report-generator/report-generator.component';
@@ -20,7 +20,6 @@ import { MatExpansionModule } from '@angular/material/expansion';
   imports: [
     CommonModule,
     SharedModule,
-    AppRoutingModule,
     MatButtonModule,
     MatIconModule,
     MatExpansionModule,

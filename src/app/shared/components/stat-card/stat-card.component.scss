@@ -4,11 +4,23 @@
 
 .stat-card {
   @include flex(space-between, row);
+  align-items: flex-start;
+  gap: $spacing-2;
+  min-width: 0;
+  border: 1px solid $border-color;
+  padding: px-to-rem(10);
+  border-radius: 12px;
+
+  @include respond-up(md) {
+    flex-direction: row;
+    align-items: center;
+  }
 
   &__data {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    min-width: 0;
   }
 
   &__title {
@@ -17,38 +29,39 @@
   }
 
   &__stats {
-    font-size: $fs-xl;
+    font-size: $fs-lg;
     font-weight: $fw-bold;
     margin: 0;
+    word-break: break-word;
+
+    @include respond-up(md) {
+      font-size: $fs-xl;
+    }
   }
 
   &__icon {
     padding: px-to-rem(6);
     border-radius: 8px;
+    flex-shrink: 0;
 
-    &--total-revenue {
+    &--primary {
       color: $sea-green-color;
       background-color: $light-sea-green-color;
     }
 
-    &--total-orders {
+    &--secondary {
       color: $lochmara-blue-color;
       background-color: $light-blue-color;
     }
 
-    &--complete-orders {
+    &--tertiary {
       color: $clementine-color;
       background-color: $light-clementine-color;
     }
 
-    &--active-restaurant {
-      color: $sea-green-color;
-      background-color: $light-sea-green-color;
-    }
-
-    &--restaurant-owners {
+    &--quaternary {
       color: $violet-color;
-      background-color: $light-violet;
+      background-color: $light-violet-color;
     }
   }
 }

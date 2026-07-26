@@ -37,7 +37,6 @@ import { CardComponent } from './components/card/card.component';
     StatCardComponent,
     ListCardComponent,
     CardComponent,
-    CardComponent,
   ],
   imports: [
     CommonModule,

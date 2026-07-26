@@ -1,25 +1,25 @@
 @use 'abstract' as *;
+@use 'theme/colors' as *;
+@use 'base' as *;
+
 .stats-container {
-  display: flex;
-  align-items: center;
-  width: 100%;
-  flex-wrap: wrap;
-  gap: $spacing-3;
-  margin-top: $spacing-4;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: $spacing-4;
+
+  @include respond-up(sm) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include respond-up(md) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @include respond-up(lg) {
+    grid-template-columns: repeat(auto-fit, minmax(px-to-rem(220), 1fr));
+  }
 
   &__card {
-    width: calc(100% - 12px);
-  }
-
-  @include respond-up('sm') {
-    &__card {
-      width: calc(50% - 12px);
-    }
-  }
-
-  @include respond-up('lg') {
-    &__card {
-      width: calc(25% - 12px);
-    }
+    min-width: 0;
   }
 }

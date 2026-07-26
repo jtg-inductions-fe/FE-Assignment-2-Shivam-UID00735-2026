@@ -1,38 +1,46 @@
 import { inject, Injectable } from '@angular/core';
-import { map, Observable } from 'rxjs';
+import { map, Observable, shareReplay } from 'rxjs';
 import { Stats } from '@/models/dashboard-stats.model';
 import { HttpClient } from '@angular/common/http';
-import { StatsData } from '@/models/dashboard-stats.model';
-import { restaurant } from '@/models/restaurant.model';
+import { StatsData } from '@/models';
+import { Restaurant } from '@/models/restaurant.model';
+import { API_URL } from '@/core/constants';
 
 @Injectable({
   providedIn: 'root',
 })
 export class DashboardService {
-  private sidebarJsonURL = 'assets/data/restaurant-stats.json';
-  private restaurantsJSON = 'assets/data/restaurants.json';
+  private dashboardStatsJSON = API_URL.dashboardStatsJSON;
+  private restaurantsJSON = API_URL.restaurantsJSON;
   private http = inject(HttpClient);
 
+  private allStats$: Observable<StatsData[]> = this.http
+    .get<StatsData[]>(this.dashboardStatsJSON)
+    .pipe(shareReplay(1));
+
+  private allRestaurants$: Observable<Restaurant[]> = this.http
+    .get<Restaurant[]>(this.restaurantsJSON)
+    .pipe(shareReplay(1));
+
   getDashboardStats(restaurantId: number): Observable<Stats | undefined> {
-    return this.http
-      .get<StatsData[]>(this.sidebarJsonURL)
-      .pipe(
-        map(
-          (data) =>
-            data.find((item) => item.restaurantId == restaurantId)?.stats,
-        ),
-      );
+    return this.allStats$.pipe(
+      map(
+        (data) => data.find((item) => item.restaurantId == restaurantId)?.stats,
+      ),
+    );
   }
 
-  getFilteredRestaurants(search: string): Observable<restaurant[]> {
-    return this.http
-      .get<restaurant[]>(this.restaurantsJSON)
-      .pipe(
-        map((restaurants) =>
-          restaurants.filter((restaurant) =>
-            restaurant.name.toLowerCase().includes(search.toLowerCase()),
-          ),
+  getFilteredRestaurants(search: string): Observable<Restaurant[]> {
+    return this.allRestaurants$.pipe(
+      map((restaurants) =>
+        restaurants.filter((restaurant) =>
+          restaurant.name.toLowerCase().includes(search.toLowerCase()),
         ),
-      );
+      ),
+    );
+  }
+
+  getAllRestaurants(): Observable<Restaurant[]> {
+    return this.allRestaurants$;
   }
 }

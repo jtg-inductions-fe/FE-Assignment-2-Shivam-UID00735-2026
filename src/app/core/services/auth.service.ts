@@ -30,7 +30,6 @@ export class AuthService {
     return this.http.get<User[]>(this.usersDataURL);
   }
 
-  // this function is validating the email and password which are coming from the form, and after validating store the data in cookie
   validateUser(email: string, password: string): Observable<boolean> {
     return this.getUsers().pipe(
       map((users) => {

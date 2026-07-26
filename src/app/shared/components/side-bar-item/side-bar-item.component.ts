@@ -36,7 +36,7 @@ export class SideBarItemComponent implements OnInit {
       this.authService.getCurrentUserRole() === 'owner'
     ) {
       const id = this.authService.getOwnersRestaurantIds()?.[0];
-      this.router.navigate([ROUTES.dashboardPageRoute, id]);
+      return this.router.navigate([ROUTES.dashboardPageRoute, id]);
     }
 
     return this.router.navigate([item.href]);

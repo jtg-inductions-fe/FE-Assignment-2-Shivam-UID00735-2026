@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { StatCardVariant } from '@/models/dashboard-stats.model';
 
 @Component({
   selector: 'app-stat-card',
@@ -6,9 +7,9 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./stat-card.component.scss'],
 })
 export class StatCardComponent {
-  @Input({ required: true }) title!: string;
-  @Input({ required: true }) stat!: string | number;
-  @Input() icon: string;
-  @Input() itemClassName: string;
+  @Input() title = '';
+  @Input() stat: number | string = '';
+  @Input() icon = '';
   @Input() isCurrency = false;
+  @Input() variant: StatCardVariant = 'primary';
 }

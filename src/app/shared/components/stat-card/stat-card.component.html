@@ -1,13 +1,18 @@
-<app-card [hasBorder]="true">
-  <div class="stat-card">
-    <div class="stat-card__data">
-      <div class="stat-card__title">{{ title }}</div>
-      <h3 class="stat-card__stats">
-        {{ isCurrency ? (stat | currency) : stat }}
-      </h3>
-    </div>
-    <div [class]="'stat-card__icon stat-card__icon--' + itemClassName">
-      <mat-icon>{{ icon }}</mat-icon>
-    </div>
+<div class="stat-card">
+  <div class="stat-card__data">
+    <span class="stat-card__title">{{ title }}</span>
+    <p class="stat-card__stats">{{ isCurrency ? (stat | currency) : stat }}</p>
   </div>
-</app-card>
+  <div
+    class="stat-card__icon"
+    [ngClass]="{
+      'stat-card__icon--primary': variant === 'primary',
+      'stat-card__icon--secondary': variant === 'secondary',
+      'stat-card__icon--tertiary': variant === 'tertiary',
+      'stat-card__icon--quaternary': variant === 'quaternary',
+      'stat-card__icon--quinary': variant === 'quinary',
+    }"
+  >
+    <mat-icon>{{ icon }}</mat-icon>
+  </div>
+</div>
