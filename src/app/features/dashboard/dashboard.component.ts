@@ -9,10 +9,10 @@ import {
   TopCustomer,
   TopDishes,
   ListCardItem,
+  ActiveOrders,
 } from '@/models';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ROUTES } from '@/core/constants';
-import { ActiveOrders  } from '@/models';
 
 @Component({
   selector: 'app-dashboard',
@@ -28,6 +28,7 @@ export class DashboardComponent implements OnInit {
   topCustomer: ListCardItem[] = [];
   topDishes: ListCardItem[] = [];
   activeOrdersData: ActiveOrders[] = [];
+  restaurantId = 0;
 
   private dashboardStatService = inject(DashboardService);
   private authService = inject(AuthService);
@@ -40,6 +41,7 @@ export class DashboardComponent implements OnInit {
       if (!Number.isInteger(id) || id < 0) {
         this.router.navigate([ROUTES.notFoundPageRoute]);
       }
+      this.restaurantId = id;
     }),
     filter((id) => Number.isInteger(id) && id >= 0),
   );
@@ -49,6 +51,7 @@ export class DashboardComponent implements OnInit {
     this.loadStats();
     this.loadTopCustomers();
     this.loadTopDishes();
+    this.loadActiveOrders();
   }
 
   onRestaurantChange(restaurantID: number): void {
@@ -83,6 +86,20 @@ export class DashboardComponent implements OnInit {
       });
   }
 
+  private loadActiveOrders(): void {
+    this.selectedRestaurantId$
+      .pipe(
+        switchMap((id) => this.dashboardStatService.getActiveOrders(id)),
+        takeUntilDestroyed(this.destroyRef),
+      )
+      .subscribe((data) => {
+        if (!data) {
+          return;
+        }
+        this.activeOrdersData = data;
+      });
+  }
+
   private prepareStatsCard(data: Stats | undefined): StatsCard[] {
     if (!data) return [];
     const cards: StatsCard[] = [];
@@ -114,16 +131,5 @@ export class DashboardComponent implements OnInit {
       subtitle: dish.category,
       value: dish.value,
     }));
-  }
-
-  private prepareActiveOrder(restaurantId: number): void {
-    this.dashboardStatService
-      .getActiveOrders(restaurantId)
-      .subscribe((data) => {
-        if (!data) {
-          return;
-        }
-        this.activeOrdersData = data;
-      });
   }
 }

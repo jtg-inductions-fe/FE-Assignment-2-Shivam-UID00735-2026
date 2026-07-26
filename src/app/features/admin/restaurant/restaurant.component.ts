@@ -18,6 +18,8 @@ export class RestaurantComponent implements OnInit {
   pageTitle = 'Restaurants';
   pageDescription = 'Manage partner restaurants and ownership list.';
 
+  addRestaurantRoute = ROUTES.adminRestaurantRoutes.adminInsertRestaurantRoute;
+
   restaurantData: Restaurant[] = [];
 
   columns: TableColumn[] = [

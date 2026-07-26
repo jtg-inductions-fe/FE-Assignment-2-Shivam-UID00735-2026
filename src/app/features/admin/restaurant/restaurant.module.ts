@@ -5,7 +5,6 @@ import { RestaurantInsertComponent } from './restaurant-actions/restaurant-actio
 import { SharedModule } from '@/shared/shared.module';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from '@/app-routing.module';
 import { CdkTableModule } from '@angular/cdk/table';
 import { MatChipsModule } from '@angular/material/chips';

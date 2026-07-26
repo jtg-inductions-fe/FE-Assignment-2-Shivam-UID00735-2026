@@ -3,7 +3,7 @@
   [title]="pageTitle"
   [description]="pageDescription"
 >
-  <a routerLink="/admin/restaurant/insert" mat-flat-button color="primary">
+  <a [routerLink]="'/' + addRestaurantRoute" mat-flat-button color="primary">
     <mat-icon>add</mat-icon>
     ADD RESTAURANT
   </a>

@@ -1,7 +1,6 @@
 import { ThemePalette } from '@angular/material/core';
 
-export type ButtonType =
-  'basic' | 'flat' | 'stroked' | 'raised' | 'icon' | 'fab' | 'mini-fab';
+export type ButtonType = 'basic' | 'flat' | 'stroked' | 'raised';
 
 export interface ButtonConfig {
   type: ButtonType;

@@ -1,6 +1,7 @@
-import { Component, Input } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
 
 import { ActiveOrders, TableColumn } from '@/models';
+import { NotificationService } from '@/core/services';
 
 @Component({
   selector: 'app-active-orders',
@@ -9,6 +10,8 @@ import { ActiveOrders, TableColumn } from '@/models';
 })
 export class ActiveOrdersComponent {
   @Input() activeOrdersItem: ActiveOrders[] = [];
+
+  private notificationService = inject(NotificationService);
 
   activeOrderColumn: TableColumn[] = [
     {
@@ -58,16 +61,18 @@ export class ActiveOrdersComponent {
       type: 'button',
       buttonConfig: [
         {
-          type: 'flat',
-          label: 'Accept',
+          type: 'stroked',
+          icon: 'close',
+          label: 'Reject',
           color: 'primary',
-          action: 'accept',
+          action: 'reject',
         },
         {
-          type: 'stroked',
-          label: 'Reject',
-          color: 'warn',
-          action: 'reject',
+          type: 'flat',
+          label: 'Accept',
+          icon: 'check',
+          color: 'primary',
+          action: 'accept',
         },
       ],
     },
@@ -88,10 +93,27 @@ export class ActiveOrdersComponent {
   }
 
   acceptOrder(order: ActiveOrders): void {
-    console.log('Accepted', order);
+    this.updateOrderStatus(order, 'Accepted');
+    this.notificationService.showSuccessMessage(
+      `Order #${order.orderId} accepted`,
+      'close',
+    );
   }
 
   rejectOrder(order: ActiveOrders): void {
-    console.log('Rejected', order);
+    this.updateOrderStatus(order, 'Rejected');
+    this.notificationService.showSuccessMessage(
+      `Order #${order.orderId} rejected`,
+      'close',
+    );
+  }
+
+  private updateOrderStatus(
+    order: ActiveOrders,
+    status: ActiveOrders['status'],
+  ): void {
+    this.activeOrdersItem = this.activeOrdersItem.map((item) =>
+      item.orderId === order.orderId ? { ...item, status } : item,
+    );
   }
 }

@@ -1,5 +1,6 @@
-button {
-  display: inline-flex;
+:host {
+  display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 8px;
+  flex-wrap: wrap;
 }
