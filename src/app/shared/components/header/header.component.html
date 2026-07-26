@@ -7,22 +7,40 @@
     mat-icon-button
     (click)="onMenuClick()"
     class="header__toggle-button"
+    aria-label="Open profile menu"
   >
     <mat-icon>menu</mat-icon>
   </button>
   <span class="header__spacer"></span>
-  <button type="button" mat-button [matMenuTriggerFor]="profileMenu">
-    <mat-icon>account_circle</mat-icon>
-  </button>
+  <ng-container *ngIf="currentUser$ | async as currentUser">
+    <button
+      mat-button
+      [matMenuTriggerFor]="profileMenu"
+      class="header__profile-button"
+      [disableRipple]="true"
+    >
+      <img
+        [src]="currentUser.avatar ? currentUser.avatar : defaultImage"
+        class="header__profile-image"
+        alt="avatar image"
+      />
+    </button>
+  </ng-container>
 </mat-toolbar>
 
 <mat-menu #profileMenu="matMenu" class="profile">
-  <div class="profile__header">
-    <mat-icon class="profile__avatar"> account_circle </mat-icon>
+  <div class="profile__header" *ngIf="currentUser$ | async as currentUser">
+    <div class="profile__icon">
+      <img
+        [src]="currentUser.avatar ? currentUser.avatar : defaultImage"
+        class="profile__avatar"
+        alt="avatar image"
+      />
+    </div>
 
-    <div class="profile__details">
-      <div class="profile__name">Shivam Kushwah</div>
-      <div class="profile__email">shivam@gmail.com</div>
+    <div>
+      <div class="profile__name">{{ currentUser.name }}</div>
+      <div class="profile__email">{{ currentUser.email }}</div>
     </div>
   </div>
   <mat-divider></mat-divider>
@@ -37,5 +55,3 @@
     <span>Logout</span>
   </button>
 </mat-menu>
-
-<!-- dropdown menu -->
