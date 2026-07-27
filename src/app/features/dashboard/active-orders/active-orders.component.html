@@ -1,6 +1,6 @@
 <app-card [hasShadow]="true">
   <app-main-content-header
-    headingType="heading-medium"
+    headingType="medium"
     title="Active Orders"
     description="Manage pending and accepted orders directly from your dashboard."
   >
@@ -9,7 +9,6 @@
   <app-table
     [dataSource]="activeOrdersItem"
     [columns]="activeOrderColumn"
-    (tableAction)="handleTableAction($event)"
     [enablePagination]="false"
   >
   </app-table>

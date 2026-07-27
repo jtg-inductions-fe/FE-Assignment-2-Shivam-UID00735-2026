@@ -2,18 +2,11 @@ import { ThemePalette } from '@angular/material/core';
 
 export type ButtonType = 'basic' | 'flat' | 'stroked' | 'raised';
 
-export interface ButtonConfig {
+export interface ButtonConfig<T = unknown> {
   type: ButtonType;
-
-  action: string;
-
+  handler: (row: T) => void;
   label?: string;
-
   icon?: string;
-
   color?: ThemePalette;
-
   disabled?: boolean;
-
-  tooltip?: string;
 }

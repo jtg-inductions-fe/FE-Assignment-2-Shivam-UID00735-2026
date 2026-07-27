@@ -1,5 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
-
+import { Component, Input } from '@angular/core';
 import { ButtonConfig } from '@/models';
 
 @Component({
@@ -7,20 +6,11 @@ import { ButtonConfig } from '@/models';
   templateUrl: './table-button-cell.component.html',
   styleUrls: ['./table-button-cell.component.scss'],
 })
-export class TableButtonCellComponent {
-  @Input() config: ButtonConfig[] = [];
+export class TableButtonCellComponent<T = unknown> {
+  @Input({ required: true }) row!: T;
+  @Input({ required: true }) config!: ButtonConfig<T>[];
 
-  @Input() row: unknown;
-
-  @Output() buttonClick = new EventEmitter<{
-    action: string;
-    row: unknown;
-  }>();
-
-  onClick(button: ButtonConfig): void {
-    this.buttonClick.emit({
-      action: button.action,
-      row: this.row,
-    });
+  onClick(button: ButtonConfig<T>): void {
+    button.handler(this.row);
   }
 }

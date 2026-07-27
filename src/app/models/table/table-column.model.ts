@@ -1,19 +1,23 @@
 import { ButtonConfig } from './table-button-config.model';
 import { ChipConfig } from './table-chip-config.model';
-export interface TextConfig {
-  bold?: boolean;
-}
+import { TextConfig } from './table-text-config.model';
 
-export type TableColumnType = 'text' | 'chip' | 'button';
-
-export interface TableColumn {
-  key: string;
-  header: string;
-  type?: TableColumnType;
-
-  textConfig?: TextConfig;
-
-  chipConfig?: ChipConfig;
-
-  buttonConfig?: ButtonConfig[];
-}
+export type TableColumn<T = unknown> =
+  | {
+      key: keyof T & string;
+      header: string;
+      type: 'text';
+      textConfig?: TextConfig;
+    }
+  | {
+      key: keyof T & string;
+      header: string;
+      type: 'chip';
+      chipConfig: ChipConfig;
+    }
+  | {
+      key: string;
+      header: string;
+      type: 'button';
+      buttonConfig: ButtonConfig<T>[];
+    };

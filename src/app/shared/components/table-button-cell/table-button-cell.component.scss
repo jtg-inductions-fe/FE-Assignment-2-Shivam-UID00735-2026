@@ -1,6 +1,11 @@
+@use 'abstract' as *;
 :host {
   display: flex;
   align-items: center;
   gap: 8px;
   flex-wrap: wrap;
+}
+
+button {
+  @include flex;
 }

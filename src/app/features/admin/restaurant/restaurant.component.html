@@ -1,5 +1,5 @@
 <app-main-content-header
-  headingType="heading-large"
+  headingType="large"
   [title]="pageTitle"
   [description]="pageDescription"
 >
@@ -10,10 +10,5 @@
 </app-main-content-header>
 
 <app-card [hasShadow]="true">
-  <app-table
-    [dataSource]="restaurantData"
-    [columns]="columns"
-    (tableAction)="handleTableAction($event)"
-  >
-  </app-table>
+  <app-table [dataSource]="restaurantData" [columns]="columns"> </app-table>
 </app-card>

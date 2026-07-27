@@ -5,6 +5,7 @@ import { RestaurantService } from '@/core/services';
 import { ROUTES } from '@/core/constants';
 
 import { Restaurant, TableColumn } from '@/models';
+import { getRestaurantColumns } from '@/core/configs/restaurant.config';
 
 @Component({
   selector: 'app-restaurant',
@@ -22,47 +23,20 @@ export class RestaurantComponent implements OnInit {
 
   restaurantData: Restaurant[] = [];
 
-  columns: TableColumn[] = [
-    {
-      key: 'name',
-      header: 'RESTAURANT NAME',
-      type: 'text',
-      textConfig: {
-        bold: true,
-      },
-    },
-    {
-      key: 'address',
-      header: 'ADDRESS',
-      type: 'text',
-    },
-    {
-      key: 'ownersEmail',
-      header: 'OWNERS',
-      type: 'chip',
-      chipConfig: {
-        multiple: true,
-        color: 'primary',
-      },
-    },
-    {
-      key: 'actions',
-      header: 'ACTIONS',
-      type: 'button',
-      buttonConfig: [
-        {
-          type: 'stroked',
-          label: 'Edit',
-          icon: 'edit',
-          color: 'primary',
-          action: 'edit',
-        },
-      ],
-    },
-  ];
+  columns: TableColumn<Restaurant>[] = [];
 
   ngOnInit(): void {
+    this.columns = getRestaurantColumns({
+      onEdit: (restaurant) => this.editRestaurant(restaurant.id),
+    });
     this.prepareRestaurantData();
+  }
+
+  editRestaurant(id: number): void {
+    this.router.navigate([
+      ROUTES.adminRestaurantRoutes.adminEditRestaurantRoute,
+      id,
+    ]);
   }
 
   private prepareRestaurantData(): void {
@@ -73,22 +47,5 @@ export class RestaurantComponent implements OnInit {
 
       this.restaurantData = data.slice(1);
     });
-  }
-
-  handleTableAction(event: { action: string; row: unknown }): void {
-    const restaurant = event.row as Restaurant;
-
-    switch (event.action) {
-      case 'edit':
-        this.editRestaurant(restaurant.id);
-        break;
-    }
-  }
-
-  editRestaurant(id: number): void {
-    this.router.navigate([
-      ROUTES.adminRestaurantRoutes.adminEditRestaurantRoute,
-      id,
-    ]);
   }
 }

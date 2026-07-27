@@ -1,41 +1,34 @@
 import {
   AfterViewInit,
   Component,
-  EventEmitter,
   Input,
   OnChanges,
   OnInit,
-  Output,
   SimpleChanges,
   ViewChild,
+  TemplateRef,
 } from '@angular/core';
-
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-
-import { TableColumn } from '@/models';
-import { TemplateRef } from '@angular/core';
+import { TableColumn, TextConfig, ChipConfig, ButtonConfig } from '@/models';
 
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.scss'],
 })
-export class TableComponent implements OnInit, OnChanges, AfterViewInit {
-  @Input({ required: true }) dataSource!: unknown[];
-  @Input({ required: true }) columns!: TableColumn[];
+export class TableComponent<T = unknown>
+  implements OnInit, OnChanges, AfterViewInit
+{
+  @Input({ required: true }) dataSource!: T[];
+  @Input({ required: true }) columns!: TableColumn<T>[];
   @Input() templates: Record<string, TemplateRef<unknown>> = {};
   @Input() enablePagination = true;
-
-  @Output() tableAction = new EventEmitter<{
-    action: string;
-    row: unknown;
-  }>();
 
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;
 
-  tableDataSource = new MatTableDataSource<unknown>();
+  tableDataSource = new MatTableDataSource<T>();
 
   displayedColumns: string[] = [];
 
@@ -48,7 +41,6 @@ export class TableComponent implements OnInit, OnChanges, AfterViewInit {
     if (changes['dataSource']) {
       this.tableDataSource.data = this.dataSource;
     }
-
     if (changes['columns']) {
       this.displayedColumns = this.columns.map((column) => column.key);
     }
@@ -60,7 +52,15 @@ export class TableComponent implements OnInit, OnChanges, AfterViewInit {
     }
   }
 
-  onButtonClick(event: { action: string; row: unknown }): void {
-    this.tableAction.emit(event);
+  getTextConfig(column: TableColumn<T>): TextConfig | undefined {
+    return column.type === 'text' ? column.textConfig : undefined;
+  }
+
+  getChipConfig(column: TableColumn<T>): ChipConfig | undefined {
+    return column.type === 'chip' ? column.chipConfig : undefined;
+  }
+
+  getButtonConfig(column: TableColumn<T>): ButtonConfig<T>[] | undefined {
+    return column.type === 'button' ? column.buttonConfig : undefined;
   }
 }

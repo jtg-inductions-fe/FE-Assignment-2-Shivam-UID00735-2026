@@ -1,95 +1,25 @@
-import { Component, inject, Input } from '@angular/core';
-
+import { Component, inject, Input, OnInit } from '@angular/core';
 import { ActiveOrders, TableColumn } from '@/models';
 import { NotificationService } from '@/core/services';
+import { getActiveOrdersColumns } from '@/core/configs/active-order.config';
 
 @Component({
   selector: 'app-active-orders',
   templateUrl: './active-orders.component.html',
   styleUrls: ['./active-orders.component.scss'],
 })
-export class ActiveOrdersComponent {
+export class ActiveOrdersComponent implements OnInit {
   @Input() activeOrdersItem: ActiveOrders[] = [];
 
   private notificationService = inject(NotificationService);
 
-  activeOrderColumn: TableColumn[] = [
-    {
-      key: 'orderId',
-      header: 'ORDER ID',
-      type: 'text',
-      textConfig: {
-        bold: true,
-      },
-    },
-    {
-      key: 'restaurant',
-      header: 'RESTAURANT',
-      type: 'text',
-    },
-    {
-      key: 'customer',
-      header: 'CUSTOMER',
-      type: 'text',
-    },
-    {
-      key: 'items',
-      header: 'ITEMS',
-      type: 'text',
-    },
-    {
-      key: 'amount',
-      header: 'AMOUNT',
-      type: 'text',
-    },
-    {
-      key: 'status',
-      header: 'STATUS',
-      type: 'chip',
-      chipConfig: {
-        colorMap: {
-          pending: 'accent',
-          Accepted: 'primary',
-          Rejected: 'warn',
-          Completed: 'primary',
-        },
-      },
-    },
-    {
-      key: 'actions',
-      header: 'ACTIONS',
-      type: 'button',
-      buttonConfig: [
-        {
-          type: 'stroked',
-          icon: 'close',
-          label: 'Reject',
-          color: 'primary',
-          action: 'reject',
-        },
-        {
-          type: 'flat',
-          label: 'Accept',
-          icon: 'check',
-          color: 'primary',
-          action: 'accept',
-        },
-      ],
-    },
-  ];
+  activeOrderColumn: TableColumn<ActiveOrders>[] = [];
 
-  handleTableAction(event: { action: string; row: unknown }): void {
-    const order = event.row as ActiveOrders;
-
-    switch (event.action) {
-      case 'accept':
-        this.acceptOrder(order);
-        break;
-
-      case 'reject':
-        this.rejectOrder(order);
-        break;
-    }
+  ngOnInit(): void {
+    this.activeOrderColumn = getActiveOrdersColumns({
+      onAccept: (order) => this.acceptOrder(order),
+      onReject: (order) => this.rejectOrder(order),
+    });
   }
 
   acceptOrder(order: ActiveOrders): void {

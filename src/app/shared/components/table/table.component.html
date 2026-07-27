@@ -7,35 +7,26 @@
 
       <td mat-cell *matCellDef="let row">
         <ng-container [ngSwitch]="column.type">
-          <!-- TEXT -->
-
           <app-table-text-cell
             *ngSwitchCase="'text'"
             [value]="row[column.key]"
-            [config]="column.textConfig"
+            [config]="getTextConfig(column)!"
           >
           </app-table-text-cell>
-
-          <!-- CHIP -->
 
           <app-table-chip-cell
             *ngSwitchCase="'chip'"
             [value]="row[column.key]"
-            [config]="column.chipConfig!"
+            [config]="getChipConfig(column)!"
           >
           </app-table-chip-cell>
-
-          <!-- BUTTON -->
 
           <app-table-button-cell
             *ngSwitchCase="'button'"
             [row]="row"
-            [config]="column.buttonConfig!"
-            (buttonClick)="onButtonClick($event)"
+            [config]="getButtonConfig(column)!"
           >
           </app-table-button-cell>
-
-          <!-- DEFAULT -->
 
           <app-table-text-cell *ngSwitchDefault [value]="row[column.key]">
           </app-table-text-cell>
@@ -44,13 +35,12 @@
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-
     <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
   </table>
 
   <mat-paginator
     *ngIf="enablePagination"
-    [pageSize]="10"
+    [pageSize]="5"
     [pageSizeOptions]="[5, 10, 20]"
     showFirstLastButtons
   >

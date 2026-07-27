@@ -1,6 +1,6 @@
 @use 'abstract' as *;
 @use 'base' as *;
-@use 'theme' as *;
+@use 'theme/colors' as *;
 
 .list-card {
   padding: $spacing-6;

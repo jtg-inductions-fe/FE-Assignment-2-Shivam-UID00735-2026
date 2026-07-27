@@ -88,10 +88,7 @@ export class DashboardComponent implements OnInit {
 
   private loadActiveOrders(): void {
     this.selectedRestaurantId$
-      .pipe(
-        switchMap((id) => this.dashboardStatService.getActiveOrders(id)),
-        takeUntilDestroyed(this.destroyRef),
-      )
+      .pipe(switchMap((id) => this.dashboardStatService.getActiveOrders(id)))
       .subscribe((data) => {
         if (!data) {
           return;
