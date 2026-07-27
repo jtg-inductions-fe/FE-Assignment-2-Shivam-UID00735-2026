@@ -1,0 +1,9 @@
+@use 'abstract' as *;
+
+html {
+  font-size: 14px;
+
+  @include respond-up('xl') {
+    font-size: 16px;
+  }
+}
