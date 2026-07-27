@@ -4,6 +4,7 @@ import { DashboardComponent } from './dashboard.component';
 import { SharedModule } from '@/shared/shared.module';
 
 import { MatButtonModule } from '@angular/material/button';
+
 import { StatsComponent } from './stats/stats.component';
 import { ReportGeneratorComponent } from './report-generator/report-generator.component';
 import { MatIconModule } from '@angular/material/icon';

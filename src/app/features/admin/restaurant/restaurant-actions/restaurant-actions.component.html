@@ -1,0 +1,22 @@
+<div class="restaurant-insert-wrapper">
+  <!-- Back to button -->
+  <button
+    [routerLink]="restaurantListPageRoute"
+    type="button"
+    mat-stroked-button
+    color="primary"
+  >
+    <mat-icon>west</mat-icon> Back
+  </button>
+  <app-main-content-header
+    headingType="large"
+    [title]="title"
+    [description]="description"
+  ></app-main-content-header>
+</div>
+
+<app-restaurant-form
+  *ngIf="isInsertMode || initialData"
+  [restaurantDetails]="initialData"
+  [isEditMode]="isEditMode"
+></app-restaurant-form>

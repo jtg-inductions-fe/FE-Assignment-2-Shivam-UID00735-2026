@@ -1,0 +1,77 @@
+<app-card [hasShadow]="true">
+  <form [formGroup]="myForm" (submit)="onSubmit()" class="restaurant-form">
+    <mat-form-field appearance="outline" class="restaurant-form__input-field">
+      <mat-label>Restaurant Name</mat-label>
+      <input
+        formControlName="restaurantName"
+        matInput
+        placeholder="e.g. Pizza Place"
+      />
+      <mat-error *ngIf="myForm.get('restaurantName')?.hasError('required')"
+        >Restaurant Name is <strong>Required</strong></mat-error
+      >
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="restaurant-form__input-field">
+      <mat-label>Address</mat-label>
+      <input
+        formControlName="restaurantAddress"
+        matInput
+        placeholder="e.g., 123 Pepperoni Rd, Naples"
+      />
+      <mat-error *ngIf="myForm.get('restaurantAddress')?.hasError('required')"
+        >Restaurant Address is <strong>Required</strong></mat-error
+      >
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="restaurant-form__input-field">
+      <mat-label>Owners(emails)</mat-label>
+      <mat-chip-grid
+        #chipGrid
+        formControlName="ownerEmails"
+        aria-label="Enter Owners Emails"
+      >
+        <mat-chip-row
+          color="primary"
+          *ngFor="let email of emails"
+          (removed)="remove(email)"
+          [editable]="true"
+          (edited)="edit(email, $event)"
+          [aria-description]="'press enter to edit ' + email"
+        >
+          {{ email }}
+          <button matChipRemove [attr.aria-label]="'remove ' + email">
+            <mat-icon>cancel</mat-icon>
+          </button>
+        </mat-chip-row>
+        <input
+          placeholder="Type owner email and press Enter"
+          [matChipInputFor]="chipGrid"
+          [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+          [matChipInputAddOnBlur]="addOnBlur"
+          (matChipInputTokenEnd)="add($event)"
+        />
+      </mat-chip-grid>
+
+      <mat-hint>Add emails of users who own/manage this restaurant.</mat-hint>
+    </mat-form-field>
+
+    <!-- button groups -->
+
+    <div class="restaurant-form__buttons">
+      <button
+        type="button"
+        mat-stroked-button
+        color="primary"
+        (click)="onCancel()"
+      >
+        CANCEL
+      </button>
+      <button type="submit" mat-raised-button color="primary">
+        <mat-icon>save</mat-icon>
+
+        {{ isEditMode === true ? 'SAVE CHANGES' : 'CREATE RESTAURANT' }}
+      </button>
+    </div>
+  </form>
+</app-card>

@@ -10,7 +10,7 @@
       },
       {
         "title": "Restaurants",
-        "href": "/restaurants",
+        "href": "/admin/restaurant",
         "icon": "restaurant",
         "role": ["admin"]
       },

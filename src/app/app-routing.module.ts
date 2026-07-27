@@ -9,10 +9,13 @@ import {
   ownerDashboardRedirectGuard,
 } from '@/core/guards';
 
-import { ROUTES } from '@/core/constants/routes.constants';
+import { ROUTES } from '@/core/constants';
 import { DashboardComponent } from '@/features/dashboard/dashboard.component';
 import { ErrorPageComponent } from '@/shared/components/error-page/error-page.component';
 import { LoginComponent } from '@/features/auth/login/login.component';
+import { adminGuard } from '@/core/guards';
+import { RestaurantComponent } from '@/features/admin/restaurant/restaurant.component';
+import { RestaurantInsertComponent } from '@/features/admin/restaurant/restaurant-actions/restaurant-actions.component';
 
 const routes: Routes = [
   {
@@ -35,6 +38,24 @@ const routes: Routes = [
     component: DashboardComponent,
     canActivate: [authGuard, ownerDashboardRedirectGuard],
   },
+
+  {
+    path: ROUTES.adminRestaurantRoutes.adminRestaurantListRoute,
+    component: RestaurantComponent,
+    canActivate: [authGuard, adminGuard],
+  },
+  {
+    path: ROUTES.adminRestaurantRoutes.adminInsertRestaurantRoute,
+    component: RestaurantInsertComponent,
+    canActivate: [authGuard, adminGuard],
+  },
+
+  {
+    path: ROUTES.adminRestaurantRoutes.adminEditRestaurantRoute + '/:id',
+    component: RestaurantInsertComponent,
+    canActivate: [authGuard, adminGuard],
+  },
+
   {
     path: 'server-error',
     component: ErrorPageComponent,
