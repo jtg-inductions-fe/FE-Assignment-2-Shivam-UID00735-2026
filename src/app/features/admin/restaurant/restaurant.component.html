@@ -9,6 +9,8 @@
   </a>
 </app-main-content-header>
 
-<app-card [hasShadow]="true">
-  <app-table [dataSource]="restaurantData" [columns]="columns"> </app-table>
-</app-card>
+<div class="restaurant-list">
+  <app-card [hasShadow]="true">
+    <app-table [dataSource]="restaurantData" [columns]="columns"> </app-table>
+  </app-card>
+</div>
