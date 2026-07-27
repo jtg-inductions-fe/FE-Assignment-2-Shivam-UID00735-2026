@@ -1,39 +1,81 @@
 @use 'abstract' as *;
+@use 'base' as *;
+@use 'theme' as *;
+
 .list-card {
-  border-radius: 12px;
-  border: 1px solid $border-color;
+  padding: $spacing-6;
 
   &__heading {
-    padding: $spacing-4;
     margin: 0;
   }
 
   &__item {
     @include flex(space-between, row);
-
-    padding: $spacing-4;
-
+    padding: $spacing-2;
+    margin-top: $spacing-2;
     border-bottom: 1px solid $border-color;
 
     &:last-child {
       border-bottom: none;
+      margin-bottom: 0;
     }
   }
 
   &__left {
-    display: flex;
-    align-items: center;
+    @include flex;
     gap: $spacing-4;
-
     img {
       width: px-to-rem(40);
       height: px-to-rem(40);
       border-radius: 50%;
     }
   }
+
   &__content {
     h3 {
+      color: $heading-color;
+      font-weight: $fw-semibold;
       margin: 0;
     }
+    p {
+      color: $paragraph-color;
+    }
+  }
+
+  &__value {
+    font-weight: $fw-semibold;
+  }
+
+  &__value-suffix {
+    font-weight: normal;
+    padding-left: $spacing-1;
+  }
+
+  &__wrapper {
+    max-height: px-to-rem(450);
+    overflow-y: auto;
+    padding-right: 8px;
+
+    &::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: transparent;
+      border-radius: 10px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: $scrollbar-thumb-color;
+      border-radius: 10px;
+      transition: background-color 0.2s ease;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+      background-color: $scrollbar-thumb-hover-color;
+    }
+
+    scrollbar-width: thin;
+    scrollbar-color: $scrollbar-thumb-color transparent;
   }
 }

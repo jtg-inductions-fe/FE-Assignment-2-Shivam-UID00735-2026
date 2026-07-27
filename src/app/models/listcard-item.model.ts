@@ -1,6 +1,6 @@
 export interface ListCardItem {
   image?: string;
   title: string;
-  subtitle: string;
-  value: string;
+  subtitle?: string;
+  value: number;
 }

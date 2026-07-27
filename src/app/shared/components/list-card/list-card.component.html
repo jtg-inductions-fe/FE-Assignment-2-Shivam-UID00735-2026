@@ -1,24 +1,42 @@
-<div class="list-card">
-  <div class="list-card__heading">
-    {{ title }}
-  </div>
-  <div class="list-card__item" *ngFor="let item of items; let last = last">
-    <div class="list-card__left">
-      <img *ngIf="item.image" [src]="item.image" [alt]="item.title + 'image'" />
+<app-card [hasShadow]="true">
+  <div class="list-card">
+    <h2 class="list-card__heading">
+      {{ title }}
+    </h2>
+    <div
+      class="list-card__wrapper"
+      *ngIf="items.length; else noItems"
+      tabindex="0"
+      [attr.aria-label]="title + ' list'"
+    >
+      <div class="list-card__item" *ngFor="let item of items">
+        <div class="list-card__left">
+          <img
+            *ngIf="item.image"
+            [src]="item.image"
+            [alt]="item.title + 'image'"
+          />
 
-      <div class="list-card-content">
-        <h3>
-          {{ item.title }}
-        </h3>
+          <div class="list-card__content">
+            <h3>
+              {{ item.title }}
+            </h3>
 
-        <p *ngIf="item.subtitle">
-          {{ item.subtitle }}
-        </p>
+            <p *ngIf="item.subtitle">
+              {{ item.subtitle }}
+            </p>
+          </div>
+        </div>
+
+        <span class="list-card__value">
+          {{ valuePrefix }}{{ item.value
+          }}<span class="list-card__value-suffix" *ngIf="valueSuffix">{{
+            valueSuffix
+          }}</span>
+        </span>
       </div>
     </div>
 
-    <span class="list-card__value">
-      {{ item.value }}
-    </span>
+    <ng-template #noItems> No Item Found </ng-template>
   </div>
-</div>
+</app-card>

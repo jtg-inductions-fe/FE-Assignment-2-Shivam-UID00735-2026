@@ -1,5 +1,6 @@
 @use 'abstract' as *;
 @use 'base' as *;
+@use 'theme' as *;
 
 .main-header {
   @include flex(space-between, row);

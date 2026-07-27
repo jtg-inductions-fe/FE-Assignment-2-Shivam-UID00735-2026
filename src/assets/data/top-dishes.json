@@ -1,0 +1,157 @@
+[
+  {
+    "restaurantId": 0,
+    "topDishes": [
+      {
+        "title": "Margherita Pizza",
+        "category": "Pizza Palace",
+        "value": 42
+      },
+      {
+        "title": "Soda",
+        "category": "Pizza Palace",
+        "value": 98
+      },
+      {
+        "title": "Garlic Bread",
+        "category": "Pizza Palace",
+        "value": 75
+      },
+      {
+        "title": "Tiramisu",
+        "category": "Pizza Palace",
+        "value": 43
+      },
+      {
+        "title": "Burger",
+        "category": "Pizza Palace",
+        "value": 23
+      }
+    ]
+  },
+  {
+    "restaurantId": 1,
+    "topDishes": [
+      {
+        "title": "Cheeseburger",
+        "category": "Burger Joint",
+        "value": 210
+      },
+      {
+        "title": "French Fries",
+        "category": "Burger Joint",
+        "value": 185
+      },
+      {
+        "title": "Chocolate Milkshake",
+        "category": "Burger Joint",
+        "value": 92
+      },
+      {
+        "title": "Onion Rings",
+        "category": "Burger Joint",
+        "value": 64
+      }
+    ]
+  },
+  {
+    "restaurantId": 2,
+    "topDishes": [
+      {
+        "title": "Spicy Tuna Roll",
+        "category": "Sushi Zen",
+        "value": 320
+      },
+      {
+        "title": "Miso Soup",
+        "category": "Sushi Zen",
+        "value": 150
+      },
+      {
+        "title": "California Roll",
+        "category": "Sushi Zen",
+        "value": 135
+      },
+      {
+        "title": "Gyoza",
+        "category": "Sushi Zen",
+        "value": 110
+      }
+    ]
+  },
+  {
+    "restaurantId": 3,
+    "topDishes": [
+      {
+        "title": "Chicken Tikka Masala",
+        "category": "Spice Symphony",
+        "value": 410
+      },
+      {
+        "title": "Garlic Naan",
+        "category": "Spice Symphony",
+        "value": 280
+      },
+      {
+        "title": "Samosa",
+        "category": "Spice Symphony",
+        "value": 195
+      },
+      {
+        "title": "Mango Lassi",
+        "category": "Spice Symphony",
+        "value": 120
+      }
+    ]
+  },
+  {
+    "restaurantId": 4,
+    "topDishes": [
+      {
+        "title": "Pad Thai",
+        "category": "Bangkok Street",
+        "value": 290
+      },
+      {
+        "title": "Tom Yum Soup",
+        "category": "Bangkok Street",
+        "value": 175
+      },
+      {
+        "title": "Spring Rolls",
+        "category": "Bangkok Street",
+        "value": 140
+      },
+      {
+        "title": "Thai Iced Tea",
+        "category": "Bangkok Street",
+        "value": 95
+      }
+    ]
+  },
+  {
+    "restaurantId": 5,
+    "topDishes": [
+      {
+        "title": "Tacos Al Pastor",
+        "category": "Cantina Mexico",
+        "value": 350
+      },
+      {
+        "title": "Guacamole & Chips",
+        "category": "Cantina Mexico",
+        "value": 220
+      },
+      {
+        "title": "Churros",
+        "category": "Cantina Mexico",
+        "value": 115
+      },
+      {
+        "title": "Horchata",
+        "category": "Cantina Mexico",
+        "value": 85
+      }
+    ]
+  }
+]
