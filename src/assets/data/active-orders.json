@@ -6,7 +6,17 @@
         "orderId": "#ORD-1001",
         "restaurant": "Burma Burma Restaurant",
         "customer": "Bonnie Green",
-        "items": ["Tea Leaf Salad", "Coconut Rice"],
+        "items": "Bacon Cheeseburger, Fries, Vanilla Shake",
+
+        "amount": 68,
+        "status": "pending"
+      },
+      {
+        "orderId": "#ORD-1005",
+        "restaurant": "Pizza Palace",
+        "customer": "Bonnie Green",
+        "items": "Bacon Cheeseburger, Fries, Vanilla Shake",
+
         "amount": 68,
         "status": "pending"
       }
@@ -19,9 +29,18 @@
         "orderId": "#ORD-1002",
         "restaurant": "The Pasta Bowl",
         "customer": "Alex Rivers",
-        "items": ["White Sauce Pasta", "Garlic Bread"],
+        "items": "Bacon Cheeseburger, Fries, Vanilla Shake",
         "amount": 42,
         "status": "completed"
+      },
+      {
+        "orderId": "#ORD-1004",
+        "restaurant": "Burger Bistro",
+        "customer": "Diana Prince",
+        "items": "Bacon Cheeseburger, Fries, Vanilla Shake",
+
+        "amount": 28,
+        "status": "pending"
       }
     ]
   },
@@ -32,7 +51,8 @@
         "orderId": "#ORD-1003",
         "restaurant": "Indian Grill Room",
         "customer": "Chris Evans",
-        "items": ["Paneer Tikka", "Butter Naan"],
+        "items": "Bacon Cheeseburger, Fries, Vanilla Shake",
+
         "amount": 55,
         "status": "delivered"
       }
@@ -45,7 +65,8 @@
         "orderId": "#ORD-1004",
         "restaurant": "The Piano Man",
         "customer": "Emma Watson",
-        "items": ["Pizza", "Cold Coffee"],
+        "items": "Bacon Cheeseburger, Fries, Vanilla Shake",
+
         "amount": 34,
         "status": "cancelled"
       }

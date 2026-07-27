@@ -1,0 +1,62 @@
+<ng-container *ngFor="let button of config">
+  <ng-container [ngSwitch]="button.type">
+    <button
+      *ngSwitchCase="'stroked'"
+      mat-stroked-button
+      [color]="button.color"
+      [disabled]="button.disabled ?? false"
+      (click)="onClick(button)"
+    >
+      <mat-icon *ngIf="button.icon">{{ button.icon }}</mat-icon>
+
+      <ng-container
+        *ngTemplateOutlet="buttonContent; context: { $implicit: button }"
+      ></ng-container>
+    </button>
+
+    <button
+      *ngSwitchCase="'flat'"
+      mat-flat-button
+      [color]="button.color"
+      [disabled]="button.disabled ?? false"
+      (click)="onClick(button)"
+    >
+      <mat-icon *ngIf="button.icon">{{ button.icon }}</mat-icon>
+
+      <ng-container
+        *ngTemplateOutlet="buttonContent; context: { $implicit: button }"
+      ></ng-container>
+    </button>
+
+    <button
+      *ngSwitchCase="'raised'"
+      mat-raised-button
+      [color]="button.color"
+      [disabled]="button.disabled ?? false"
+      (click)="onClick(button)"
+    >
+      <mat-icon *ngIf="button.icon">{{ button.icon }}</mat-icon>
+
+      <ng-container
+        *ngTemplateOutlet="buttonContent; context: { $implicit: button }"
+      ></ng-container>
+    </button>
+
+    <button
+      *ngSwitchDefault
+      mat-button
+      [color]="button.color"
+      [disabled]="button.disabled ?? false"
+      (click)="onClick(button)"
+    >
+      <mat-icon *ngIf="button.icon">{{ button.icon }}</mat-icon>
+      <ng-container
+        *ngTemplateOutlet="buttonContent; context: { $implicit: button }"
+      ></ng-container>
+    </button>
+  </ng-container>
+</ng-container>
+
+<ng-template #buttonContent let-button>
+  {{ button.label }}
+</ng-template>

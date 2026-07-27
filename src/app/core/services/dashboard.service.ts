@@ -9,6 +9,8 @@ import {
   TopCustomer,
   TopDishes,
   TopDishesList,
+  ActiveOrders,
+  ActiveOrdersItems,
 } from '@/models';
 import { API_URL } from '@/core/constants';
 
@@ -20,6 +22,7 @@ export class DashboardService {
   private readonly restaurantStatsURL = API_URL.restaurantStatsURL;
   private readonly topCustomersURL = API_URL.topCustomers;
   private readonly topDishesURL = API_URL.topDishes;
+  private readonly activeOrdersURL = API_URL.activeOrders;
   private http = inject(HttpClient);
 
   private allStats$: Observable<StatsData[]> = this.http
@@ -36,6 +39,10 @@ export class DashboardService {
 
   private allTopDishes$: Observable<TopDishesList[]> = this.http
     .get<TopDishesList[]>(this.topDishesURL)
+    .pipe(shareReplay(1));
+
+  private allActiveOrders$: Observable<ActiveOrdersItems[]> = this.http
+    .get<ActiveOrdersItems[]>(this.activeOrdersURL)
     .pipe(shareReplay(1));
 
   getDashboardStats(restaurantId: number): Observable<Stats | undefined> {
@@ -70,6 +77,17 @@ export class DashboardService {
       map(
         (data) =>
           data.find((item) => item.restaurantId === restaurantId)?.topDishes,
+      ),
+    );
+  }
+
+  getActiveOrders(
+    restaurantId: number,
+  ): Observable<ActiveOrders[] | undefined> {
+    return this.allActiveOrders$.pipe(
+      map(
+        (data) =>
+          data.find((item) => item.restaurantId === restaurantId)?.items,
       ),
     );
   }

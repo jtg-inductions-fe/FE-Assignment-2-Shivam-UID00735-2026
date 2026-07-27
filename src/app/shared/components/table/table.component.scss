@@ -1,0 +1,86 @@
+@use 'abstract' as *;
+
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border-radius: px-to-rem(8);
+
+  table {
+    width: 100%;
+    min-width: px-to-rem(380);
+    border-collapse: collapse;
+  }
+
+  th.mat-mdc-header-cell {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    white-space: nowrap;
+    font-weight: 600;
+    text-align: left;
+    padding: px-to-rem(6) px-to-rem(10);
+    font-size: px-to-rem(12);
+    color: $heading-color;
+  }
+
+  td.mat-mdc-cell {
+    padding: px-to-rem(6) px-to-rem(10);
+    font-size: px-to-rem(12);
+    white-space: nowrap;
+  }
+
+  tr.mat-mdc-row:hover {
+    background-color: rgba(0, 0, 0, 0.02);
+  }
+
+  @include respond-up('md') {
+    table {
+      min-width: px-to-rem(480);
+    }
+
+    th.mat-mdc-header-cell,
+    td.mat-mdc-cell {
+      padding: px-to-rem(8) px-to-rem(12);
+      font-size: px-to-rem(13);
+    }
+  }
+
+  @include respond-up('lg') {
+    table {
+      min-width: px-to-rem(560);
+    }
+
+    th.mat-mdc-header-cell,
+    td.mat-mdc-cell {
+      padding: px-to-rem(10) px-to-rem(14);
+      font-size: px-to-rem(14);
+    }
+  }
+
+  @include respond-up('xl') {
+    table {
+      min-width: px-to-rem(640);
+    }
+
+    th.mat-mdc-header-cell,
+    td.mat-mdc-cell {
+      padding: px-to-rem(14) px-to-rem(16);
+      font-size: px-to-rem(15);
+    }
+  }
+}
+
+::ng-deep .mat-mdc-paginator-container {
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: px-to-rem(4);
+}
+
+::ng-deep .mat-mdc-paginator-page-size {
+  display: none;
+
+  @include respond-up('md') {
+    display: flex;
+  }
+}

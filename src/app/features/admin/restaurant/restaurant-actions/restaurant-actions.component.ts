@@ -1,7 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
-import { RestaurantService } from '@/core/services/restaurant.service';
+import { RestaurantService } from '@/core/services';
 import { ROUTES } from '@/core/constants';
 import { Restaurant } from '@/models';
 

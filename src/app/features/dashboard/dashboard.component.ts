@@ -9,6 +9,7 @@ import {
   TopCustomer,
   TopDishes,
   ListCardItem,
+  ActiveOrders,
 } from '@/models';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ROUTES } from '@/core/constants';
@@ -26,6 +27,8 @@ export class DashboardComponent implements OnInit {
   statsCards: StatsCard[] = [];
   topCustomer: ListCardItem[] = [];
   topDishes: ListCardItem[] = [];
+  activeOrdersData: ActiveOrders[] = [];
+  restaurantId = 0;
 
   private dashboardStatService = inject(DashboardService);
   private authService = inject(AuthService);
@@ -38,6 +41,7 @@ export class DashboardComponent implements OnInit {
       if (!Number.isInteger(id) || id < 0) {
         this.router.navigate([ROUTES.notFoundPageRoute]);
       }
+      this.restaurantId = id;
     }),
     filter((id) => Number.isInteger(id) && id >= 0),
   );
@@ -47,6 +51,7 @@ export class DashboardComponent implements OnInit {
     this.loadStats();
     this.loadTopCustomers();
     this.loadTopDishes();
+    this.loadActiveOrders();
   }
 
   onRestaurantChange(restaurantID: number): void {
@@ -78,6 +83,17 @@ export class DashboardComponent implements OnInit {
       .pipe(switchMap((id) => this.dashboardStatService.getTopDishes(id)))
       .subscribe((data) => {
         this.topDishes = this.prepareTopDishes(data);
+      });
+  }
+
+  private loadActiveOrders(): void {
+    this.selectedRestaurantId$
+      .pipe(switchMap((id) => this.dashboardStatService.getActiveOrders(id)))
+      .subscribe((data) => {
+        if (!data) {
+          return;
+        }
+        this.activeOrdersData = data;
       });
   }
 

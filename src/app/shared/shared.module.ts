@@ -27,8 +27,15 @@ import { StatCardComponent } from '@/shared/components/stat-card/stat-card.compo
 import { ListCardComponent } from '@/shared/components/list-card/list-card.component';
 import { CardComponent } from '@/shared/components/card/card.component';
 import { MatChipsModule } from '@angular/material/chips';
+import { MatTableModule } from '@angular/material/table';
+
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 import { RestaurantFormComponent } from '@/shared/components/restaurant-form/restaurant-form.component';
+import { TableComponent } from './components/table/table.component';
+import { TableButtonCellComponent } from './components/table-button-cell/table-button-cell.component';
+import { TableTextCellComponent } from './components/table-text-cell/table-text-cell.component';
+import { TableChipCellComponent } from './components/table-chip-cell/table-chip-cell.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +49,10 @@ import { RestaurantFormComponent } from '@/shared/components/restaurant-form/res
     ListCardComponent,
     CardComponent,
     RestaurantFormComponent,
+    TableComponent,
+    TableButtonCellComponent,
+    TableTextCellComponent,
+    TableChipCellComponent,
   ],
   imports: [
     CommonModule,
@@ -61,6 +72,8 @@ import { RestaurantFormComponent } from '@/shared/components/restaurant-form/res
     MatInputModule,
     RouterModule,
     MatChipsModule,
+    MatPaginatorModule,
+    MatTableModule,
   ],
   exports: [
     HeaderComponent,
@@ -72,6 +85,7 @@ import { RestaurantFormComponent } from '@/shared/components/restaurant-form/res
     ListCardComponent,
     CardComponent,
     RestaurantFormComponent,
+    TableComponent,
   ],
 })
 export class SharedModule {}
