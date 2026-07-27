@@ -16,6 +16,7 @@ import {
   filter,
   catchError,
   finalize,
+  startWith,
 } from 'rxjs';
 
 import { FormControl } from '@angular/forms';
@@ -51,6 +52,7 @@ export class AutoSelectComponent implements OnInit {
     this.form.setValue('All Restaurant');
 
     this.filteredOptions = this.form.valueChanges.pipe(
+      startWith(''),
       debounceTime(300),
       distinctUntilChanged(),
       filter(() => {
@@ -62,10 +64,6 @@ export class AutoSelectComponent implements OnInit {
       }),
       switchMap((value) => {
         const query = (value ?? '').trim();
-        if (query.length === 0) {
-          this.isSearching = false;
-          return of([]);
-        }
 
         this.isSearching = true;
         return this.dashboardService.getFilteredRestaurants(query).pipe(
