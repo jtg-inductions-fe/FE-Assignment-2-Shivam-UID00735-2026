@@ -36,6 +36,7 @@ import { TableComponent } from './components/table/table.component';
 import { TableButtonCellComponent } from './components/table-button-cell/table-button-cell.component';
 import { TableTextCellComponent } from './components/table-text-cell/table-text-cell.component';
 import { TableChipCellComponent } from './components/table-chip-cell/table-chip-cell.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import { TableChipCellComponent } from './components/table-chip-cell/table-chip-
     TableButtonCellComponent,
     TableTextCellComponent,
     TableChipCellComponent,
+    FooterComponent,
   ],
   imports: [
     CommonModule,
@@ -86,6 +88,7 @@ import { TableChipCellComponent } from './components/table-chip-cell/table-chip-
     CardComponent,
     RestaurantFormComponent,
     TableComponent,
+    FooterComponent,
   ],
 })
 export class SharedModule {}

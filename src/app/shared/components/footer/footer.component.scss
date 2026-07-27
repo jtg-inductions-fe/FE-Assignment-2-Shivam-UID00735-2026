@@ -1,0 +1,39 @@
+@use 'abstract' as *;
+@use 'base' as *;
+
+.footer {
+  margin-top: $spacing-4;
+
+  &__items {
+    padding: $spacing-6 px-to-rem(30);
+    text-align: center;
+    @include flex(space-between, row);
+    flex-direction: column;
+    gap: $spacing-4;
+  }
+
+  &__copyright {
+    font-size: $fs-sm;
+  }
+
+  &__social-links {
+    @include flex;
+
+    gap: $spacing-4;
+  }
+
+  &__icon {
+    transition: transform ease 0.3s;
+
+    &:hover {
+      transform: translateY(-4px);
+    }
+  }
+
+  @include respond-up('md') {
+    &__items {
+      padding: $spacing-8 px-to-rem(48);
+      flex-direction: row;
+    }
+  }
+}
