@@ -15,8 +15,7 @@
   }
 
   &__sidebar {
-    width: auto;
-    min-width: px-to-rem(250);
+    width: px-to-rem(250);
   }
   &__content {
     flex: 1;

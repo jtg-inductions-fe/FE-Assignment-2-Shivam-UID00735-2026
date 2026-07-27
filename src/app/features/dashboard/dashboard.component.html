@@ -1,1 +1,28 @@
-<p>dashboard works!</p>
+<div class="main-wrapper">
+  <!-- dashboard main content header -->
+  <app-main-content-header
+    headingType="large"
+    [title]="title"
+    [description]="description"
+  >
+    <div *ngIf="isAdmin()">
+      <app-auto-select
+        label="View dashboard as"
+        (selectedValuesOnChange)="onRestaurantChange($event)"
+      ></app-auto-select>
+    </div>
+  </app-main-content-header>
+
+  <!-- Stats card display -->
+  <app-stats
+    *ngIf="statsCards.length > 0; else showEmptyState"
+    [StatsCards]="statsCards"
+  ></app-stats>
+
+  <ng-template #showEmptyState>
+    <app-card [hasBorder]="true"> No Stats For This Restaurant </app-card>
+  </ng-template>
+
+  <!-- Report Generating Section -->
+  <app-report-generator> </app-report-generator>
+</div>

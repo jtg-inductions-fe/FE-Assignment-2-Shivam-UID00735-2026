@@ -1,0 +1,39 @@
+@use 'abstract' as *;
+.list-card {
+  border-radius: 12px;
+  border: 1px solid $border-color;
+
+  &__heading {
+    padding: $spacing-4;
+    margin: 0;
+  }
+
+  &__item {
+    @include flex(space-between, row);
+
+    padding: $spacing-4;
+
+    border-bottom: 1px solid $border-color;
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  &__left {
+    display: flex;
+    align-items: center;
+    gap: $spacing-4;
+
+    img {
+      width: px-to-rem(40);
+      height: px-to-rem(40);
+      border-radius: 50%;
+    }
+  }
+  &__content {
+    h3 {
+      margin: 0;
+    }
+  }
+}

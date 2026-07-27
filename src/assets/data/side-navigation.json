@@ -4,7 +4,7 @@
     "item": [
       {
         "title": "Overview",
-        "href": "/dashboard",
+        "href": "dashboard",
         "icon": "pie_chart",
         "role": ["admin", "owner"]
       },

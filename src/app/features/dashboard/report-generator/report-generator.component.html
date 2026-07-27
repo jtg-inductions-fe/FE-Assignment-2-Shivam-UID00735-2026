@@ -1,0 +1,20 @@
+<app-card [hasBorder]="true">
+  <div class="card">
+    <app-main-content-header
+      headingType="small"
+      [title]="title"
+      [description]="description"
+    >
+      <div class="buttons-group">
+        <button type="button" mat-stroked-button color="primary">
+          <mat-icon>bar_chart</mat-icon>
+          Top 10 Ordered Items
+        </button>
+        <button type="button" mat-raised-button color="primary">
+          <mat-icon>bubble_chart</mat-icon>
+          Frequently Bought Together
+        </button>
+      </div>
+    </app-main-content-header>
+  </div>
+</app-card>

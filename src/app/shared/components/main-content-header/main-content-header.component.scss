@@ -1,0 +1,20 @@
+@use 'abstract' as *;
+@use 'base' as *;
+
+.main-header {
+  @include flex(space-between, row);
+
+  flex-direction: column;
+  text-align: center;
+  gap: px-to-rem(26);
+
+  &__description {
+    color: $heading-color;
+    font-size: $fs-sm;
+  }
+
+  @include respond-up('lg') {
+    flex-direction: row;
+    text-align: start;
+  }
+}

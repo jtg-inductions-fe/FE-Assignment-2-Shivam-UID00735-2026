@@ -3,10 +3,10 @@
     "restaurantId": 1,
     "items": [
       {
-        "orderId": "#ORD-1002",
-        "restaurant": "Pizza Palace",
+        "orderId": "#ORD-1001",
+        "restaurant": "Burma Burma Restaurant",
         "customer": "Bonnie Green",
-        "items": ["Truffle Paste", "Soda"],
+        "items": ["Tea Leaf Salad", "Coconut Rice"],
         "amount": 68,
         "status": "pending"
       }
@@ -16,20 +16,12 @@
     "restaurantId": 2,
     "items": [
       {
-        "orderId": "#ORD-1003",
-        "restaurant": "Burger Bistro",
+        "orderId": "#ORD-1002",
+        "restaurant": "The Pasta Bowl",
         "customer": "Alex Rivers",
-        "items": ["Bacon Cheeseburger", "Fries", "Vanilla Shake"],
+        "items": ["White Sauce Pasta", "Garlic Bread"],
         "amount": 42,
         "status": "completed"
-      },
-      {
-        "orderId": "#ORD-1004",
-        "restaurant": "Burger Bistro",
-        "customer": "Diana Prince",
-        "items": ["Veggie Burger", "Onion Rings"],
-        "amount": 28,
-        "status": "pending"
       }
     ]
   },
@@ -37,10 +29,10 @@
     "restaurantId": 3,
     "items": [
       {
-        "orderId": "#ORD-1005",
-        "restaurant": "Sushi Zen",
+        "orderId": "#ORD-1003",
+        "restaurant": "Indian Grill Room",
         "customer": "Chris Evans",
-        "items": ["Salmon Sashimi", "Miso Soup", "Green Tea"],
+        "items": ["Paneer Tikka", "Butter Naan"],
         "amount": 55,
         "status": "delivered"
       }
@@ -50,10 +42,10 @@
     "restaurantId": 4,
     "items": [
       {
-        "orderId": "#ORD-1006",
-        "restaurant": "Taco Fiesta",
+        "orderId": "#ORD-1004",
+        "restaurant": "The Piano Man",
         "customer": "Emma Watson",
-        "items": ["Chicken Tacos", "Guacamole", "Churros"],
+        "items": ["Pizza", "Cold Coffee"],
         "amount": 34,
         "status": "cancelled"
       }

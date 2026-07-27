@@ -31,3 +31,9 @@
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+
+@mixin heading-config($size, $font-weight, $line-height) {
+  font-size: $size;
+  font-weight: $font-weight;
+  line-height: $line-height;
+}

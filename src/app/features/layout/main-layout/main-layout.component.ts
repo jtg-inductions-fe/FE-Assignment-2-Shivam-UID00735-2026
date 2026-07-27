@@ -8,9 +8,10 @@ import { BreakpointObserver } from '@angular/cdk/layout';
   styleUrls: ['./main-layout.component.scss'],
 })
 export class MainLayoutComponent implements OnInit {
-  title = 'restaurant-management-system';
   private authService = inject(AuthService);
   private breakPointObserver = inject(BreakpointObserver);
+
+  title = 'restaurant-management-system';
   isSidebarOpen = true;
   isMobile = false;
   sideNavMode: 'side' | 'over' = 'side';
@@ -36,6 +37,7 @@ export class MainLayoutComponent implements OnInit {
       this.isSidebarOpen = !this.isSidebarOpen;
     }
   }
+
   canShowSidebar(): boolean {
     if (this.authService.isLoggedIn()) {
       return true;

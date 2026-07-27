@@ -1,0 +1,46 @@
+[
+  {
+    "id": 0,
+    "name": "All Restaurants"
+  },
+  {
+    "id": 1,
+    "name": "Burma Burma Restaurant"
+  },
+  {
+    "id": 2,
+    "name": "The Pasta Bowl"
+  },
+  {
+    "id": 3,
+    "name": "Indian Grill Room"
+  },
+  {
+    "id": 4,
+    "name": "The Piano Man"
+  },
+  {
+    "id": 5,
+    "name": "Farzi Cafe"
+  },
+  {
+    "id": 6,
+    "name": "Cyber Hub Social"
+  },
+  {
+    "id": 7,
+    "name": "Olive Bar & Kitchen"
+  },
+  {
+    "id": 8,
+    "name": "Comorin"
+  },
+  {
+    "id": 9,
+    "name": "Indian Accent"
+  },
+  {
+    "id": 10,
+    "name": "Barbeque Nation"
+  }
+]

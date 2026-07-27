@@ -23,13 +23,13 @@ export class AuthService {
   private userSubject = new BehaviorSubject<Omit<User, 'password'> | null>(
     this.getInitialUser(),
   );
+
   currentUser$ = this.userSubject.asObservable();
 
   getUsers(): Observable<User[]> {
     return this.http.get<User[]>(this.usersDataURL);
   }
 
-  // this function is validating the email and password which are coming from the form, and after validating store the data in cookie
   validateUser(email: string, password: string): Observable<boolean> {
     return this.getUsers().pipe(
       map((users) => {
@@ -51,6 +51,7 @@ export class AuthService {
             email: user.email,
             avatar: user.avatar,
             role: user.role,
+            restaurantIds: user.restaurantIds,
           }),
           {
             path: '/',
@@ -86,6 +87,14 @@ export class AuthService {
       this.cookieService.delete(AUTH_CONSTANTS.COOKIE_USER_SESSION_KEY, '/');
       return null;
     }
+  }
+
+  getOwnersRestaurantIds(): number[] | null {
+    const user = this.userSubject.value;
+    if (!user) {
+      return null;
+    }
+    return user.restaurantIds ?? null;
   }
 
   getCurrentUserRole(): UserRole {

@@ -6,6 +6,7 @@ import { ROUTES } from '@/core/constants';
 
 export const guestGuard: CanActivateFn = (route, state) => {
   const router = inject(Router);
+
   const authService = inject(AuthService);
 
   if (authService.isLoggedIn()) {

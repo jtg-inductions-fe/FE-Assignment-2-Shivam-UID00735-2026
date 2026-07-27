@@ -1,5 +1,6 @@
 @use '../theme/colors' as *;
-// Breakpoints for different screen sizes
+
+// Breakpoints
 $breakpoints: (
   'sm': 320px,
   'md': 768px,
@@ -7,12 +8,20 @@ $breakpoints: (
   'xl': 1440px,
 );
 
-$card-box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-$border-color: $light-black-color;
-$icon-color: $dark-black-color;
+// Colors
 $primary-color: $primary-700;
-
-$paragraph-color: $light-black-color;
 $heading-color: $dark-black-color;
-
+$paragraph-color: $solid-black-color;
+$icon-color: $dark-black-color;
+$border-color: $light-black-color;
 $mute-color: $light-white-color;
+
+// Spacing
+$card-padding: 10px;
+$card-border-radius: 16px;
+
+// Shadows
+$card-box-shadow:
+  0 1px 10px rgba(0, 0, 0, 0.12),
+  0 4px 5px rgba(0, 0, 0, 0.14),
+  0 2px 4px -1px rgba(0, 0, 0, 0.2);

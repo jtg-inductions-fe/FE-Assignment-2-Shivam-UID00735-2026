@@ -18,7 +18,11 @@ export class HeaderComponent {
     this.authService.logout();
   }
 
-  onMenuClick() {
+  onMenuClick(): void {
     this.toggleSideBar.emit();
+  }
+
+  isLoggedIn(): boolean {
+    return this.authService.isLoggedIn();
   }
 }

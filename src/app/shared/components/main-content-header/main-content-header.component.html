@@ -1,0 +1,20 @@
+<div class="main-header">
+  <div class="main-header__overview">
+    <h1
+      class="main-header__heading"
+      [ngClass]="{
+        'heading-large': headingType === 'large',
+        'heading-medium': headingType === 'medium',
+        'heading-small': headingType === 'small',
+      }"
+    >
+      {{ title }}
+    </h1>
+    <p class="main-header__description">
+      {{ description }}
+    </p>
+  </div>
+  <div class="main-header__actions">
+    <ng-content></ng-content>
+  </div>
+</div>

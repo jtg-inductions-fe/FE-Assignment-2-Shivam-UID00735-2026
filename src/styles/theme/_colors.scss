@@ -1,4 +1,4 @@
-// Primary color palette of Gossamer(Green)
+// Primary Color Palette (Gossamer Green)
 $primary-50: #e5f5ee;
 $primary-100: #c0e6d5;
 $primary-200: #98d6bb;
@@ -6,18 +6,33 @@ $primary-300: #6cc6a1;
 $primary-400: #48ba8e;
 $primary-500: #14ae7a;
 $primary-600: #0e9f6f;
-$primary-700: #0e9f6e;
+$primary-700: #0e8e63;
 $primary-800: #087b55;
 $primary-900: #0b5c3e;
 
-// Color contrast on primary color
-$primary-contrast: #fff;
+// Contrast
+$primary-contrast: #ffffff;
 
+// Material hues
 $primary-lighter-hue: 700;
 $secondary-lighter-hue: 700;
 
+// Neutral Colors
 $dark-black-color: #000000de;
-
-$light-gray-color: #6b7280;
+$solid-black-color: #00000099;
 $light-black-color: #0000001f;
-$light-white-color: #eee;
+$light-gray-color: #6b7280;
+$light-white-color: #eeeeee;
+
+// Semantic Colors
+$sea-green-color: #2e7d32;
+$light-sea-green-color: #4caf5014;
+
+$lochmara-blue-color: #0288d1;
+$light-blue-color: #03a9f414;
+
+$clementine-color: #ed6c02;
+$light-clementine-color: #ff980014;
+
+$violet-color: #9c27b0;
+$light-violet-color: #9c27b014;

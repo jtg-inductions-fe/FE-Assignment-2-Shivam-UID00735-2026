@@ -51,10 +51,16 @@
         >
           <mat-icon
             class="sidebar-item__icon"
-            *ngIf="node.icon"
+            *ngIf="node.icon; else emptyIcon"
             matListItemIcon
-            >{{ node.icon }}</mat-icon
           >
+            {{ node.icon || 'help' }}
+          </mat-icon>
+
+          <ng-template #emptyIcon>
+            <mat-icon class="sidebar-item__icon" matListItemIcon> </mat-icon>
+          </ng-template>
+
           <span class="sidebar-item__menu-name" matListItemTitle>{{
             node.title
           }}</span>
