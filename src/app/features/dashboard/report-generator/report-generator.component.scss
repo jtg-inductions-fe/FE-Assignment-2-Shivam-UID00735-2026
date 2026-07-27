@@ -5,7 +5,7 @@
   gap: 8px;
   flex-direction: column;
 
-  @include respond-up('md') {
+  @include respond-up('xl') {
     flex-direction: row;
   }
 }
