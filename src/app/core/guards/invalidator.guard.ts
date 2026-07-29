@@ -3,7 +3,7 @@ import { inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { ROUTES } from '@/core/constants';
 
-export const invalidatorGuard: CanActivateFn = (route, state) => {
+export const invalidatorGuard: CanActivateFn = (route) => {
   const router = inject(Router);
 
   const rawId = route.paramMap.get('id');

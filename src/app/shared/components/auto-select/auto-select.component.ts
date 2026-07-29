@@ -12,9 +12,7 @@ import {
   debounceTime,
   distinctUntilChanged,
   switchMap,
-  of,
   filter,
-  catchError,
   finalize,
   startWith,
 } from 'rxjs';

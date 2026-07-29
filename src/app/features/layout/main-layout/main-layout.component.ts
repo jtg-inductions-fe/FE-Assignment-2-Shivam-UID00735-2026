@@ -11,7 +11,6 @@ export class MainLayoutComponent implements OnInit {
   private authService = inject(AuthService);
   private breakPointObserver = inject(BreakpointObserver);
 
-  title = 'restaurant-management-system';
   isSidebarOpen = true;
   isMobile = false;
   sideNavMode: 'side' | 'over' = 'side';

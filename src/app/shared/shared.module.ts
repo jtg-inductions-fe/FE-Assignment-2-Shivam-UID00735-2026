@@ -32,11 +32,11 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 
 import { RestaurantFormComponent } from '@/shared/components/restaurant-form/restaurant-form.component';
-import { TableComponent } from './components/table/table.component';
-import { TableButtonCellComponent } from './components/table-button-cell/table-button-cell.component';
-import { TableTextCellComponent } from './components/table-text-cell/table-text-cell.component';
-import { TableChipCellComponent } from './components/table-chip-cell/table-chip-cell.component';
-import { FooterComponent } from './components/footer/footer.component';
+import { TableComponent } from '@/shared/components/table/table.component';
+import { TableButtonCellComponent } from '@/shared/components/table-button-cell/table-button-cell.component';
+import { TableTextCellComponent } from '@/shared/components/table-text-cell/table-text-cell.component';
+import { TableChipCellComponent } from '@/shared/components/table-chip-cell/table-chip-cell.component';
+import { FooterComponent } from '@/shared/components/footer/footer.component';
 
 @NgModule({
   declarations: [

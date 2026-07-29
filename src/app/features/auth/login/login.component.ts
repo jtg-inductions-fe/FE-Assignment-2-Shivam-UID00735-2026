@@ -42,7 +42,10 @@ export class LoginComponent implements OnInit {
         );
         return;
       }
-
+      this.notificationService.showSuccessMessage(
+        'Welcome to the admin dashboard',
+        'Close',
+      );
       this.router.navigate([ROUTES.dashboardPageRoute]);
     });
   }

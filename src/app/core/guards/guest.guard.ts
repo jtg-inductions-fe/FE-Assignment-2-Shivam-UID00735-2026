@@ -4,7 +4,7 @@ import { inject } from '@angular/core';
 import { AuthService } from '@/core/services';
 import { ROUTES } from '@/core/constants';
 
-export const guestGuard: CanActivateFn = (route, state) => {
+export const guestGuard: CanActivateFn = () => {
   const router = inject(Router);
 
   const authService = inject(AuthService);

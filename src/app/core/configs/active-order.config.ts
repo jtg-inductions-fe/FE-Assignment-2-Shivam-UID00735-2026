@@ -36,7 +36,7 @@ export const getActiveOrdersColumns = (handlers: {
         type: 'stroked',
         icon: 'close',
         label: 'Reject',
-        color: 'primary',
+        color: 'warn',
         handler: handlers.onReject,
       },
       {

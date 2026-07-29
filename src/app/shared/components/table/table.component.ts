@@ -6,7 +6,6 @@ import {
   OnInit,
   SimpleChanges,
   ViewChild,
-  TemplateRef,
 } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
@@ -22,7 +21,6 @@ export class TableComponent<T = unknown>
 {
   @Input({ required: true }) dataSource!: T[];
   @Input({ required: true }) columns!: TableColumn<T>[];
-  @Input() templates: Record<string, TemplateRef<unknown>> = {};
   @Input() enablePagination = true;
 
   @ViewChild(MatPaginator)
